@@ -726,11 +726,16 @@ img {
 #menu .menu-area .navbar-default .navbar-nav .aa-search-box .aa-search-icon:hover {
   opacity: 0.8;
 }
+/*CHAT BOX MESSENGER*/
+.fb-customerchat{
+  bottom: 0px;
+  right: 20px;
+}
 
 /* ALL SECTION */
 /*scrol to top*/
 .scrollToTop {
-  bottom: 60px;
+  bottom: 100px;
   color: #fff;
   display: none;
   font-size: 23px;
@@ -740,6 +745,7 @@ img {
   right: 20px;
   text-align: center;
   text-decoration: none;
+  border-radius: 100%;
   -webkit-transition: all 0.5s ease 0s;
   -moz-transition: all 0.5s ease 0s;
   -ms-transition: all 0.5s ease 0s;
