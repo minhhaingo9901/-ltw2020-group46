@@ -443,7 +443,7 @@ img {
   margin: auto;
   flex: none;
   padding-top: 5px;
-  background-color: #82ae46;/*099e16*/
+  background-color: #66cc33;/*099e16*//*#86ae46*/
   border-radius: 10px;
 }
 #aa-header .aa-header-bottom .aa-shipping-box {
@@ -1299,7 +1299,7 @@ a.aa-product-img img {
   font-size: 15px;
 }
 .aa-product-catg li .aa-sale {
-  background-color: #82ae46;/*008000*/
+  background-color: #6c3;/*008000*/
 }
 .aa-product-catg li .aa-sold-out {
   background-color: #FF0000;
