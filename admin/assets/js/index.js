@@ -70,7 +70,7 @@ $(function() {
 			var myChart = new Chart(ctx, {
 				type: 'doughnut',
 				data: {
-					labels: ["Direct", "Affiliate", "E-mail", "Other"],
+					labels: ["Rau sạch", "Củ quả", "Hạt", "Mật ong"],
 					datasets: [{
 						backgroundColor: [
 							"#ffffff",
