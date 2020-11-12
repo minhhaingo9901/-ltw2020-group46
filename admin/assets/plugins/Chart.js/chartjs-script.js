@@ -1,10 +1,10 @@
 
 (function(window, document, $, undefined) {
-	"use strict";
+	  "use strict";
 	$(function() {
 
 		if ($('#lineChart').length) {
-
+			
 			var ctx = document.getElementById('lineChart').getContext('2d');
 			var myChart = new Chart(ctx, {
 				type: 'line',
@@ -26,43 +26,43 @@
 						borderWidth: 1
 					}]
 				},
-				options: {
-					legend: {
-						display: true,
-						labels: {
-							fontColor: '#ddd',
-							boxWidth:40
-						}
+			options: {
+				legend: {
+				  display: true,
+				  labels: {
+					fontColor: '#ddd',  
+					boxWidth:40
+				  }
+				},
+				tooltips: {
+				  enabled:false
+				},	
+			  scales: {
+				  xAxes: [{
+					ticks: {
+						beginAtZero:true,
+						fontColor: '#ddd'
 					},
-					tooltips: {
-						enabled:false
+					gridLines: {
+					  display: true ,
+					  color: "rgba(221, 221, 221, 0.08)"
 					},
-					scales: {
-						xAxes: [{
-							ticks: {
-								beginAtZero:true,
-								fontColor: '#ddd'
-							},
-							gridLines: {
-								display: true ,
-								color: "rgba(221, 221, 221, 0.08)"
-							},
-						}],
-						yAxes: [{
-							ticks: {
-								beginAtZero:true,
-								fontColor: '#ddd'
-							},
-							gridLines: {
-								display: true ,
-								color: "rgba(221, 221, 221, 0.08)"
-							},
-						}]
-					}
+				  }],
+				   yAxes: [{
+					ticks: {
+						beginAtZero:true,
+						fontColor: '#ddd'
+					},
+					gridLines: {
+					  display: true ,
+					  color: "rgba(221, 221, 221, 0.08)"
+					},
+				  }]
+				 }
 
-				}
+			 }
 			});
-
+			
 		}
 
 
@@ -82,42 +82,42 @@
 						backgroundColor: "#fff"
 					}]
 				},
-				options: {
-					legend: {
-						display: true,
-						labels: {
-							fontColor: '#ddd',
-							boxWidth:40
-						}
+			options: {
+				legend: {
+				  display: true,
+				  labels: {
+					fontColor: '#ddd',  
+					boxWidth:40
+				  }
+				},
+				tooltips: {
+				  enabled:false
+				},	
+			  scales: {
+				  xAxes: [{
+					  barPercentage: .5,
+					ticks: {
+						beginAtZero:true,
+						fontColor: '#ddd'
 					},
-					tooltips: {
-						enabled:false
+					gridLines: {
+					  display: true ,
+					  color: "rgba(221, 221, 221, 0.08)"
 					},
-					scales: {
-						xAxes: [{
-							barPercentage: .5,
-							ticks: {
-								beginAtZero:true,
-								fontColor: '#ddd'
-							},
-							gridLines: {
-								display: true ,
-								color: "rgba(221, 221, 221, 0.08)"
-							},
-						}],
-						yAxes: [{
-							ticks: {
-								beginAtZero:true,
-								fontColor: '#ddd'
-							},
-							gridLines: {
-								display: true ,
-								color: "rgba(221, 221, 221, 0.08)"
-							},
-						}]
-					}
+				  }],
+				   yAxes: [{
+					ticks: {
+						beginAtZero:true,
+						fontColor: '#ddd'
+					},
+					gridLines: {
+					  display: true ,
+					  color: "rgba(221, 221, 221, 0.08)"
+					},
+				  }]
+				 }
 
-				}
+			 }
 			});
 		}
 
@@ -138,21 +138,21 @@
 						borderWidth: [0, 0, 0, 0]
 					}]
 				},
-				options: {
-					legend: {
-						position :"right",
-						display: true,
-						labels: {
-							fontColor: '#ddd',
-							boxWidth:15
-						}
-					},
-					scale: {
-						gridLines: {
-							color: "rgba(221, 221, 221, 0.12)"
-						},
-					}
+			options: {
+			   legend: {
+				 position :"right",	
+				 display: true,
+				    labels: {
+					  fontColor: '#ddd',  
+					  boxWidth:15
+				   }
+				},
+			scale: {
+				  gridLines: {
+					   color: "rgba(221, 221, 221, 0.12)" 
+					 }, 
 				}
+			   }
 			});
 		}
 
@@ -174,16 +174,16 @@
 						borderWidth: [0, 0, 0, 0]
 					}]
 				},
-				options: {
-					legend: {
-						position :"right",
-						display: true,
-						labels: {
-							fontColor: '#ddd',
-							boxWidth:15
-						}
-					}
+			options: {
+			   legend: {
+				 position :"right",	
+				 display: true,
+				    labels: {
+					  fontColor: '#ddd',  
+					  boxWidth:15
+				   }
 				}
+			   }
 			});
 		}
 
@@ -205,16 +205,16 @@
 						borderWidth: [0, 0, 0, 0]
 					}]
 				},
-				options: {
-					legend: {
-						position :"right",
-						display: true,
-						labels: {
-							fontColor: '#ddd',
-							boxWidth:15
-						}
-					}
+			options: {
+			   legend: {
+				 position :"right",	
+				 display: true,
+				    labels: {
+					  fontColor: '#ddd',  
+					  boxWidth:15
+				   }
 				}
+			   }
 			});
 		}
 

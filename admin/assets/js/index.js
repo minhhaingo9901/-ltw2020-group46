@@ -10,14 +10,14 @@ $(function() {
 				data: {
 					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
 					datasets: [{
-						label: 'New Visitor',
+						label: 'Khách Mới',
 						data: [3, 3, 8, 5, 7, 4, 6, 4, 6, 3],
 						backgroundColor: '#fff',
 						borderColor: "transparent",
 						pointRadius :"0",
 						borderWidth: 3
 					}, {
-						label: 'Old Visitor',
+						label: 'Khách Cũ',
 						data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
 						backgroundColor: "rgba(255, 255, 255, 0.25)",
 						borderColor: "transparent",
@@ -70,7 +70,7 @@ $(function() {
 			var myChart = new Chart(ctx, {
 				type: 'doughnut',
 				data: {
-					labels: ["Rau sạch", "Củ quả", "Hạt", "Mật ong"],
+					labels: ["Rau Sạch", "Củ Quả", "Hạt", "Mật Ong"],
 					datasets: [{
 						backgroundColor: [
 							"#ffffff",
