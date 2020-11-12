@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Tin tức</title>
+    <title>Sửa tin tức</title>
     <!-- loader-->
     <link href="assets/css/pace.min.css" rel="stylesheet"/>
     <script src="assets/js/pace.min.js"></script>
@@ -141,77 +141,56 @@
     <!--End topbar header-->
 
     <div class="clearfix"></div>
-
     <div class="content-wrapper">
         <div class="container-fluid">
-            <!--End Row-->
 
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <button class="add-catalog"><a href="news_add.html">Thêm tin tức</a></button>
-                </div>
-                <div class="col-lg-12">
+            <div class="row mt-3">
+                <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Danh sách tin tức</h5>
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Tiêu đề</th>
-                                        <th scope="col">Hình ảnh</th>
-                                        <th scope="col">Người đăng</th>
-                                        <th scope="col">Ngày đăng</th>
-                                        <th scope="col">Hành động</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Thực phẩm sạch tăng mạnh sau dịch Covid-19</td>
-                                            <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_1.jpg"></td>
-                                            <td>Mạc Dương</td>
-                                            <td>2020-12-11</td>
-                                            <td>
-                                                <button class="btn btn-danger"><a href="">Xóa</a></button>
-
-                                                <button class="btn btn-success"><a href="news_edit.html">Sửa</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Phát hiện loại rau củ chứa chất chữa được bệnh nan y</td>
-                                            <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_2.jpg"</td>
-                                            <td>Minh Quang</td>
-                                            <td>2020-12-12</td>
-                                            <td>
-                                                <button class="btn btn-danger"><a href="">Xóa</a></button>
-
-                                                <button class="btn btn-success"><a href="news_edit.html">Sửa</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Việt Nam đứng thứ 6 thế giới về xuất khẩu mật ong</td>
-                                            <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_3.jpg"></td>
-                                            <td>Minh Hải</td>
-                                            <td>2020-12-09</td>
-                                            <td>
-                                                <button class="btn btn-danger"><a href="">Xóa</a></button>
-
-                                                <button class="btn btn-success"><a href="news_list.html">Sửa</a></button>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div class="card-title">Sửa tin tức</div>
+                            <hr>
+                            <form>
+                                <div class="form-group">
+                                    <label for="input-1">ID</label>
+                                    <input type="text" class="form-control" readonly id="input-1" placeholder="ID" value="" name="new-id">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-2">Tên tin tức</label>
+                                    <input type="text" class="form-control" id="input-2" placeholder="Tên tin tức" value=""name="new-title">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung</label>
+                                    <textarea class="form-control" rows="4" id="input-17" name="new-content"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-2">Hình ảnh</label>
+                                    <input type="text" class="form-control" id="input-10" placeholder="Địa chỉ hình ảnh" value=""name="new-image_link">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-4">Người đăng</label>
+                                    <div>
+                                        <select class="form-control valid" id="input-4" name="new-author" >
+                                        <option>Mạc Dương</option>
+                                        <option>Minh Quang</option>
+                                        <option>Minh Hải</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-5">Ngày đăng</label>
+                                    <input type="date" class="form-control" id="input-5" value="" name="new-created">
+                                </div>
+                                <div class="form-footer">
+                                    <button class="btn btn-danger"><a href="">Hủy</a></button>
+                                    <button class="btn btn-success">Cập nhật</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="overlay toggle-menu"></div>
         </div>
     </div>
     <!--Start Back To Top Button-->
@@ -257,7 +236,21 @@
     <!--end color switcher-->
 
 </div><!--End wrapper-->
+<script>
+    var date = new Date();
 
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+
+
+    document.getElementById('the-date').value = today;
+</script>
 <!-- Bootstrap core JavaScript-->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
