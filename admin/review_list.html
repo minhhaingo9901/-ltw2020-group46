@@ -87,7 +87,7 @@
                 </a>
             </li>
             <li>
-                <a href="new_list.html">
+                <a href="news_list.html">
                     <i class="icon-envelope-open"></i> <span>Tin tức</span>
                 </a>
             </li>
@@ -164,39 +164,39 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Mạc Dương</td>
-                                        <td>macduong@gmail.com</td>
-                                        <td>3</td>
-                                        <td>An toàn, sạch sẽ!</td>
-                                        <td>2020-10-10</td>
-                                        <td>
-                                            <button class="btn btn-danger"><a href="">Xóa</a></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Minh Quang</td>
-                                        <td>minhquang@gmail.com</td>
-                                        <td>4</td>
-                                        <td>Sản phẩm chất lượng</td>
-                                        <td>2020-10-11</td>
-                                        <td>
-                                            <button class="btn btn-danger"><a href="">Xóa</a></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Minh Hải</td>
-                                        <td>minhhai@gmail.com</td>
-                                        <td>5</td>
-                                        <td>Ngon, lần sau tôi sẽ mua tiếp</td>
-                                        <td>2020-10-12</td>
-                                        <td>
-                                            <button class="btn btn-danger"><a href="">Xóa</a></button>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Mạc Dương</td>
+                                    <td>macduong@gmail.com</td>
+                                    <td>3</td>
+                                    <td>An toàn, sạch sẽ!</td>
+                                    <td>2020-10-10</td>
+                                    <td>
+                                        <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Minh Quang</td>
+                                    <td>minhquang@gmail.com</td>
+                                    <td>4</td>
+                                    <td>Sản phẩm chất lượng</td>
+                                    <td>2020-10-11</td>
+                                    <td>
+                                        <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Minh Hải</td>
+                                    <td>minhhai@gmail.com</td>
+                                    <td>5</td>
+                                    <td>Ngon, lần sau tôi sẽ mua tiếp</td>
+                                    <td>2020-10-12</td>
+                                    <td>
+                                        <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -248,7 +248,21 @@
     <!--end color switcher-->
 
 </div><!--End wrapper-->
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
 
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
 <!-- Bootstrap core JavaScript-->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>

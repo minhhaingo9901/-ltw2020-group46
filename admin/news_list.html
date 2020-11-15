@@ -168,42 +168,39 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Thực phẩm sạch tăng mạnh sau dịch Covid-19</td>
-                                            <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_1.jpg"></td>
-                                            <td>Mạc Dương</td>
-                                            <td>2020-12-11</td>
-                                            <td>
-                                                <button class="btn btn-danger"><a href="">Xóa</a></button>
-
-                                                <button class="btn btn-success"><a href="news_edit.html">Sửa</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Phát hiện loại rau củ chứa chất chữa được bệnh nan y</td>
-                                            <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_2.jpg"</td>
-                                            <td>Minh Quang</td>
-                                            <td>2020-12-12</td>
-                                            <td>
-                                                <button class="btn btn-danger"><a href="">Xóa</a></button>
-
-                                                <button class="btn btn-success"><a href="news_edit.html">Sửa</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Việt Nam đứng thứ 6 thế giới về xuất khẩu mật ong</td>
-                                            <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_3.jpg"></td>
-                                            <td>Minh Hải</td>
-                                            <td>2020-12-09</td>
-                                            <td>
-                                                <button class="btn btn-danger"><a href="">Xóa</a></button>
-
-                                                <button class="btn btn-success"><a href="news_list.html">Sửa</a></button>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Thực phẩm sạch tăng mạnh sau dịch Covid-19</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_1.jpg"></td>
+                                        <td>Mạc Dương</td>
+                                        <td>2020-12-11</td>
+                                        <td>
+                                            <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                            <button class="btn btn-success"><a href="news_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Phát hiện loại rau củ chứa chất chữa được bệnh nan y</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_2.jpg"</td>
+                                        <td>Minh Quang</td>
+                                        <td>2020-12-12</td>
+                                        <td>
+                                            <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                            <button class="btn btn-success"><a href="news_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Việt Nam đứng thứ 6 thế giới về xuất khẩu mật ong</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_3.jpg"></td>
+                                        <td>Minh Hải</td>
+                                        <td>2020-12-09</td>
+                                        <td>
+                                            <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                            <button class="btn btn-success"><a href="news_list.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
 
                                     </tbody>
                                 </table>
@@ -257,7 +254,21 @@
     <!--end color switcher-->
 
 </div><!--End wrapper-->
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
 
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
 <!-- Bootstrap core JavaScript-->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
