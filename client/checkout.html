@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nông sản 46</title>
+  <title>Nông sản 46 - Thanh toán</title>
 
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
@@ -193,10 +193,10 @@
               <div class="aa-cartbox-summary">
                 <ul class="scroll-product">
                   <li>
-                    <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg" alt="img"></a>
+                    <a class="aa-cartbox-img" href="#"><img src="images/rau_muong.jpg" alt="img"></a>
                     <div class="aa-cartbox-info">
-                      <h4><a href="#">Dâu tây</a></h4>
-                      <p>1 x $250</p>
+                      <h4><a href="#">Rau Muống</a></h4>
+                      <p>1 x 14.000 VNĐ</p>
                     </div>
                     <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                   </li>
@@ -206,7 +206,7 @@
                   		<span class="aa-cartbox-total-title">
                         <b>Tổng:</b>
                         </span>
-                  <span class="aa-cartbox-total-price">100 000VNĐ</span>
+                  <span class="aa-cartbox-total-price">14.000 VNĐ</span>
                 </div>
 
                 <a class="aa-cartbox-checkout aa-primary-btn" href="cart.html">Chi tiết</a>
@@ -243,12 +243,12 @@
             <li><a href="index.html">TRANG CHỦ</a></li>
             <li><a href="introduce.html">GIỚI THIỆU</a><li>
             <li><a href="product.html">SẢN PHẨM</span></a>
-              <ul class="dropdown-menu">
-                <li><a href="product.html">RAU CỦ QUẢ</a></li>
-                <li><a href="product.html">CÁC LOẠI HẠT</a></li>
-                <li><a href="product.html">TINH DẦU</a></li>
-                <li><a href="product.html">MẬT ONG</a></li>
-              </ul>
+              <!--              <ul class="dropdown-menu">-->
+              <!--                <li><a href="product.html">RAU CỦ QUẢ</a></li>-->
+              <!--                <li><a href="product.html">CÁC LOẠI HẠT</a></li>-->
+              <!--                <li><a href="product.html">TINH DẦU</a></li>-->
+              <!--                <li><a href="product.html">MẬT ONG</a></li>-->
+              <!--              </ul>-->
             </li>
             <li><a href="news-list.html">TIN TỨC</a></li>
             <li><a href="security.html">CHÍNH SÁCH</a></li>
@@ -272,16 +272,17 @@
 </section>
 <!-- / menu -->
 
-
+<!--  content -->
+<!-- catg header banner section -->
 <section id="aa-catg-head-banner">
-  <img src="images/banner-product.png" alt="banner sản phẩm">
+  <img src="images/checkout-banner.png" alt="banner thanh toán">
   <div class="aa-catg-head-banner-area">
     <div class="container">
       <div class="aa-catg-head-banner-content">
         <h2>Thanh toán</h2>
         <ol class="breadcrumb">
           <li><a href="index.html">Trang chủ</a></li>
-          <li style="color:#fff">Thanh toán</li>
+          <li style="color:#fff">Thông tin thanh toán</li>
         </ol>
       </div>
     </div>
@@ -295,56 +296,75 @@
     <div class="row">
       <div class="col-md-12">
         <div class="checkout-area">
-          <form action="">
+          <form action="" method="post">
             <div class="row">
               <div class="col-md-8">
                 <div class="checkout-left">
-                  <div class="panel-group" id="accordion">
+                  <div class="panel-group" >
+                    <!--                      <p> Bạn cần đăng nhập để thanh toán! Đăng nhập <a href="login.html" style="color: #754110">tại đây!</a></p>-->
+                    <!-- Shipping Address -->
                     <div class="panel panel-default aa-checkout-billaddress">
                       <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                            Địa chỉ giao hàng
-                          </a>
+                        <h4 class="panel-title" style="color:#754110">
+                          Địa chỉ giao hàng
                         </h4>
                       </div>
-                      <div id="#" class="panel-collapse collapse in">
+                      <div id="collapseFour">
                         <div class="panel-body">
                           <div class="row">
+                            <div class="col-md-12">
+                              <div class="aa-checkout-single-bill">
+                                <input type="text" placeholder="Họ Tên*" required="required" name="transaction_name"
+                                       oninvalid="this.setCustomValidity('Vui lòng nhập Họ Tên')" required autofocus>
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="row">
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
-                                <input type="text" placeholder="Họ*">
+                                <input type="email" placeholder="Email*" required="required" name="transaction_email"
+                                       oninvalid="this.setCustomValidity('Vui lòng nhập Email')">
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
-                                <input type="text" placeholder="Tên*">
+                                <input type="tel" placeholder="Số điện thoại*" required="required" name="transaction_phone"
+                                       oninvalid="this.setCustomValidity('Vui lòng nhập Số điện thoại')">
                               </div>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
-                                <input type="text" placeholder="Địa chỉ công ty">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="aa-checkout-single-bill">
-                                <input type="email" placeholder="Email*">
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="aa-checkout-single-bill">
-                                <input type="tel" placeholder="Số điện thoại*">
+                                  <textarea cols="8" rows="3" required="required" placeholder="Địa chỉ*" name="transaction_address"
+                                            oninvalid="this.setCustomValidity('Vui lòng nhập Địa chỉ')"></textarea>
                               </div>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
-                                <textarea cols="8" rows="3">Address*</textarea>
+                                <textarea cols="8" rows="3" placeholder="Ghi chú" name="transaction_mess"></textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="aa-checkout-single-bill">
+                                <input type="date" placeholder="Password" name="transaction_created" id="the-date" style="display: none">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row" style="display: none">
+                            <div class="col-md-12">
+                              <div class="aa-checkout-single-bill">
+                                <input type="text" placeholder="userid_session" name="transaction_usersession" value="">
+
+                                <input type="text" placeholder="totalmoney_session" name="transaction_amount" value="">
                               </div>
                             </div>
                           </div>
@@ -356,51 +376,51 @@
               </div>
               <div class="col-md-4">
                 <div class="checkout-right">
+                  <h4>Thông tin đơn hàng</h4>
                   <div class="aa-order-summary-area">
                     <table class="table table-responsive">
                       <thead>
                       <tr>
                         <th>Sản phẩm</th>
-                        <th>Tổng tiền</th>
+                        <th>Số tiền</th>
                       </tr>
                       </thead>
                       <tbody>
                       <tr>
-                        <td>Thanh Long<strong> x  1</strong></td>
-                        <td>$250</td>
-                      </tr>
-                      <tr>
-                        <td>Súp lơ <strong> x  1</strong></td>
-                        <td>$150</td>
-                      </tr>
-                      <tr>
-                        <td>Thanh mai <strong> x  1</strong></td>
-                        <td>$50</td>
+                        <td>Rau muống <strong> x 1</strong></td>
+                        <td>14.000 VNĐ</td>
                       </tr>
                       </tbody>
                       <tfoot>
                       <tr>
-                        <th>Subtotal</th>
-                        <td>$450</td>
+                        <th>Tạm tính</th>
+                        <td>14.000 VNĐ</td>
                       </tr>
                       <tr>
-                        <th>Tax</th>
-                        <td>$3</td>
+                        <th>Thuế</th>
+                        <td>0 VNĐ</td>
                       </tr>
                       <tr>
-                        <th>Total</th>
-                        <td>$480</td>
+                        <th>Tổng cộng</th>
+                        <td><strong>14.000 VNĐ</strong></td>
                       </tr>
                       </tfoot>
                     </table>
                   </div>
-                  <h4>Phương thức thanh toán</h4>
+                  <h4>Hình thức thanh toán</h4>
                   <div class="aa-payment-method">
-                    <label for="cashdelivery"><input type="radio" id="cashdelivery" name="optionsRadios"> Thanh toán khi giao hàng </label>
-                    <label for="paypal"><input type="radio" id="paypal" name="optionsRadios" checked> Thanh toán qua Paypal </label>
-                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark">
-                    <input type="submit" value="Thanh toán tại đây" class="aa-browse-btn">
+                    <label for="cashdelivery"><input type="radio" id="cashdelivery" name="transaction_payment" checked value="0"> Thanh toán khi nhận hàng (COD) </label>
+                    <label for="credit-card"><input type="radio" id="credit-card" name="transaction_payment" value="1" > Thanh toán bằng Thẻ tín dụng/Thẻ ghi nợ </label>
+                    <img src="img/visa.png" border="0" alt="thanh toàn bằng thẻ tín dụng/thẻ ghi nợ">
+                    <img src="img/master-card.jpg" border="0" alt="thanh toàn bằng thẻ tín dụng/thẻ ghi nợ">
+                    <label for="atm"><input type="radio" id="atm" name="transaction_payment" value="1" > Thanh toán bằng thể ngân hàng (ATM) </label>
+                    <label for="momo"><input type="radio" id="momo" name="transaction_payment" value="1" > Ví điện tử Momo/ZaloPay </label>
+                    <img src="img/momo.png" border="0" alt="thanh toán bằng momo">
+                    <img src="img/zalopay.png" border="0" alt="thanh toán bằng zalopay">
+                    <input type="submit" value="Đặt hàng" class="aa-browse-btn">
                   </div>
+                  <!--                    <br>-->
+                  <!--                    <p style="color: red">Bạn đã đặt hàng thành công!</p>-->
                 </div>
               </div>
             </div>
@@ -411,7 +431,22 @@
   </div>
 </section>
 <!-- / Cart view section -->
+<!--  end content-->
+<script>
+  var date = new Date();
 
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  var year = date.getFullYear();
+
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
+
+  var today = year + "-" + month + "-" + day;
+
+
+  document.getElementById('the-date').value = today;
+</script>
 <!-- footer -->
 <footer id="aa-footer">
   <!-- footer bottom -->

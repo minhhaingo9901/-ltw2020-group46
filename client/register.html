@@ -192,10 +192,10 @@
                             <div class="aa-cartbox-summary">
                                 <ul class="scroll-product">
                                     <li>
-                                        <a class="aa-cartbox-img" href="#"><img src="images/xa_lach.jpg" alt="img"></a>
+                                        <a class="aa-cartbox-img" href="#"><img src="images/rau_muong.jpg" alt="img"></a>
                                         <div class="aa-cartbox-info">
-                                            <h4><a href="#">Xà Lách</a></h4>
-                                            <p>1 x 10 000 VNĐ</p>
+                                            <h4><a href="#">Rau Muống</a></h4>
+                                            <p>1 x 14.000 VNĐ</p>
                                         </div>
                                         <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                                     </li>
@@ -205,7 +205,7 @@
                   		<span class="aa-cartbox-total-title">
                         <b>Tổng:</b>
                         </span>
-                                    <span class="aa-cartbox-total-price">10 000VNĐ</span>
+                                    <span class="aa-cartbox-total-price">14.000 VNĐ</span>
                                 </div>
 
                                 <a class="aa-cartbox-checkout aa-primary-btn" href="cart.html">Chi tiết</a>
@@ -300,15 +300,23 @@
                                 <h4>Đăng ký</h4>
                                 <form name="formRegister" class="aa-login-form">
                                     <label for="">Họ tên<span>*</span></label>
-                                    <input type="text" placeholder="Name" name="name" required>
+                                    <input type="text" placeholder="Name" name="name" required
+                                           oninvalid="this.setCustomValidity('Vui lòng nhập Tên đăng nhập')" autofocus>
                                     <label for="">Email <span>*</span></label>
-                                    <input type="text" placeholder="useremail@gmail.com" name="email" required>
+                                    <input type="text" placeholder="useremail@gmail.com" name="email" required
+                                           oninvalid="this.setCustomValidity('Vui lòng nhập Email')">
                                     <label for="">Số điện thoại<span>*</span></label>
-                                    <input type="text" placeholder="Phone number" name="phone" required>
+                                    <input type="text" placeholder="Phone number" name="phone" required
+                                           oninvalid="this.setCustomValidity('Vui lòng nhập Số điện thoại')">
                                     <label for="">Tên đăng nhập<span>*</span></label>
-                                    <input type="text" placeholder="Username" name="username" required>
+                                    <input type="text" placeholder="Username" name="username" required
+                                           oninvalid="this.setCustomValidity('Vui lòng nhập Tên đăng nhập')">
                                     <label for="">Mật khẩu<span>*</span></label>
-                                    <input type="password" placeholder="Password" name="password" required>
+                                    <input type="password" placeholder="Password" name="password" required
+                                           oninvalid="this.setCustomValidity('Vui lòng nhập Mật khẩu')">
+                                    <label for="">Xác nhận mật khẩu<span>*</span></label>
+                                    <input type="password" placeholder="Password" name="password" required
+                                           oninvalid="this.setCustomValidity('Vui lòng nhập lại Mật khẩu')">
                                     <input type="date" style="display: none" placeholder="Password" name="created" id="the-date">
                                     <button type="reset" class="aa-browse-btn" value="Reset">Đặt lại</button>
                                     <button type="submit" class="aa-browse-btn">Đăng ký</button>

@@ -192,10 +192,10 @@
                             <div class="aa-cartbox-summary">
                                 <ul class="scroll-product">
                                     <li>
-                                        <a class="aa-cartbox-img" href="#"><img src="images/xa_lach.jpg" alt="img"></a>
+                                        <a class="aa-cartbox-img" href="#"><img src="images/rau_muong.jpg" alt="img"></a>
                                         <div class="aa-cartbox-info">
-                                            <h4><a href="#">Xà Lách</a></h4>
-                                            <p>1 x 10 000 VNĐ</p>
+                                            <h4><a href="#">Rau Muống</a></h4>
+                                            <p>1 x 14.000 VNĐ</p>
                                         </div>
                                         <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                                     </li>
@@ -205,7 +205,7 @@
                   		<span class="aa-cartbox-total-title">
                         <b>Tổng:</b>
                         </span>
-                                    <span class="aa-cartbox-total-price">10 000VNĐ</span>
+                                    <span class="aa-cartbox-total-price">14.000 VNĐ</span>
                                 </div>
 
                                 <a class="aa-cartbox-checkout aa-primary-btn" href="cart.html">Chi tiết</a>
@@ -242,12 +242,12 @@
                         <li><a href="index.html">TRANG CHỦ</a></li>
                         <li><a href="introduce.html">GIỚI THIỆU</a><li>
                         <li><a href="product.html">SẢN PHẨM</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="product.html">RAU CỦ QUẢ</a></li>
-                                <li><a href="product.html">CÁC LOẠI HẠT</a></li>
-                                <li><a href="product.html">TINH DẦU</a></li>
-                                <li><a href="product.html">MẬT ONG</a></li>
-                            </ul>
+                            <!--                            <ul class="dropdown-menu">-->
+                            <!--                                <li><a href="product.html">RAU CỦ QUẢ</a></li>-->
+                            <!--                                <li><a href="product.html">CÁC LOẠI HẠT</a></li>-->
+                            <!--                                <li><a href="product.html">TINH DẦU</a></li>-->
+                            <!--                                <li><a href="product.html">MẬT ONG</a></li>-->
+                            <!--                            </ul>-->
                         </li>
                         <li><a href="news-list.html">TIN TỨC</a></li>
                         <li><a href="security.html">CHÍNH SÁCH</a></li>
@@ -299,12 +299,14 @@
                                 <h4>Đăng nhập</h4>
                                 <form class="aa-login-form" name="loginform">
                                     <label for="">Tên đăng nhập<span>*</span></label>
-                                    <input type="text" placeholder="Username" name="username">
+                                    <input type="text" placeholder="Username" name="username"
+                                           oninvalid="this.setCustomValidity('Vui lòng nhập Tên đăng nhập')" required autofocus>
                                     <label for="">Mật khẩu<span>*</span></label>
-                                    <input type="password" placeholder="Password" name="password">
-                                    <p class="rememberme" style="display: block"><input type="checkbox" id="rememberme"> Ghi nhớ </p>
-
+                                    <input type="password" placeholder="Password" name="password"
+                                           oninvalid="this.setCustomValidity('Vui lòng nhập Mật khẩu')">
+                                    <p class="rememberme" style="display: block"><input type="checkbox" id="rememberme"> Ghi nhớ</p>
                                     <p style="color:#ff0000; display:block">
+                                        <span><a href="forgot-password.html">Quên mật khẩu?</a></span>
                                     </p>
                                     <button type="submit" class="aa-browse-btn">Đăng nhập</button>
                                 </form>
