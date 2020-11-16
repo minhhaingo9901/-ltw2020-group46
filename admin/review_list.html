@@ -26,6 +26,7 @@
     <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
     <!-- Custom Style-->
     <link href="assets/css/app-style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 </head>
 
@@ -141,7 +142,24 @@
     <!--End topbar header-->
 
     <div class="clearfix"></div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"><a href="cate_list.html">Xóa</a></button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
     <div class="content-wrapper">
         <div class="container-fluid">
             <!--End Row-->
@@ -159,6 +177,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Id Sản Phẩm</th>
                                     <th scope="col">Nội dung</th>
+                                    <th scope="col">Đánh giá sao</th>
                                     <th scope="col">Ngày đánh giá</th>
                                     <th scope="col">Hành động</th>
                                 </tr>
@@ -170,20 +189,28 @@
                                     <td>macduong@gmail.com</td>
                                     <td>3</td>
                                     <td>An toàn, sạch sẽ!</td>
-                                    <td>2020-10-10</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-27</td>
                                     <td>
-                                        <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Minh Quang</td>
                                     <td>minhquang@gmail.com</td>
-                                    <td>4</td>
+                                    <td>63</td>
                                     <td>Sản phẩm chất lượng</td>
-                                    <td>2020-10-11</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-27</td>
                                     <td>
-                                        <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -192,11 +219,249 @@
                                     <td>minhhai@gmail.com</td>
                                     <td>5</td>
                                     <td>Ngon, lần sau tôi sẽ mua tiếp</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-26</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>4</td>
+                                    <td>Phúc</td>
+                                    <td>phucnguyen@gmail.com</td>
+                                    <td>55</td>
+                                    <td>Sản phẩm rất ngon</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-25</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>5</td>
+                                    <td>Lâm</td>
+                                    <td>tunglam56@gmail.com</td>
+                                    <td>78</td>
+                                    <td>Lần sau tôi sẽ mua tiếp</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-23</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>6</td>
+                                    <td>Như</td>
+                                    <td>lamtamnhu23@gmail.com</td>
+                                    <td>27</td>
+                                    <td>Tôi khá thích sản phẩm này</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-22</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>7</td>
+                                    <td>Tùng</td>
+                                    <td>tungle@gmail.com</td>
+                                    <td>18</td>
+                                    <td>Sản phẩm hư rồi</td>
+                                    <td><i class="fas fa-star"></i></td>
+                                    <td>2020-10-22</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>8</td>
+                                    <td>Thành</td>
+                                    <td>minhthanh79@gmail.com</td>
+                                    <td>13</td>
+                                    <td>Ngon, lần sau tôi sẽ mua tiếp</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-21</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>9</td>
+                                    <td>Thạnh</td>
+                                    <td>thanhnguyen456@gmail.com</td>
+                                    <td>45</td>
+                                    <td>Sản phẩm tươi ngon!</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-21</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>10</td>
+                                    <td>Sơn</td>
+                                    <td>kimson6358@gmail.com</td>
+                                    <td>33</td>
+                                    <td>Chất lượng đó shop ơi!</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-21</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>11</td>
+                                    <td>Cường</td>
+                                    <td>nguyenmanhcuong896@gmail.com</td>
+                                    <td>5</td>
+                                    <td>Ngon, sạch.</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-22</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>12</td>
+                                    <td>Vĩnh</td>
+                                    <td>caotrungvinh569@gmail.com</td>
+                                    <td>76</td>
+                                    <td>Hàng tệ quá</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-15</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>13</td>
+                                    <td>Kháng</td>
+                                    <td>trungkhanh789@gmail.com</td>
+                                    <td>9</td>
+                                    <td>Khá tệ</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
                                     <td>2020-10-12</td>
                                     <td>
-                                        <button class="btn btn-danger"><a href="#" class="delete" data-confirm="Bạn có chắc chắn xóa mục này không?">Xóa</a></button>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
                                     </td>
-                                </tr>
+                                </tr> <tr>
+                                    <td>14</td>
+                                    <td>Nguyên</td>
+                                    <td>minhnguyen789@gmai.com</td>
+                                    <td>89</td>
+                                    <td>Sẽ tiếp tục ủng hộ</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-12</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>15</td>
+                                    <td>Dự</td>
+                                    <td>doandu896@gmail.com</td>
+                                    <td>77</td>
+                                    <td>Khá Ok</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-11</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>16</td>
+                                    <td>Yên</td>
+                                    <td>truongthanhyen@gmail.com</td>
+                                    <td>62</td>
+                                    <td>Hàng quá chất lượng</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-9</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>17</td>
+                                    <td>Thắng</td>
+                                    <td>vanthang23#gmail.com</td>
+                                    <td>25</td>
+                                    <td>Ngon, lần sau tôi sẽ mua tiếp</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-6</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>18</td>
+                                    <td>Tiên</td>
+                                    <td>mytien569@gmail.com</td>
+                                    <td>23</td>
+                                    <td>Hàng dùng rất tốt!</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-10-1</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>19</td>
+                                    <td>Nguyệt</td>
+                                    <td>nguyettran56@gmail.com</td>
+                                    <td>64</td>
+                                    <td>Không bao giờ ủng hộ nữa. sản phẩm kém chất lượng</td>
+                                    <td><i class="fas fa-star"></i></td>
+                                    <td>2020-10-1</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
+                                </tr> <tr>
+                                    <td>20</td>
+                                    <td>Tân</td>
+                                    <td>tangnguyen89@gmail.com</td>
+                                    <td>21</td>
+                                    <td>Rất ngon</td>
+                                    <td><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></td>
+                                    <td>2020-9-11</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                    </td>
                                 </tbody>
                             </table>
                         </div>
