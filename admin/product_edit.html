@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Sửa sản phẩm</title>
+    <title>Chỉnh sửa sản phẩm</title>
     <!-- loader-->
     <link href="assets/css/pace.min.css" rel="stylesheet"/>
     <script src="assets/js/pace.min.js"></script>
@@ -49,15 +49,15 @@
                     <i class="zmdi zmdi-view-dashboard"></i> <span>Tổng quan</span>
                 </a>
             </li>
-
-            <li>
-                <a href="admin_list.html">
-                    <i class="zmdi zmdi-account-box"></i> <span>Quản lí Admin</span>
-                </a>
-            </li>
             <li>
                 <a href="user_list.html">
                     <i class="zmdi zmdi-accounts"></i> <span>Quản lí User</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="role_admin_list.html">
+                    <i class="zmdi zmdi-account-box"></i> <span>Phân Quyền</span>
                 </a>
             </li>
             <li>
@@ -87,7 +87,7 @@
                 </a>
             </li>
             <li>
-                <a href="new_list.html">
+                <a href="news_list.html">
                     <i class="icon-envelope-open"></i> <span>Tin tức</span>
                 </a>
             </li>
@@ -161,7 +161,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="input-2">HÌNH ẢNH</label>
-                                    <input type="text" class="form-control" id="input-3" placeholder="" value="####" name="cate-fa">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="input-2">ID DANH MỤC</label>
@@ -180,12 +183,12 @@
                                     <input type="text" class="form-control" id="input-7" placeholder="Giảm giá" value="0%" name="discount">
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-2">NGÀY TẠO</label>
-                                    <input type="text" class="form-control" id="input-8" placeholder="Ngày tạo" value="" name="date-newa">
+                                    <label>Ngày tạo</label>
+                                    <input type="date" class="form-control" id="the-date" name="new-created">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-danger px-5"><i class="icon-"></i>Hủy</button>
-                                    <button type="submit" class="btn btn-success px-5"><i class="icon-"></i>Thêm</button>
+                                    <button type="submit" class="btn btn-success px-5"><i class="icon-"></i>Cập nhật</button>
                                 </div>
                             </form>
                         </div>
@@ -238,6 +241,7 @@
     <!--end color switcher-->
 
 </div><!--End wrapper-->
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="assets/js/jquery.min.js"></script>

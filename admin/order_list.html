@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Quản lí sản phẩm</title>
+    <title>Quản lí đơn hàng</title>
     <!-- loader-->
     <link href="assets/css/pace.min.css" rel="stylesheet"/>
     <script src="assets/js/pace.min.js"></script>
@@ -49,15 +49,15 @@
                     <i class="zmdi zmdi-view-dashboard"></i> <span>Tổng quan</span>
                 </a>
             </li>
-
-            <li>
-                <a href="admin_list.html">
-                    <i class="zmdi zmdi-account-box"></i> <span>Quản lí Admin</span>
-                </a>
-            </li>
             <li>
                 <a href="user_list.html">
                     <i class="zmdi zmdi-accounts"></i> <span>Quản lí User</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="role_admin_list.html">
+                    <i class="zmdi zmdi-account-box"></i> <span>Phân Quyền</span>
                 </a>
             </li>
             <li>
@@ -87,7 +87,7 @@
                 </a>
             </li>
             <li>
-                <a href="new_list.html">
+                <a href="news_list.html">
                     <i class="icon-envelope-open"></i> <span>Tin tức</span>
                 </a>
             </li>
@@ -139,6 +139,24 @@
         </nav>
     </header>
     <!--End topbar header-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger">Xóa</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
 
     <div class="clearfix"></div>
 
@@ -154,7 +172,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
+                                        <th scope="col">ID ĐƠN HÀNG</th>
                                         <th scope="col">TÀI KHOẢN USER</th>
                                         <th scope="col">HỌ TÊN</th>
                                         <th scope="col">EMAIL</th>
@@ -164,13 +182,13 @@
                                         <th scope="col">TỔNG TIỀN</th>
                                         <th scope="col">PHƯƠNG THỨC THANH TOÁN</th>
                                         <th scope="col">TRẠNG THÁI</th>
-                                        <th scope="col">NGÀY TẠO</th>
+                                        <th scope="col">NGÀY ĐẶT</th>
                                         <th scope="col">HÀNH ĐỘNG</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td scope="row">1</td>
+                                        <td scope="row">123456</td>
                                         <td>macphamhoangduong@gmail.com</td>
                                         <td>Dương</td>
                                         <td>macphamhoangduong@gmail.com</td>
@@ -178,17 +196,17 @@
                                         <td>KTX Khu B</td>
                                         <td>Không</td>
                                         <td>15.000 VNĐ</td>
-                                        <td>COD</td>
+                                        <td>MOMO</td>
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-28</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">2</td>
+                                        <td scope="row">132456</td>
                                         <td>tranminhquang@gmail.com</td>
                                         <td>Quang</td>
                                         <td>tranminhquang@gmail.com</td>
@@ -196,17 +214,17 @@
                                         <td>KTX Khu A</td>
                                         <td>Không</td>
                                         <td>45.000 VNĐ</td>
-                                        <td>COD</td>
+                                        <td>MOMO</td>
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-28</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">3</td>
+                                        <td scope="row">134256</td>
                                         <td>phucnguyen@gmail.com</td>
                                         <td>Phúc</td>
                                         <td>phucnguyen@gmail.com</td>
@@ -214,33 +232,33 @@
                                         <td>KTX Khu B</td>
                                         <td>Không</td>
                                         <td>150.000 VNĐ</td>
-                                        <td>COD</td>
+                                        <td>MOMO</td>
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-28</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">4</td>
-                                        <td>hoangduon1608</td>
+                                        <td scope="row">123546</td>
+                                        <td>hoangduon1608@gmail.com</td>
                                         <td>Duong</td>
-                                        <td>macduong@gmail.com</td>
+                                        <td>hoangduon1608@gmail.com </td>
                                         <td>0388925525</td>
                                         <td>KTX Khu B</td>
                                         <td>Không</td>
                                         <td>120.000 VNĐ</td>
-                                        <td>COD</td>
+                                        <td>MOMO</td>
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-28</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">5</td>
+                                        <td scope="row">123465</td>
                                         <td>ngominhquang@gmail.com</td>
                                         <td>Quang</td>
                                         <td>ngominhquang@gmail.com</td>
@@ -252,12 +270,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-27</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">6</td>
+                                        <td scope="row">213456</td>
                                         <td>tungle@gmail.com</td>
                                         <td>Tùng</td>
                                         <td>tungle@gmail.com</td>
@@ -269,12 +287,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-27</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">7</td>
+                                        <td scope="row">214356</td>
                                         <td>macphamhoangduong@gmail.com</td>
                                         <td>Duong</td>
                                         <td>macphamhoangduong@gmail.com</td>
@@ -286,12 +304,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-27</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">8</td>
+                                        <td scope="row">412346</td>
                                         <td>lehuytung@gmail.com</td>
                                         <td>Tùng</td>
                                         <td>lehuytung@gmail.com</td>
@@ -303,12 +321,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-27</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">9</td>
+                                        <td scope="row">224536</td>
                                         <td>ngominhhai@gmail.com</td>
                                         <td>Duong</td>
                                         <td>ngominhhai@gmail.com</td>
@@ -320,12 +338,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-27</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">10</td>
+                                        <td scope="row">321456</td>
                                         <td>tranminhquang@gmail.com</td>
                                         <td>Duong</td>
                                         <td>tranminhquang@gmail.com</td>
@@ -337,12 +355,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-26</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">11</td>
+                                        <td scope="row">321476</td>
                                         <td>thiennguyen123@gmail.com</td>
                                         <td>Thiện</td>
                                         <td>thiennguyen123@gmail.com</td>
@@ -354,12 +372,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-26</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">12</td>
+                                        <td scope="row">221456</td>
                                         <td>sonnguyen123@gmail.com</td>
                                         <td>Sơn</td>
                                         <td>sonnguyen123@gmail.com</td>
@@ -371,12 +389,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-26</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">13</td>
+                                        <td scope="row">334456</td>
                                         <td>kimson6358@gmail.com</td>
                                         <td>Sơn</td>
                                         <td>kimson6358@gmail.com</td>
@@ -388,12 +406,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-26</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">14</td>
+                                        <td scope="row">32145622</td>
                                         <td>nguyenanh53@gmail.com</td>
                                         <td>Ánh</td>
                                         <td>nguyenanh53@gmail.com</td>
@@ -405,12 +423,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-26</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">15</td>
+                                        <td scope="row">321433</td>
                                         <td>thanhnguyen456@gmail.com</td>
                                         <td>Thạnh</td>
                                         <td>thanhnguyen456@gmail.com</td>
@@ -422,12 +440,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-26</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">16</td>
+                                        <td scope="row">121456</td>
                                         <td>thiennguyen123@gmail.com</td>
                                         <td>Thiện</td>
                                         <td>thiennguyen123@gmail.com</td>
@@ -439,12 +457,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-26</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">17</td>
+                                        <td scope="row">421456</td>
                                         <td>trantrungtin56@gmail.com</td>
                                         <td>Tín</td>
                                         <td>trantruntinh@gmail.com</td>
@@ -456,12 +474,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">17</td>
+                                        <td scope="row">323256</td>
                                         <td>nguyettran56@gmail.com</td>
                                         <td>Nguyệt</td>
                                         <td>nguyettran56@gmail.com</td>
@@ -473,12 +491,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">18</td>
+                                        <td scope="row">322356</td>
                                         <td>trantrungnguyen56@gmail.com</td>
                                         <td>Tín</td>
                                         <td>trantrunnguyen56@gmail.com</td>
@@ -490,12 +508,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">19</td>
+                                        <td scope="row">312456</td>
                                         <td>tangnguyen89@gmail.com</td>
                                         <td>Tân</td>
                                         <td>tangnguyen89@gmail.com</td>
@@ -507,12 +525,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">20</td>
+                                        <td scope="row">323256</td>
                                         <td>vocaotrinh56@gmail.com</td>
                                         <td>Trịnh</td>
                                         <td>vocaotrinh56@gmail.com</td>
@@ -524,12 +542,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">21</td>
+                                        <td scope="row">312456</td>
                                         <td>mytrinh569@gmail.com</td>
                                         <td>Trinh</td>
                                         <td>mytrinh569@gmail.com</td>
@@ -541,12 +559,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">22</td>
+                                        <td scope="row">323214</td>
                                         <td>mytien569@gmail.com</td>
                                         <td>Tiên</td>
                                         <td>mytien569@gmail.com</td>
@@ -558,12 +576,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">23</td>
+                                        <td scope="row">321477</td>
                                         <td>tunglam56@gmail.com</td>
                                         <td>Lâm</td>
                                         <td>tunglam56@gmail.com</td>
@@ -575,12 +593,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">24</td>
+                                        <td scope="row">321453</td>
                                         <td>lamtamnhu23@gmail.com</td>
                                         <td>Như</td>
                                         <td>lamtamnhu23@gmail.com</td>
@@ -592,12 +610,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">25</td>
+                                        <td scope="row">332456</td>
                                         <td>lamtonhu253@gmail.com</td>
                                         <td>Như</td>
                                         <td>lamtonhu253@gmail.com</td>
@@ -609,12 +627,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">25</td>
+                                        <td scope="row">321465</td>
                                         <td>minhthanh79@gmail.com</td>
                                         <td>Thành</td>
                                         <td>minhthanh79@gmail.com</td>
@@ -626,12 +644,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">26</td>
+                                        <td scope="row">321356</td>
                                         <td>minhanh79@gmail.com</td>
                                         <td>Anh</td>
                                         <td>minhanh79@gmail.com</td>
@@ -643,12 +661,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">27</td>
+                                        <td scope="row">321435</td>
                                         <td>themyanh89@gmail.com</td>
                                         <td>Mỹ Anh</td>
                                         <td>themyanh89@gmail.com</td>
@@ -660,12 +678,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">28</td>
+                                        <td scope="row">321359</td>
                                         <td>daongocmyuyen@gmail.com</td>
                                         <td>Mỹ Anh</td>
                                         <td>daongocmyuyen@gmail.com</td>
@@ -677,12 +695,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">29</td>
+                                        <td scope="row">121456</td>
                                         <td>vanthang23@gmail.com</td>
                                         <td>Thắng</td>
                                         <td>vanthang23@gmail.com</td>
@@ -694,12 +712,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">30</td>
+                                        <td scope="row">251456</td>
                                         <td>minhhy23@gmail.com</td>
                                         <td>Thắng</td>
                                         <td>minhhy23@gmail.com</td>
@@ -711,12 +729,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-25</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">31</td>
+                                        <td scope="row">321656</td>
                                         <td>truongthanhyen@gmail.com</td>
                                         <td>Yên</td>
                                         <td>truongthanhyen@gmail.com</td>
@@ -728,12 +746,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">32</td>
+                                        <td scope="row">327456</td>
                                         <td>truongnguyen@gmail.com</td>
                                         <td>Yến</td>
                                         <td>truongnguyen@gmail.com</td>
@@ -745,12 +763,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">33</td>
+                                        <td scope="row">339456</td>
                                         <td>thoithethaydoi@gmail.com</td>
                                         <td>Đổi</td>
                                         <td>thoithethaydoi@gmail.com</td>
@@ -762,12 +780,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">34</td>
+                                        <td scope="row">323256</td>
                                         <td>doandu896@gmail.com</td>
                                         <td>Dự</td>
                                         <td>doandu896@gmail.com</td>
@@ -779,12 +797,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">34</td>
+                                        <td scope="row">321488s</td>
                                         <td>doandu896@gmail.com</td>
                                         <td>Dự</td>
                                         <td>doandu896@gmail.com</td>
@@ -796,12 +814,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">35</td>
+                                        <td scope="row">321435</td>
                                         <td>Kieuphong753@gmail.com</td>
                                         <td>Phong</td>
                                         <td>Kieuphong753@gmail.com</td>
@@ -813,12 +831,12 @@
                                         <td>Chưa  thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">36</td>
+                                        <td scope="row">321436</td>
                                         <td>dongta869@gmail.com</td>
                                         <td>Đông</td>
                                         <td>dongta869@gmail.com</td>
@@ -830,12 +848,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">37</td>
+                                        <td scope="row">338456</td>
                                         <td>taydoc869@gmail.com</td>
                                         <td>Tây</td>
                                         <td>taydoc869@gmail.com</td>
@@ -847,12 +865,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">38</td>
+                                        <td scope="row">3321458</td>
                                         <td>namde869@gmail.com</td>
                                         <td>Nam</td>
                                         <td>namde869@gmail.com</td>
@@ -864,13 +882,13 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">39</td>
+                                        <td scope="row">214569</td>
                                         <td>hutruc869@gmail.com</td>
                                         <td>Trúc</td>
                                         <td>hutruc869@gmail.com</td>
@@ -882,12 +900,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">39</td>
+                                        <td scope="row">321456</td>
                                         <td>duongtang869@gmail.com</td>
                                         <td>Tăng</td>
                                         <td>duongtang869@gmail.com</td>
@@ -899,12 +917,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">40</td>
+                                        <td scope="row">361456</td>
                                         <td>duongnguyen555@gmail.com</td>
                                         <td>Nguyên</td>
                                         <td>duongnguyen555@gmail.com</td>
@@ -916,12 +934,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-24</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">41</td>
+                                        <td scope="row">432141</td>
                                         <td>thuhang365@gmail.com</td>
                                         <td>Hằng</td>
                                         <td>thuhang365@gmail.com</td>
@@ -933,12 +951,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">42</td>
+                                        <td scope="row">414562</td>
                                         <td>minhnguyen789@gmail.com</td>
                                         <td>Nguyên</td>
                                         <td>minhnguyen789@gmail.com</td>
@@ -950,12 +968,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">42</td>
+                                        <td scope="row">432142</td>
                                         <td>trungkhanh789@gmail.com</td>
                                         <td>Khánh</td>
                                         <td>trungkhanh789@gmail.com</td>
@@ -967,12 +985,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">43</td>
+                                        <td scope="row">432143</td>
                                         <td>minhthien8789@gmail.com</td>
                                         <td>Thiện</td>
                                         <td>minhthien8789@gmail.com</td>
@@ -984,12 +1002,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">44</td>
+                                        <td scope="row">214564</td>
                                         <td>caotrungvinh569@gmail.com</td>
                                         <td>Vĩnh</td>
                                         <td>caotrungvinh569@gmail.com</td>
@@ -1001,12 +1019,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">45</td>
+                                        <td scope="row">32177456</td>
                                         <td>nguyenmanhcuong896@gmail.com</td>
                                         <td>Cường</td>
                                         <td>nguyenmanhcuong896@gmail.com</td>
@@ -1018,12 +1036,12 @@
                                         <td>Chưa thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">46</td>
+                                        <td scope="row">321462</td>
                                         <td>caoson256@gmail.com</td>
                                         <td>Sơn</td>
                                         <td>caoson256@gmail.com</td>
@@ -1035,12 +1053,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">47</td>
+                                        <td scope="row">321896</td>
                                         <td>myhanh556@gmail.com</td>
                                         <td>Hạnh</td>
                                         <td>myhanh556@gmail.com</td>
@@ -1052,12 +1070,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">48</td>
+                                        <td scope="row">321468</td>
                                         <td>viethchuong556@gmail.com</td>
                                         <td>Chương</td>
                                         <td>viethchuong556@gmail.com</td>
@@ -1069,12 +1087,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">49</td>
+                                        <td scope="row">431456</td>
                                         <td>huynhthenghia556@gmail.com</td>
                                         <td>Nghĩa</td>
                                         <td>huynhthenghia556@gmail.com</td>
@@ -1086,12 +1104,12 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
                                     </tr><tr>
-                                        <td scope="row">48</td>
+                                        <td scope="row">265486</td>
                                         <td>daotiensy556@gmail.com</td>
                                         <td>Chương</td>
                                         <td>daotiensy556@gmail.com</td>
@@ -1103,7 +1121,7 @@
                                         <td>Đã thanh toán</td>
                                         <td>2020-09-23</td>
                                         <td>
-                                            <button class="btn btn-danger"><a href="order_list.html">Xóa</a></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 
                                             <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
                                         </td>
@@ -1180,6 +1198,21 @@
 
 <!-- Index js -->
 <script src="assets/js/index.js"></script>
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
 
 
 </body>

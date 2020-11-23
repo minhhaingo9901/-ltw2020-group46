@@ -52,15 +52,17 @@
             </li>
 
             <li>
-                <a href="admin_list.html">
-                    <i class="zmdi zmdi-account-box"></i> <span>Quản lí Admin</span>
-                </a>
-            </li>
-            <li>
                 <a href="user_list.html">
                     <i class="zmdi zmdi-accounts"></i> <span>Quản lí User</span>
                 </a>
             </li>
+
+            <li>
+                <a href="role_admin_list.html">
+                    <i class="zmdi zmdi-account-box"></i> <span>Phân Quyền</span>
+                </a>
+            </li>
+
             <li>
                 <a href="cate_list.html">
                     <i class="zmdi zmdi-grid"></i> <span>Chuyên Mục</span>
@@ -155,15 +157,27 @@
                             <form action="" method="">
                                 <div class="form-group">
                                     <label for="input-1">ID</label>
-                                    <input type="text" class="form-control" readonly id="input-1" placeholder="Admin ID" name="id" value="">
+                                    <input type="text" class="form-control" readonly id="input-1" placeholder="Admin ID" name="id" value="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-1">Họ tên</label>
+                                    <input type="text" class="form-control" id="input-2" placeholder="Họ tên" value="Trần Minh Quang" name="user-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-2">Email</label>
+                                    <input type="text" class="form-control" id="input-3" placeholder="Địa chỉ Email" value="17130182@st.hcmuaf.edu.vn" name="user-email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-3">Số điện thoại</label>
+                                    <input type="text" class="form-control" id="input-4" placeholder="Số điện thoại" value="035 326 42 43" name="user-phone">
                                 </div>
                                 <div class="form-group">
                                     <label for="input-1">Username</label>
-                                    <input type="text" class="form-control" id="input-1" placeholder="Username" name="username" value="">
+                                    <input type="text" class="form-control" id="input-5" placeholder="Username" name="username" value="admin1">
                                 </div>
                                 <div class="form-group">
                                     <label for="input-1">Password</label>
-                                    <input type="password" class="form-control" id="myinput" placeholder="Mật khẩu" name="password" value="">
+                                    <input type="password" class="form-control" id="myinput" placeholder="Mật khẩu" name="password" value="11111">
                                     <input type="checkbox" onclick="myFunction1()">Hiển thị mật khẩu
                                     <script>function myFunction1() {
                                         var x = document.getElementById("myinput");
@@ -175,12 +189,16 @@
                                     }</script>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-1">Tên Admin</label>
-                                    <input type="text" class="form-control" id="input-1" placeholder="Tên Admin" name="name" value="">
+                                    <label for="input-5">Date</label>
+                                    <input type="date" class="form-control" id="input-6" placeholder="Ngày tạo" value="" name="user-created">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-1">Trạng thái</label>
+                                    <input type="number" min="0" class="form-control" id="input-7" placeholder="Trạng thái" name="status" value="1">
                                 </div>
                                 <div class="form-group">
                                     <label for="input-1">Quyền</label>
-                                    <input type="number" min="1" class="form-control" id="input-1" placeholder="quyền hạn" name="power">
+                                    <input type="number" min="1" class="form-control" id="input-8" placeholder="Quyền hạn" name="role" value="1">
                                 </div>
                                 <div class="form-footer">
                                     <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Hủy </button>
