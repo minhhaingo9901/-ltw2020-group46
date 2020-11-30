@@ -683,12 +683,16 @@ img {
   color: #fff;
   font-size: 15px;
   padding: 10px 15px;
-  margin-top: 5px;
+  margin-top: 10px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+}
+#menu .menu-area .navbar-default .navbar-nav a:hover {/*new 693 716*/
+  background-color: #fff;
+  color: #339900;
 }
 #menu .menu-area .navbar-default .navbar-nav .open a {
   background-color: #fff;
@@ -712,6 +716,7 @@ img {
 #menu .menu-area .navbar-default .navbar-nav .aa-search .aa-search-box {
   position: relative;
   bottom: 0.2em;
+  background-color: #339900; /*new*/
 }
 #menu .menu-area .navbar-default .navbar-nav .aa-search-box input[type="text"] {
   font-size: 15px;

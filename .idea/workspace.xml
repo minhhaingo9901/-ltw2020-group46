@@ -26,7 +26,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -40,6 +53,7 @@
       <workItem from="1605469173697" duration="4000" />
       <workItem from="1605509874993" duration="164000" />
       <workItem from="1605510416070" duration="13000" />
+      <workItem from="1606721895066" duration="471000" />
     </task>
     <servers />
   </component>
@@ -47,6 +61,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="435" y="187" key="#Notifications" timestamp="1606722035583">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="435" y="187" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1606722035583" />
     <state x="549" y="190" key="FileChooserDialogImpl" timestamp="1605509880587">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
