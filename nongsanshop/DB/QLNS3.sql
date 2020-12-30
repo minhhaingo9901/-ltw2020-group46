@@ -2,42 +2,42 @@
 use qlns;
 
 CREATE TABLE role (
-                      id INT NOT NULL PRIMARY KEY auto_increment,
-                      name VARCHAR ( 150 ) NOT NULL,
-                      code VARCHAR ( 150 ) NOT NULL,
-                      created date NOT NULL
+	id INT NOT NULL PRIMARY KEY auto_increment,
+	name VARCHAR ( 150 ) NOT NULL,
+	code VARCHAR ( 150 ) NOT NULL,
+	created date NOT NULL 
 );
 CREATE TABLE user (
-                      id INT NOT NULL PRIMARY KEY auto_increment,
-                      roleid INT NOT NULL,
-                      name nvarchar ( 50 ) NOT NULL,
-                      email nvarchar ( 50 ) UNIQUE NOT NULL,
-                      phone nvarchar ( 20 ) NOT NULL,
-                      username nvarchar ( 50 ) UNIQUE NOT NULL,
-                      password nvarchar ( 50 ) NOT NULL,
-                      status int not null,
-                      created date NOT NULL
-
+	id INT NOT NULL PRIMARY KEY auto_increment,
+	roleid INT NOT NULL,
+	name nvarchar ( 50 ) NOT NULL,
+	email nvarchar ( 50 ) UNIQUE NOT NULL,
+	phone nvarchar ( 20 ) NOT NULL,
+	username nvarchar ( 50 ) UNIQUE NOT NULL,
+	password nvarchar ( 50 ) NOT NULL,
+	status int not null,
+	created date NOT NULL
+	
 );
 ALTER TABLE user ADD CONSTRAINT fk_user_role FOREIGN KEY ( roleid ) REFERENCES role ( id ) ON DELETE CASCADE;
 
-CREATE TABLE catalog (
-                         id INT NOT NULL PRIMARY KEY auto_increment,
-                         name nvarchar ( 50 ) NOT NULL,
-                         parent_id INT NULL
+CREATE TABLE catalog ( 
+id INT NOT NULL PRIMARY KEY auto_increment, 
+name nvarchar ( 50 ) NOT NULL, 
+parent_id INT NULL
 );
 CREATE TABLE product (
-                         id INT NOT NULL PRIMARY KEY auto_increment,
-                         catalog_id INT NOT NULL,
-                         name nvarchar ( 50 ) NOT NULL,
-                         price nvarchar ( 20 ) NOT NULL,
-                         qty INT,
-                         status INT NOT NULL,
-                         description nvarchar ( 4000 ) NOT NULL,
-                         content nvarchar ( 4000 ) NOT NULL,
-                         discount INT,
-                         image_link nvarchar ( 4000 ) NOT NULL,
-                         created date NOT NULL
+	id INT NOT NULL PRIMARY KEY auto_increment,
+	catalog_id INT NOT NULL,
+	name nvarchar ( 50 ) NOT NULL,
+	price nvarchar ( 20 ) NOT NULL,
+	qty INT,
+	status INT NOT NULL,
+	description nvarchar ( 4000 ) NOT NULL,
+	content nvarchar ( 4000 ) NOT NULL,
+	discount INT,
+	image_link nvarchar ( 4000 ) NOT NULL,
+	created date NOT NULL 
 );
 ALTER TABLE product ADD CONSTRAINT fk_product_catalog FOREIGN KEY ( catalog_id ) REFERENCES catalog ( id ) ON DELETE CASCADE;
 
@@ -74,12 +74,12 @@ ALTER TABLE COMMENT ADD CONSTRAINT fk_comment_boardnew FOREIGN KEY (boardnew_id)
 CREATE TABLE invoice (
                          id int NOT NULL PRIMARY KEY auto_increment,
                          user_id int NOT NULL,
-                         address nvarchar ( 300 ) NOT NULL,
-                         message nvarchar ( 4000 ) NOT NULL,
-                         amount nvarchar ( 20 ) NOT NULL,
-                         payment nvarchar ( 30 ) NOT NULL,
-                         status nvarchar ( 30 ),
-                         created date NOT NULL
+                         address nvarchar ( 300 ) NOT NULL, --địa chỉ giao hàng
+                         message nvarchar ( 4000 ) NOT NULL,--ghi chú giao hàng
+                         amount nvarchar ( 20 ) NOT NULL,   --số tiền phải thanh toán
+                         payment nvarchar ( 30 ) NOT NULL,  --phương thức thanh toán
+                         status nvarchar ( 30 ),            --trạng thái đơn hàng
+                         created date NOT NULL              --ngày mua hàng
 );
 ALTER TABLE invoice ADD CONSTRAINT fk_invoice_user FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE;
 
@@ -93,20 +93,20 @@ ALTER TABLE invoicedetail ADD CONSTRAINT fk_invoicedetail_product FOREIGN KEY ( 
 ALTER TABLE invoicedetail ADD CONSTRAINT fk_invoicedetail_invoice FOREIGN KEY ( invoice_id ) REFERENCES invoice ( id ) ON DELETE CASCADE;
 
 
-INSERT INTO catalog(name,parent_id)
-VALUES (N'Rau củ quả',null);
-INSERT INTO catalog(name,parent_id)
-VALUES (N'Các Loại Hạt',null);
-INSERT INTO catalog(name,parent_id)
-VALUES (N'Trái Cây',null);
-INSERT INTO catalog(name,parent_id)
-VALUES (N'Mật Ong & Tinh Dầu',null);
-INSERT INTO catalog(name,parent_id)
-VALUES (N'Sản Phẩm Mới',null);
-INSERT INTO catalog(name,parent_id)
-VALUES (N'Sản Phẩm Bán Chạy',null);
-INSERT INTO catalog(name,parent_id)
-VALUES (N'Sản Phẩm Giảm Giá',null);
+INSERT INTO catalog(name,parent_id) 
+	VALUES (N'Rau củ quả',null);
+INSERT INTO catalog(name,parent_id) 
+	VALUES (N'Các Loại Hạt',null);
+INSERT INTO catalog(name,parent_id) 
+	VALUES (N'Trái Cây',null);
+INSERT INTO catalog(name,parent_id) 
+	VALUES (N'Mật Ong & Tinh Dầu',null);
+INSERT INTO catalog(name,parent_id) 
+	VALUES (N'Sản Phẩm Mới',null);
+INSERT INTO catalog(name,parent_id) 
+	VALUES (N'Sản Phẩm Bán Chạy',null);
+INSERT INTO catalog(name,parent_id) 
+	VALUES (N'Sản Phẩm Giảm Giá',null);
 
 insert into product(catalog_id,name,price,qty,status,description,content,discount,image_link,created) values (1,N'Rau Cải','15.000','1000','1',N'Đây là rau sạch',N'Rau cải là loại rau không mấy xa lạ với người Việt ta. Bởi nó được dùng để chế biến thành các món ăn rất ngon và hợp khẩu vị. Nhưng nó ít được biết đến là vị thuốc chữa được rất nhiều loại bệnh. Ngoài cái tên cải bó xôi, nó còn có nhiều tên khác như: rau chân vịt, rau bắp xôi, rau nhà chùa, cải bina… Đây là loài cây thuộc họ nhà Dền và có xuất xứ từ miền Trung và Tây Nam Á.',0,'rau_cai.jpg','2020-05-22');
 insert into product(catalog_id,name,price,qty,status,description,content,discount,image_link,created) values (1,N'Rau Muống','14.000','1000','1',N'Đây là rau sạch',N'Rau muống là loại rau có giá rất rẻ so với các loại rau khác nhưng lại đem lại lượng khoáng chất và vitamin dồi dào như protein, sắt, canxin, chất xơ, vitamin A... Những chất này là những dưỡng chất cần thiết cho cơ thể.',10,'rau_muong.jpg','2020-05-22');
