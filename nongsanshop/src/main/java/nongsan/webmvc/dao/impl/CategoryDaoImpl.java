@@ -50,9 +50,10 @@ public class CategoryDaoImpl extends connectDB implements CategoryDao {
 
 	@Override
 	public Catalog get(int id) {
-		String sql = "SELECT * FROM catalog WHERE id = ? ";
-		new connectDB();
 		Connection con = getConnect();
+		String sql = "SELECT * FROM catalog WHERE id = ? ";
+		/*new connectDB();
+		Connection con = getConnect();*/
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -69,6 +70,9 @@ public class CategoryDaoImpl extends connectDB implements CategoryDao {
 				return category;
 
 			}
+			con.close();
+			ps.close();
+			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -83,9 +87,10 @@ public class CategoryDaoImpl extends connectDB implements CategoryDao {
 
 	@Override
 	public List<Catalog> getAll() {
+		Connection conn = getConnect();
 		List<Catalog> categories = new ArrayList<Catalog>();
 		String sql = "SELECT * FROM catalog";
-		Connection conn = getConnect();
+		/*Connection conn = getConnect();*/
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -99,6 +104,9 @@ public class CategoryDaoImpl extends connectDB implements CategoryDao {
 				category.setParent_id(rs.getString("parent_id"));
 				categories.add(category);
 			}
+			conn.close();
+			ps.close();
+			rs.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -125,9 +133,10 @@ public class CategoryDaoImpl extends connectDB implements CategoryDao {
 	
 	@Override
 	public List<Catalog> getCateByProduct(int id) {
+		Connection conn = getConnect();
 		List<Catalog> products_cate = new ArrayList<Catalog>();
 		String sql = "select catalog.name from catalog,product where catalog.id = product.catalog_id and product.id = ?";
-		Connection conn = getConnect();
+		/*Connection conn = getConnect();*/
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -139,6 +148,9 @@ public class CategoryDaoImpl extends connectDB implements CategoryDao {
 				catagory_product.setName(rs.getString("name"));
 				products_cate.add(catagory_product);
 			}
+			conn.close();
+			ps.close();
+			rs.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

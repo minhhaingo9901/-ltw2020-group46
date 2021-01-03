@@ -64,9 +64,9 @@ public class BoardnewDaoImpl extends connectDB implements BoardnewDao {
     }
     @Override
     public Boardnew get(int id) {
-
+        Connection con = connectDB.getConnect();
         String sql = "SELECT * FROM boardnew WHERE id = ? ";
-        Connection con = getConnect();
+        /*Connection con = getConnect();*/
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -86,6 +86,9 @@ public class BoardnewDaoImpl extends connectDB implements BoardnewDao {
                 return boardnew;
 
             }
+            con.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -100,9 +103,10 @@ public class BoardnewDaoImpl extends connectDB implements BoardnewDao {
 
     @Override
     public List<Boardnew> getAll() {
+        Connection conn = connectDB.getConnect();
         List<Boardnew> boardnews = new ArrayList<Boardnew>();
         String sql = "SELECT * FROM boardnew";
-        Connection conn = getConnect();
+        /*Connection conn = getConnect();*/
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -119,6 +123,9 @@ public class BoardnewDaoImpl extends connectDB implements BoardnewDao {
                 boardnew.setCreated(rs.getString("created"));
                 boardnews.add(boardnew);
             }
+            conn.close();
+            ps.close();
+            rs.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

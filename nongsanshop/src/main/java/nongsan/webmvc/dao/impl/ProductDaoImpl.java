@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProductDaoImpl extends connectDB implements ProductDao {
 
@@ -80,9 +82,11 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 
 	@Override
 	public Product get(int id) {
+		Connection con = connectDB.getConnect();
 		String sql = "SELECT * FROM product WHERE id = ? ";
-		new connectDB();
-		Connection con = getConnect();
+		/*new connectDB();
+		Connection con = getConnect();*/
+		Product product = new Product();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -90,7 +94,7 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Product product = new Product();
+				/*Product product = new Product();*/
 				product.setId(rs.getString("id"));
 				product.setCatalog_id(rs.getString("catalog_id"));
 				product.setName(rs.getString("name"));
@@ -102,13 +106,19 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 				product.setDiscount(rs.getString("discount"));
 				product.setImage_link(rs.getString("image_link"));
 				product.setCreated(rs.getString("created"));
-				return product;
+				/*return product;*/
 
 			}
+			con.close();
+			ps.close();
+			rs.close();
+
 		} catch (SQLException e) {
+			Logger.getLogger(ProductDaoImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
+
 		}
-		return null;
+		return product;
 	}
 
 	@Override
@@ -118,9 +128,10 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 
 	@Override
 	public List<Product> getAll() {
+		Connection conn = connectDB.getConnect();
 		List<Product> products = new ArrayList<Product>();
 		String sql = "SELECT * FROM product";
-		Connection conn = getConnect();
+		/*Connection conn = getConnect();*/
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -128,7 +139,6 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 
 			while (rs.next()) {
 				Product product = new Product();
-
 				product.setId(rs.getString("id"));
 				product.setCatalog_id(rs.getString("catalog_id"));
 				product.setName(rs.getString("name"));
@@ -142,6 +152,9 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 				product.setCreated(rs.getString("created"));
 				products.add(product);
 			}
+			conn.close();
+			ps.close();
+			rs.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -152,9 +165,10 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 
 	@Override
 	public List<Product> getProductById(int id) {
+		Connection conn = connectDB.getConnect();
 		List<Product> products = new ArrayList<Product>();
 		String sql = "SELECT * FROM product WHERE catalog_id=?";
-		Connection conn = getConnect();
+		/*Connection conn = getConnect();*/
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -163,7 +177,6 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 
 			while (rs.next()) {
 				Product product = new Product();
-
 				product.setId(rs.getString("id"));
 				product.setCatalog_id(rs.getString("catalog_id"));
 				product.setName(rs.getString("name"));
@@ -177,6 +190,9 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 				product.setCreated(rs.getString("created"));
 				products.add(product);
 			}
+			conn.close();
+			ps.close();
+			rs.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -187,9 +203,10 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 
 	@Override
 	public List<Product> searchByName(String keyword) {
+		Connection conn = connectDB.getConnect();
 		List<Product> productList = new ArrayList<Product>();
 		String sql = "SELECT * FROM product WHERE name LIKE ? ";
-		Connection conn = getConnect();
+		/*Connection conn = getConnect();*/
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -211,6 +228,9 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 				product.setCreated(rs.getString("created"));
 				productList.add(product);
 			}
+			conn.close();
+			ps.close();
+			rs.close();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
