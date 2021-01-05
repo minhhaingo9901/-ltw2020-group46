@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
           integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <link href="css/font-awesome.css" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
@@ -263,8 +263,6 @@
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
-
-
             </div>
         </div>
     </div>
@@ -277,16 +275,15 @@
         <div class="container">
             <div class="aa-catg-head-banner-content">
                 <h2>Đăng nhập</h2>
-                <ol class="breadcrumb">
-                    <li><a href="">Trang chủ</a></li>
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Trang chủ</a></li>
                     <li style="color:#fff">Đăng nhập</li>
-                </ol>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 <!-- / catg header banner section -->
-
 <!-- Cart view section -->
 <section id="aa-myaccount">
     <div class="container">
@@ -298,17 +295,28 @@
                             <div class="aa-myaccount-login">
                                 <h4>Đăng nhập</h4>
                                 <form class="aa-login-form" name="loginform">
-                                    <label for="">Tên đăng nhập<span>*</span></label>
-                                    <input type="text" placeholder="Username" name="username"
+                                    <label for="username">Tên đăng nhập<span>*</span></label>
+                                    <input type="text" placeholder="Username" id="username" name="username"
                                            oninvalid="this.setCustomValidity('Vui lòng nhập Tên đăng nhập')" required autofocus>
-                                    <label for="">Mật khẩu<span>*</span></label>
-                                    <input type="password" placeholder="Password" name="password"
-                                           oninvalid="this.setCustomValidity('Vui lòng nhập Mật khẩu')">
-                                    <p class="rememberme" style="display: block"><input type="checkbox" id="rememberme"> Ghi nhớ</p>
-                                    <p style="color:#ff0000; display:block">
-                                        <span><a href="forgot-password.html">Quên mật khẩu?</a></span>
+
+                                    <label for="password">Mật khẩu<span>*</span></label>
+                                    <input  type="password" placeholder="Password" id="password" name="password"
+                                            oninvalid="this.setCustomValidity('Vui lòng nhập Mật khẩu')"required>
+                                    <input type="button" onclick="showPass()" id="showPassword" value="Hiển thị" class="btn-show-pass" />
+                                    <p class="rememberme">
+                                        <input type="checkbox" id="rememberme" name="remember" value="Ghi nhớ">
+                                        <label for="rememberme">Ghi nhớ</label>
+                                        <span class="forget-pass"><a href="forgot-password.html">Quên mật khẩu?</a></span>
                                     </p>
-                                    <button type="submit" class="aa-browse-btn">Đăng nhập</button>
+                                    <button type="submit" class="aa-browse-btn">ĐĂNG NHẬP</button>
+                                    <div class="register-with">- Hoặc -</div>
+                                    <button style="width: 49%;float: left"  type="submit" class="btn-sign-up-google">
+                                        <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>Google
+                                    </button>
+                                    <button style="width: 49%;float: right" type="submit" class="btn-sign-up-facebook">
+                                        <div style="font-size: 0.55rem;"><i class="fab fa-facebook-f fa-4x facebook-icon"></i></div>Facebook
+                                    </button>
+                                    <div class="title-span">Bạn là thành viên mới? <a style="color: #337ab7;" href="register.html">Đăng ký</a>.</div>
                                 </form>
                             </div>
                         </div>
@@ -335,6 +343,20 @@
 
 
     document.getElementById('the-date').value = today;
+</script>
+<script>
+    isBool =true;
+    function showPass(){
+        if(isBool){
+            document.getElementById("password").setAttribute("type","text");
+            isBool=false;
+            document.getElementById("showPassword").value = "Ẩn";
+        }else {
+            document.getElementById("password").setAttribute("type","password");
+            isBool=true;
+            document.getElementById("showPassword").value = "Hiển thị";
+        }
+    }
 </script>
 <!-- footer -->
 <footer id="aa-footer">

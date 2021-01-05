@@ -278,7 +278,7 @@
             <div class="aa-catg-head-banner-content">
                 <h2>Đăng ký</h2>
                 <ol class="breadcrumb">
-                    <li><a href="">Trang chủ</a></li>
+                    <li><a href="index.html">Trang chủ</a></li>
                     <li style="color:#fff">Đăng ký tài khoản</li>
                 </ol>
             </div>
@@ -294,34 +294,41 @@
             <div class="col-md-12">
                 <div class="aa-myaccount-area">
                     <div class="row">
-
                         <div class="col-md-8 col-md-push-2">
-                            <div class="aa-myaccount-register">
-                                <h4>Đăng ký</h4>
-                                <form name="formRegister" class="aa-login-form">
-                                    <label for="">Họ tên<span>*</span></label>
-                                    <input type="text" placeholder="Name" name="name" required
-                                           oninvalid="this.setCustomValidity('Vui lòng nhập Tên đăng nhập')" autofocus>
+
+                            <form name="formRegister" class="aa-register-form">
+
+                                <div class="aa-myaccount-login">
+                                    <h4>Đăng ký</h4>
                                     <label for="">Email <span>*</span></label>
-                                    <input type="text" placeholder="useremail@gmail.com" name="email" required
+                                    <input type="text" placeholder="useremail@gmail.com" name="email" required autofocus
                                            oninvalid="this.setCustomValidity('Vui lòng nhập Email')">
+                                    <label for="">Họ tên<span>*</span></label>
+                                    <input type="text" placeholder="Name" name="name" required>
                                     <label for="">Số điện thoại<span>*</span></label>
-                                    <input type="text" placeholder="Phone number" name="phone" required
-                                           oninvalid="this.setCustomValidity('Vui lòng nhập Số điện thoại')">
+                                    <input type="text" placeholder="Phone number" name="phone" required>
                                     <label for="">Tên đăng nhập<span>*</span></label>
                                     <input type="text" placeholder="Username" name="username" required
+                                           autofocus
                                            oninvalid="this.setCustomValidity('Vui lòng nhập Tên đăng nhập')">
                                     <label for="">Mật khẩu<span>*</span></label>
-                                    <input type="password" placeholder="Password" name="password" required
-                                           oninvalid="this.setCustomValidity('Vui lòng nhập Mật khẩu')">
+                                    <input type="password" placeholder="Password" name="password" required>
                                     <label for="">Xác nhận mật khẩu<span>*</span></label>
-                                    <input type="password" placeholder="Password" name="password" required
-                                           oninvalid="this.setCustomValidity('Vui lòng nhập lại Mật khẩu')">
-                                    <input type="date" style="display: none" placeholder="Password" name="created" id="the-date">
-                                    <button type="reset" class="aa-browse-btn" value="Reset">Đặt lại</button>
-                                    <button type="submit" class="aa-browse-btn">Đăng ký</button>
-                                </form>
-                            </div>
+                                    <input type="password" placeholder="Password" name="password" required>
+
+
+                                    <button type="reset" class="aa-browse-btn" value="Reset" style="width: 25%;float: left">Đặt lại</button>
+                                    <button type="submit" class="aa-browse-btn" style="width: 74%;float: right">ĐĂNG KÝ</button>
+                                    <div class="register-with">- Hoặc -</div>
+                                    <button style="width: 49%;float: left" type="submit" class="btn-sign-up-google">
+                                        <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>Google
+                                    </button>
+                                    <button style="width: 49%;float: right" type="submit" class="btn-sign-up-facebook">
+                                        <div style="font-size: 0.55rem;"><i class="fab fa-facebook-f fa-4x facebook-icon"></i></div>Facebook
+                                    </button>
+                                    <div class="title-span">Bạn đã là thành viên? <a style="color: #337ab7;" href="login.html">Đăng nhập</a>.</div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
