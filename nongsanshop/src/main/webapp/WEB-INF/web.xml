@@ -448,7 +448,7 @@
 
     <servlet>
         <servlet-name>ClientRegister</servlet-name>
-        <servlet-class>nongsan.webmvc.controller.RegistrationController</servlet-class>
+        <servlet-class>nongsan.webmvc.controller.RegisterController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ClientRegister</servlet-name>

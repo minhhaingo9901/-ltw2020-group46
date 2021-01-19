@@ -40,21 +40,16 @@
                     <div class="aa-header-top-right">
                         <ul class="aa-head-top-nav-right">
 
-                            <c:if test="${not empty USERMODEL}">
+                            <c:if test="${sessionScope.username != null}">
                                 <li>
-                                    <a><strong>Chào</strong> ${USERMODEL.name}</a>
+                                    <a><strong>Chào</strong> ${username }</a>
                                 </li>
-                                <a href='<c:url value="/dang-xuat?action=logout"/>'>Đăng xuất</a>
-                                </li>
+                                <li class="hidden-xs"><a href="${pageContext.request.contextPath}/view/client/logout">Đăng xuất</a></li>
                             </c:if>
 
-                            <c:if test="${empty USERMODEL}">
-                                <li class="hidden-xs">
-                                    <a href='<c:url value="/dang-ky"/>'>Đăng ký</a>
-                                </li>
-                                <li>
-                                    <a href='<c:url value="/dang-nhap?action=login"/>'>Đăng nhập</a>
-                                </li>
+                            <c:if test="${sessionScope.username == null}">
+                                <li class="hidden-xs"><a href="${pageContext.request.contextPath}/view/client/register">Đăng ký</a></li>
+                                <li><a href="${pageContext.request.contextPath}/view/client/login">Đăng nhập</a></li>
                             </c:if>
 
                             <!--  data-toggle="modal" data-target="#login-modal" -->

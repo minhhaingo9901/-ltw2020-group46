@@ -1,30 +1,20 @@
 package nongsan.webmvc.model;
 
 public class User {
-    private Long id;
-    private Long roleid;
+    private int id;
+    private int roleid;
     private String name;
     private String email;
     private String phone;
     private String username;
     private String password;
-    private String status;
+    private int status;
     private String created;
-    private Role role = new Role();
 
-    public Long getRoleid(long roleid) {
-        return this.roleid;
+    public User() {
     }
 
-    public void setRoleid(Long roleid) {
-        this.roleid = roleid;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public User(Long id, Long roleid, String name, String email, String phone, String username, String password, String status, String created) {
+    public User(int id, int roleid, String name, String email, String phone, String username, String password, int status, String created) {
         this.id = id;
         this.roleid = roleid;
         this.name = name;
@@ -36,20 +26,31 @@ public class User {
         this.created = created;
     }
 
-    public User() {
-
+    public User(int roleid,String email,String name,String phone,String username,String password, int status,String created) {
+        this.roleid = roleid;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.username = username;
+        this.password = password;
+        this.status = status;
+        this.created = created;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getRoleid() {
+    public int getRoleid() {
         return roleid;
+    }
+
+    public void setRoleid(int roleid) {
+        this.roleid = roleid;
     }
 
     public String getName() {
@@ -92,11 +93,11 @@ public class User {
         this.password = password;
     }
 
-    public String getStatus(String status) {
-        return this.status;
+    public int getStatus() {
+        return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -108,10 +109,18 @@ public class User {
         this.created = created;
     }
 
-    public void setRole(Role role) {
-    }
-
-    public Role getRole() {
-        return role;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", roleid=" + roleid +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", status=" + status +
+                ", created='" + created + '\'' +
+                '}';
     }
 }

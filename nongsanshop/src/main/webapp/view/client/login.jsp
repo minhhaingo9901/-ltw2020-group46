@@ -38,7 +38,7 @@
                         <div class="col-md-8 col-md-push-2">
                             <div class="aa-myaccount-login">
                                 <h4>Đăng nhập</h4>
-                                <form action='<c:url value="/dang-nhap"/>' id="formLogin" method="post" class="aa-login-form" name="loginform">
+                                <form action="${pageContext.request.contextPath}/view/client/login" id="formLogin" method="post" class="aa-login-form" name="loginform">
 <%--                                    Ten dang nhap--%>
                                     <label for="username">Tên đăng nhập<span>*</span></label>
                                     <input type="text" placeholder="Username" id="username" name="username"
@@ -46,13 +46,18 @@
 <%--                                     Mat khau--%>
                                     <label for="password">Mật khẩu<span>*</span></label>
                                     <input  type="password" placeholder="Password" id="password" name="password" required>
+    <input type="hidden" name="roleid" value="2">
+    <input type="hidden" name="status" value="1">
                                     <input type="button" onclick="showPass()" id="showPassword" value="Hiển thị" class="btn-show-pass" />
                                     <p class="rememberme">
                                         <input type="checkbox" id="rememberme" name="remember" value="Ghi nhớ">
                                         <label for="rememberme">Ghi nhớ</label>
                                         <span class="forget-pass"><a href="forgot-password.html">Quên mật khẩu?</a></span>
                                     </p>
-                                    <input type="hidden" value="" id="action" name="action">
+
+    <p style="color:red; display:block">
+        ${errorMsg}
+    </p>
 <%--                                    Dang nhap--%>
                                     <button type="submit" class="aa-browse-btn">ĐĂNG NHẬP</button>
                                     <div class="register-with">- Hoặc -</div>
