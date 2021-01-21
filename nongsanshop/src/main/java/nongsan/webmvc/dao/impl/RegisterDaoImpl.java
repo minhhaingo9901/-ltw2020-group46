@@ -20,11 +20,11 @@ public class RegisterDaoImpl {
             String sql = "INSERT INTO user (roleid,name,email,phone,username,password,status,created) values (?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             preparedStatement.setInt(1,user.getRoleid());
-            preparedStatement.setString(2, user.getUsername());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setString(4, user.getEmail());
-            preparedStatement.setString(5, user.getPhone());
-            preparedStatement.setString(6, user.getName());
+            preparedStatement.setString(2, user.getName());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setString(4, user.getPhone());
+            preparedStatement.setString(5, user.getUsername());
+            preparedStatement.setString(6, user.getPassword());
             preparedStatement.setInt(7, user.getStatus());
             preparedStatement.setString(8, user.getCreated());
             preparedStatement.executeUpdate();
