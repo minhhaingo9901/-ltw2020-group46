@@ -4,12 +4,8 @@ import nongsan.webmvc.dao.ProductDao;
 import nongsan.webmvc.jdbc.connectDB;
 import nongsan.webmvc.model.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -127,9 +123,9 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 	}
 
 	@Override
-	public List<Product> getAll() {
+	public ArrayList<Product> getAll() {
 		Connection conn = connectDB.getConnect();
-		List<Product> products = new ArrayList<Product>();
+		ArrayList<Product> products = new ArrayList<Product>();
 		String sql = "SELECT * FROM product";
 		/*Connection conn = getConnect();*/
 
@@ -164,9 +160,9 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 	}
 
 	@Override
-	public List<Product> getProductById(int id) {
+	public ArrayList<Product> getProductById(int id) {
 		Connection conn = connectDB.getConnect();
-		List<Product> products = new ArrayList<Product>();
+		ArrayList<Product> products = new ArrayList<Product>();
 		String sql = "SELECT * FROM product WHERE catalog_id=?";
 		/*Connection conn = getConnect();*/
 		
@@ -202,9 +198,9 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 	
 
 	@Override
-	public List<Product> searchByName(String keyword) {
+	public ArrayList<Product> searchByName(String keyword) {
 		Connection conn = connectDB.getConnect();
-		List<Product> productList = new ArrayList<Product>();
+		ArrayList<Product> productList = new ArrayList<Product>();
 		String sql = "SELECT * FROM product WHERE name LIKE ? ";
 		/*Connection conn = getConnect();*/
 
@@ -240,7 +236,13 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 		return productList;
 	}
 
-	
-	
+	@Override
+	public ArrayList<Product> getListByPage(ArrayList<Product> arr, int start, int end) {
+		ArrayList<Product> list = new ArrayList<>();
+		for (int i = start; i < end; i++) {
+			list.add(arr.get(i));
+		}
+		return list;
 
+	}
 }

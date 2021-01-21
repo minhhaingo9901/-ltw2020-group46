@@ -6,7 +6,7 @@ import nongsan.webmvc.dao.impl.ProductDaoImpl;
 import nongsan.webmvc.model.Product;
 import nongsan.webmvc.service.ProductService;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class ProductServiceImpl implements ProductService {
 	ProductDao productDao = new ProductDaoImpl();
@@ -51,22 +51,22 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> getAll() {
+	public ArrayList<Product> getAll() {
 		return productDao.getAll();
 	}
 
 	@Override
-	public List<Product> getProductById(int id) {
+	public ArrayList<Product> getProductById(int id) {
 		return productDao.getProductById(id);
 	}
 	
 	@Override
-	public List<Product> searchByName(String productName) {
+	public ArrayList<Product> searchByName(String productName) {
 		return productDao.searchByName(productName);
 	}
 
 	@Override
-	public List<Product> getProductByIdCate(int idCate) {
+	public ArrayList<Product> getProductByIdCate(int idCate) {
 		// TODO Auto-generated method stub
 		return null;
 	}

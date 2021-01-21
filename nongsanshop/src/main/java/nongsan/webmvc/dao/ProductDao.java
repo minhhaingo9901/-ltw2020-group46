@@ -2,7 +2,7 @@ package nongsan.webmvc.dao;
 
 import nongsan.webmvc.model.Product;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface ProductDao {
     void insert(Product product);
@@ -15,9 +15,11 @@ public interface ProductDao {
 
     Product get(String name);
 
-    List<Product> getAll();
+    ArrayList<Product>getListByPage(ArrayList<Product> arr, int start, int end);
 
-    List<Product> getProductById(int id);
+    ArrayList<Product> getAll();
 
-    List<Product> searchByName(String productName);
+    ArrayList<Product> getProductById(int id);
+
+    ArrayList<Product> searchByName(String productName);
 }
