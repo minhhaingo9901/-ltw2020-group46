@@ -1,6 +1,4 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="nongsan.webmvc.jdbc.connectDB"%>
-<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
 <%
@@ -10,10 +8,10 @@
   
   
   if (session.getAttribute("username") == null){
-	  response.sendRedirect(request.getContextPath() + "/view/client/login");
+	  response.sendRedirect(request.getContextPath() + "/admin/login");
   }
   %>
-  <!-- Start header section -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,70 +146,63 @@
     </nav>
   </header>
   <div class="clearfix"></div>
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <!--End Row-->
 
-    <div class="content-wrapper"> 
-      <div class="container-fluid"> 
-        <!--End Row--> 
- 
- 
-        <div class="row"> 
-          <div class="col-lg-12"> 
-            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/admin/add">Thêm Admin</a></button> 
-          </div> 
-          <div class="col-lg-12"> 
-            <div class="card"> 
-              <div class="card-body"> 
-                <h5 class="card-title">Danh sách Admin</h5> 
-                <div class="table-responsive">              
-                  <table class="table table-striped"> 
-                    <thead> 
-                      <tr> 
-                        <th scope="col">ID</th>
-                        <th scope="col">Tên đăng nhập</th> 
-                        <th scope="col">Tên Admin</th>
-                        <th scope="col">Hành động</th>                        
-                     </tr> 
-                    </thead> 
-                    <tbody> 
-                  <c:forEach items="${adminlist}" var="admin"> 
-                      <tr> 
-                        <td scope="row">${admin.id}</td> 
-                        <td>${admin.username}</td> 
-        				<td>${admin.name}</td> 
-        				 <td> 
 
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
-                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/admin/edit?id=${admin.id}">Sửa</a></button>
-                        </td> 
+        <div class="row">
+          <div class="col-lg-12">
+            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/cate/add">Thêm chuyên mục</a></button>
+          </div>
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Danh sách chuyên mục</h5>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tên chuyên mục</th>
+                        <th scope="col">Chuyên mục cha</th>
+                        <th scope="col">Hành động</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                  <c:forEach items="${catelist}" var="cate">
+                      <tr>
+                        <td scope="row">${cate.id}</td>
+                        <td>${cate.name}</td>
+        				<td>
+        					<c:choose>
+	                        <c:when test="${cate.parent_id == 0}"> 
+	                        	<c:out value="NULL"/>
+	                       	</c:when>
+	                       	<c:otherwise>
+						        <c:out value="Sản phẩm mới"/>
+						    </c:otherwise>
+                       	</c:choose>
+        				</td>
+        				 <td>
+                         <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/cate/delete?id=${cate.id}">Xóa</a></button>
+                         
+                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/cate/edit?id=${cate.id}">Sửa</a></button>
+                        </td>
                      </tr>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-footer">
-                            <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/admin/delete?admin-id=${admin.id}">Xóa</a></button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal"><a href="/admin/admin/list">Hủy</a></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Modal -->
-                    </c:forEach> 
-                    </tbody> 
-                  </table> 
-                </div> 
-              </div> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
+                    </c:forEach>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
 
   <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
   <div class="right-sidebar">

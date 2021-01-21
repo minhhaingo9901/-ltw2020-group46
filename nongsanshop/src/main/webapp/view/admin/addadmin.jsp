@@ -1,19 +1,8 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="nongsan.webmvc.jdbc.connectDB"%>
-<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
-<%
-  response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
-  response.setHeader("Pragma" , "no-cache");
-  response.setHeader("Expires" , "0");
-  
-  
-  if (session.getAttribute("username") == null){
-	  response.sendRedirect(request.getContextPath() + "/view/client/login");
-  }
-  %>
-  <!-- Start header section -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,7 +123,7 @@
                                            alt="user avatar"></div>
                   <div class="media-body">
                     <h6 class="mt-2 user-title">Webnongsan</h6>
-                    <b> Admin:  <%=session.getAttribute("username") %></b>
+                    <b> Admin:  <%=session.getAttribute("admin-username") %></b>
                   </div>
                 </div>
               </a>
@@ -149,70 +138,79 @@
   </header>
   <div class="clearfix"></div>
 
-    <div class="content-wrapper"> 
-      <div class="container-fluid"> 
-        <!--End Row--> 
- 
- 
-        <div class="row"> 
-          <div class="col-lg-12"> 
-            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/admin/add">Thêm Admin</a></button> 
-          </div> 
-          <div class="col-lg-12"> 
-            <div class="card"> 
-              <div class="card-body"> 
-                <h5 class="card-title">Danh sách Admin</h5> 
-                <div class="table-responsive">              
-                  <table class="table table-striped"> 
-                    <thead> 
-                      <tr> 
-                        <th scope="col">ID</th>
-                        <th scope="col">Tên đăng nhập</th> 
-                        <th scope="col">Tên Admin</th>
-                        <th scope="col">Hành động</th>                        
-                     </tr> 
-                    </thead> 
-                    <tbody> 
-                  <c:forEach items="${adminlist}" var="admin"> 
-                      <tr> 
-                        <td scope="row">${admin.id}</td> 
-                        <td>${admin.username}</td> 
-        				<td>${admin.name}</td> 
-        				 <td> 
+<div class="content-wrapper">
+  <div class="container-fluid">
 
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
-                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/admin/edit?id=${admin.id}">Sửa</a></button>
-                        </td> 
-                     </tr>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-footer">
-                            <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/admin/delete?admin-id=${admin.id}">Xóa</a></button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal"><a href="/admin/admin/list">Hủy</a></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Modal -->
-                    </c:forEach> 
-                    </tbody> 
-                  </table> 
-                </div> 
-              </div> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
+    <div class="row mt-3">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">Thêm Admin</div>
+            <hr>
+            <form action="${pageContext.request.contextPath}/admin/admin/add" method="post">
+              <input type="hidden" class="form-control" id="input-1"  name="user-roleid" value="1">
+              <div class="form-group">
+                <label for="input-1">Họ tên</label>
+                <input type="text" class="form-control" id="input-2" placeholder="Nhập họ tên" name="user-name">
+              </div>
+              <div class="form-group">
+                <label for="input-2">Email</label>
+                <input type="text" class="form-control" id="input-3" placeholder="Nhập địa chỉ Email" name="user-email">
+              </div>
+              <div class="form-group">
+                <label for="input-3">Số Điện Thoại</label>
+                <input type="text" class="form-control" id="input-4" placeholder="Nhập số điện thoại" name="user-phone">
+              </div>
+              <div class="form-group">
+                <label for="input-3">UserName</label>
+                <input type="text" class="form-control" id="input-5" placeholder="Nhập User Name" name="user-userName">
+              </div>
+              <div class="form-group">
+                <label for="input-4">Mật khẩu</label>
+                <input type="password" class="form-control" id="myinput" placeholder="Nhập mật khẩu" name="user-password">
+                <input type="checkbox" onclick="myFunction1()">Hiển thị mật khẩu
+                <script>function myFunction1() {
+                  var x = document.getElementById("myinput");
+                  if (x.type === "password") {
+                    x.type = "text";
+                  } else {
+                    x.type = "password";
+                  }
+                }
+                </script>
+              </div>
+              <input type="hidden" class="form-control" id="input"  name="user-status" value="1">
+              <div class="form-group">
+                <label for="input-5">Date</label>
+                <input type="date" class="form-control" id="the-date" placeholder="Ngày tạo" name="user-created">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> Đăng ký</button>
+                <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/admin/list">Hủy</a></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="overlay toggle-menu"></div>
+  </div>
+</div>
+<script>
+  var date = new Date();
 
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  var year = date.getFullYear();
+
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
+
+  var today = year + "-" + month + "-" + day;
+
+
+  document.getElementById('the-date').value = today;
+</script>
   <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
   <div class="right-sidebar">
     <div class="switcher-icon">
@@ -245,16 +243,16 @@
     </div>
   </div>
 </div>
-<script src="${url}/js/jquery.min.js"></script>
-<script src="${url}/js/popper.min.js"></script>
-<script src="${url}/js/bootstrap.min.js"></script>
-<script src="${url}/plugins/simplebar/js/simplebar.js"></script>
-<script src="${url}/js/sidebar-menu.js"></script>
-<script src="${url}/js/jquery.loading-indicator.js"></script>
-<script src="${url}/js/app-script.js"></script>
-<script src="${url}/plugins/Chart.js/Chart.min.js"></script>
-<script src="${url}/js/index.js"></script>
-<script src="${url}/plugins/summernote/dist/summernote-bs4.min.js"></script>
+  <script src="${url}/js/jquery.min.js"></script>
+  <script src="${url}/js/popper.min.js"></script>
+  <script src="${url}/js/bootstrap.min.js"></script>
+  <script src="${url}/plugins/simplebar/js/simplebar.js"></script>
+  <script src="${url}/js/sidebar-menu.js"></script>
+  <script src="${url}/js/jquery.loading-indicator.js"></script>
+  <script src="${url}/js/app-script.js"></script>
+  <script src="${url}/plugins/Chart.js/Chart.min.js"></script>
+  <script src="${url}/js/index.js"></script>
+  <script src="${url}/plugins/summernote/dist/summernote-bs4.min.js"></script>
 </body>
 
 </html>

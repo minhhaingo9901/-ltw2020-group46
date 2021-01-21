@@ -1,6 +1,4 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="nongsan.webmvc.jdbc.connectDB"%>
-<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
 <%
@@ -13,7 +11,7 @@
 	  response.sendRedirect(request.getContextPath() + "/view/client/login");
   }
   %>
-  <!-- Start header section -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,7 +132,7 @@
                                            alt="user avatar"></div>
                   <div class="media-body">
                     <h6 class="mt-2 user-title">Webnongsan</h6>
-                    <b> Admin:  <%=session.getAttribute("username") %></b>
+                    <b> Admin:  <%=session.getAttribute("admin-username") %></b>
                   </div>
                 </div>
               </a>
@@ -149,112 +147,74 @@
   </header>
   <div class="clearfix"></div>
 
-    <div class="content-wrapper"> 
-      <div class="container-fluid"> 
-        <!--End Row--> 
- 
- 
-        <div class="row"> 
-          <div class="col-lg-12"> 
-            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/admin/add">Thêm Admin</a></button> 
-          </div> 
-          <div class="col-lg-12"> 
-            <div class="card"> 
-              <div class="card-body"> 
-                <h5 class="card-title">Danh sách Admin</h5> 
-                <div class="table-responsive">              
-                  <table class="table table-striped"> 
-                    <thead> 
-                      <tr> 
-                        <th scope="col">ID</th>
-                        <th scope="col">Tên đăng nhập</th> 
-                        <th scope="col">Tên Admin</th>
-                        <th scope="col">Hành động</th>                        
-                     </tr> 
-                    </thead> 
-                    <tbody> 
-                  <c:forEach items="${adminlist}" var="admin"> 
-                      <tr> 
-                        <td scope="row">${admin.id}</td> 
-                        <td>${admin.username}</td> 
-        				<td>${admin.name}</td> 
-        				 <td> 
+    <div class="content-wrapper">
+      <div class="container-fluid">
 
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
-                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/admin/edit?id=${admin.id}">Sửa</a></button>
-                        </td> 
-                     </tr>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-footer">
-                            <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/admin/delete?admin-id=${admin.id}">Xóa</a></button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal"><a href="/admin/admin/list">Hủy</a></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Modal -->
-                    </c:forEach> 
-                    </tbody> 
-                  </table> 
-                </div> 
-              </div> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
+        <div class="row mt-3">
+          <div class="col-lg-12">
+            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/product/add">Thêm sản phẩm</a></button>
+          </div>
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Danh sách sản phẩm</h5>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Mã sản phẩm</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">ID danh mục</th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Giảm giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Ngày tạo</th>
+                        <th scope="col">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     <c:forEach items="${productlist}" var="product">
+                      <tr>
+                        <th scope="row">${product.id }</th>
+                        <td>${product.name }</td>
+                        <td><img style="    width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="${pageContext.request.contextPath}/view/client/assets/images/products/img-test/${product.image_link}" alt="${product.name}"></td>
+                        <td>${product.catalog_id }</td>
+                        <td>${product.price }</td>
+                        <td>
+                        
+                        <c:choose>
+	                        <c:when test="${product.status == 1}"> 
+	                        	<c:out value="Còn hàng"/>
+	                       	</c:when>
+	                       	<c:otherwise>
+						        <c:out value="Hết hàng"/>
+						    </c:otherwise>
+                       	</c:choose>
+                        </td>
+                        <td>${product.discount }%</td>
+                        <td>${product.qty}</td>
+                        <td>${product.created }</td>
+                        <td>
+
+                          <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/product/delete?id=${product.id}">Xóa</a></button>
+                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/product/edit?id=${product.id}">Sửa</a></button>
+                        </td>
+                      </tr>
+
+                      </c:forEach>
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overlay toggle-menu"></div>
+      </div>
     </div>
 
-  <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-  <div class="right-sidebar">
-    <div class="switcher-icon">
-      <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-    </div>
-    <div class="right-sidebar-content">
-      <p class="mb-0">Màu nền admin</p>
-      <hr>
-      <ul class="switcher">
-        <li id="theme1"></li>
-        <li id="theme2"></li>
-        <li id="theme3"></li>
-        <li id="theme4"></li>
-        <li id="theme5"></li>
-        <li id="theme6"></li>
-      </ul>
-      <p class="mb-0">Màu nền gradient</p>
-      <hr>
-      <ul class="switcher">
-        <li id="theme7"></li>
-        <li id="theme8"></li>
-        <li id="theme9"></li>
-        <li id="theme10"></li>
-        <li id="theme11"></li>
-        <li id="theme12"></li>
-        <li id="theme13"></li>
-        <li id="theme14"></li>
-        <li id="theme15"></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<script src="${url}/js/jquery.min.js"></script>
-<script src="${url}/js/popper.min.js"></script>
-<script src="${url}/js/bootstrap.min.js"></script>
-<script src="${url}/plugins/simplebar/js/simplebar.js"></script>
-<script src="${url}/js/sidebar-menu.js"></script>
-<script src="${url}/js/jquery.loading-indicator.js"></script>
-<script src="${url}/js/app-script.js"></script>
-<script src="${url}/plugins/Chart.js/Chart.min.js"></script>
-<script src="${url}/js/index.js"></script>
-<script src="${url}/plugins/summernote/dist/summernote-bs4.min.js"></script>
-</body>
-
-</html>
+  
+    <jsp:include page = "./footer/footer.jsp" flush = "true" />

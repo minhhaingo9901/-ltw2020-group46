@@ -1,19 +1,7 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="nongsan.webmvc.jdbc.connectDB"%>
-<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
-<%
-  response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
-  response.setHeader("Pragma" , "no-cache");
-  response.setHeader("Expires" , "0");
-  
-  
-  if (session.getAttribute("username") == null){
-	  response.sendRedirect(request.getContextPath() + "/view/client/login");
-  }
-  %>
-  <!-- Start header section -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,7 +122,7 @@
                                            alt="user avatar"></div>
                   <div class="media-body">
                     <h6 class="mt-2 user-title">Webnongsan</h6>
-                    <b> Admin:  <%=session.getAttribute("username") %></b>
+                    <b> Admin:  <%=session.getAttribute("admin-username") %></b>
                   </div>
                 </div>
               </a>
@@ -149,68 +137,75 @@
   </header>
   <div class="clearfix"></div>
 
-    <div class="content-wrapper"> 
-      <div class="container-fluid"> 
-        <!--End Row--> 
- 
- 
-        <div class="row"> 
-          <div class="col-lg-12"> 
-            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/admin/add">Thêm Admin</a></button> 
-          </div> 
-          <div class="col-lg-12"> 
-            <div class="card"> 
-              <div class="card-body"> 
-                <h5 class="card-title">Danh sách Admin</h5> 
-                <div class="table-responsive">              
-                  <table class="table table-striped"> 
-                    <thead> 
-                      <tr> 
-                        <th scope="col">ID</th>
-                        <th scope="col">Tên đăng nhập</th> 
-                        <th scope="col">Tên Admin</th>
-                        <th scope="col">Hành động</th>                        
-                     </tr> 
-                    </thead> 
-                    <tbody> 
-                  <c:forEach items="${adminlist}" var="admin"> 
-                      <tr> 
-                        <td scope="row">${admin.id}</td> 
-                        <td>${admin.username}</td> 
-        				<td>${admin.name}</td> 
-        				 <td> 
+    <div class="content-wrapper">
+      <div class="container-fluid">
 
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
-                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/admin/edit?id=${admin.id}">Sửa</a></button>
-                        </td> 
-                     </tr>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-footer">
-                            <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/admin/delete?admin-id=${admin.id}">Xóa</a></button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal"><a href="/admin/admin/list">Hủy</a></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Modal -->
-                    </c:forEach> 
-                    </tbody> 
-                  </table> 
-                </div> 
-              </div> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
+        <div class="row mt-3">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title">Sửa User</div>
+                <hr>
+                <form action="${pageContext.request.contextPath}/admin/user/edit" method="post">
+                  <div class="form-group">
+                    <label for="input-1">ID</label>
+                    <input type="text" class="form-control" id="input-1" readonly="readonly" placeholder="ID" value="${user.id}" name="user-id">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-6">ROLE ID</label>
+                    <input type="text" class="form-control" id="input-"  placeholder="Role ID" value="${user.roleid}" name="user-roleid">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-1">Họ tên</label>
+                    <input type="text" class="form-control" id="input-2" placeholder="Họ tên" value="${user.name}" name="user-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-2">Email</label>
+                    <input type="text" class="form-control" id="input-3" placeholder="Địa chỉ Email" value="${user.email}" name="user-email">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-3">Số điện thoại</label>
+                    <input type="text" class="form-control" id="input-4" placeholder="Số điện thoại" value="${user.phone}" name="user-phone">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-3">UserName</label>
+                    <input type="text" class="form-control" id="input-5" placeholder="Username" value="${user.username}" name="user-userName">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-4">Mật khẩu</label>
+                    <input type="password" class="form-control" id="myinput" placeholder="Mật khẩu" value="${user.password}" name="user-password">
+					<input type="checkbox" onclick="myFunction1()">Hiển thị mật khẩu
+					<script>function myFunction1() {
+                    	  var x = document.getElementById("myinput");
+                    	  if (x.type === "password") {
+                    	    x.type = "text";
+                    	  } else {
+                    	    x.type = "password";
+                    	  }
+                    	}
+					</script>                   
+                  </div>
+                  <div class="form-group">
+                    <label for="input-5">Trạng Thái</label>
+                    <input type="text" class="form-control" id="input" placeholder="status" value="${user.status}" name="user-status">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-5">Date</label>
+                    <input type="date" class="form-control" id="input-6" placeholder="Ngày tạo" value="${user.created}" name="user-created">
+                  </div>
+                  
+                  <div class="form-group">
+                    <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/user/list">Hủy</a></button>
+                         
+                     <button type="submit" class="btn btn-success">Cập nhật</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overlay toggle-menu"></div>
+      </div>
     </div>
 
   <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>

@@ -1,6 +1,4 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="nongsan.webmvc.jdbc.connectDB"%>
-<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
 <%
@@ -13,7 +11,7 @@
 	  response.sendRedirect(request.getContextPath() + "/view/client/login");
   }
   %>
-  <!-- Start header section -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,40 +147,45 @@
   </header>
   <div class="clearfix"></div>
 
-    <div class="content-wrapper"> 
-      <div class="container-fluid"> 
-        <!--End Row--> 
- 
- 
-        <div class="row"> 
-          <div class="col-lg-12"> 
-            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/admin/add">Thêm Admin</a></button> 
-          </div> 
-          <div class="col-lg-12"> 
-            <div class="card"> 
-              <div class="card-body"> 
-                <h5 class="card-title">Danh sách Admin</h5> 
-                <div class="table-responsive">              
-                  <table class="table table-striped"> 
-                    <thead> 
-                      <tr> 
+    <div class="content-wrapper">
+      <div class="container-fluid">
+
+        <div class="row mt-3">
+          <!--<div class="col-lg-12">
+            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/user/add">Thêm User</a></button>
+          </div>  -->
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Danh sách User</h5>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Tên đăng nhập</th> 
-                        <th scope="col">Tên Admin</th>
-                        <th scope="col">Hành động</th>                        
-                     </tr> 
-                    </thead> 
-                    <tbody> 
-                  <c:forEach items="${adminlist}" var="admin"> 
-                      <tr> 
-                        <td scope="row">${admin.id}</td> 
-                        <td>${admin.username}</td> 
-        				<td>${admin.name}</td> 
-        				 <td> 
+                        <th scope="col">Tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Ngày tạo</th>
+                         <th scope="col">Hành động</th>
+             
+                      </tr>
+                    </thead>
+                    <tbody>
+                  <c:forEach items="${userList}" var="user">
+                      <tr>
+                        <td scope="row">${user.id}</td>
+                        <td>${user.name }</td>
+        				<td>${user.email }</td>
+        				<td>${user.phone }</td>
+        				<td>${user.username }</td>
+        				<td>${user.created }</td>
+        				 <td>
 
                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
-                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/admin/edit?id=${admin.id}">Sửa</a></button>
-                        </td> 
+                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/user/edit?user-id=${user.id}">Sửa</a></button>
+                        </td>
                      </tr>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -195,23 +198,25 @@
                             </button>
                           </div>
                           <div class="modal-footer">
-                            <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/admin/delete?admin-id=${admin.id}">Xóa</a></button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal"><a href="/admin/admin/list">Hủy</a></button>
+                            <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/user/delete?user-id=${user.id}">Xóa</a></button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal"><a href="/admin/user/list">Hủy</a></button>
                           </div>
                         </div>
                       </div>
                     </div>
                     <!-- Modal -->
-                    </c:forEach> 
-                    </tbody> 
-                  </table> 
-                </div> 
-              </div> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
+                    </c:forEach>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overlay toggle-menu"></div>
+      </div>
     </div>
+
 
   <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
   <div class="right-sidebar">
