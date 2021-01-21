@@ -5,16 +5,24 @@
   Time: 9:19 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="nongsan.webmvc.model.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="nongsan.webmvc.dao.impl.ProductDaoImpl"%>
+<%@ page import="java.util.ArrayList" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <c:url value = "/view/client/assets" var="url"/>
+
 <!-- Start header section -->
 <jsp:include page = "./header/mainHeader.jsp" flush = "true" />
 <!-- / header section -->
 
 <!--  content -->
 <!-- catg header banner section -->
+
 <section id="aa-catg-head-banner">
+
     <img src="${pageContext.request.contextPath}/view/client/assets/images/banner-product.png" alt="banner sản phẩm">
     <div class="aa-catg-head-banner-area">
         <div class="container">
@@ -78,8 +86,9 @@
 
                         <!-- / quick view modal -->
                     </div>
-
                 </div>
+
+                <%--PAGING--%>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
                 <aside class="aa-sidebar">
@@ -126,15 +135,39 @@
                     <!-- single sidebar -->
 
                 </aside>
+
+
             </div>
 
+
         </div>
+
     </div>
+    <div class="container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination" id="pagination"></ul>
+        </nav>
+    </div>
+
 </section>
 <!-- / product category -->
 <!--  end content-->
 
 <!--  footer-->
+<script type="text/javascript">
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: 35,
+            visiblePages: 10,
+            onPageClick: function (event, page) {
+                console.info(page + ' (from options)');
+            }
+        }).on('page', function (event, page) {
+            console.info(page + ' (from event listening)');
+        });
+    });
+</script>
+
 <jsp:include page = "./footer/footer.jsp" flush = "true" />
 <!-- end footer-->
 
