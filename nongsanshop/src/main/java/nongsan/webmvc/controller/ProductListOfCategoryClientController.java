@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ProductListOfCategoryClientController")
+@WebServlet(name = "ProductListOfCategoryClient", urlPatterns = "/view/client/product-id")
 public class ProductListOfCategoryClientController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

@@ -21,7 +21,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ProductDetailController")
+@WebServlet(name = "productDetail", urlPatterns = "/view/client/product-detail")
 public class ProductDetailController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

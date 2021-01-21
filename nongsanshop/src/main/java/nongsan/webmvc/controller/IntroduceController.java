@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "IntroduceController")
+@WebServlet(name = "introduce",urlPatterns = "/view/client/introduce")
 public class IntroduceController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
