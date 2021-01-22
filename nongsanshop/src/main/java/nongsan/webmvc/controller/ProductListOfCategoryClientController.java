@@ -52,7 +52,7 @@ public class ProductListOfCategoryClientController extends HttpServlet {
         List<Product> product_banchay= productService.getProductById(6);
         request.setAttribute("product_banchay", product_banchay);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/client/product.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/client/product-cate.jsp");
         dispatcher.forward(request, response);
 
     }
