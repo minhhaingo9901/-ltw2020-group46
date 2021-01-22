@@ -15,7 +15,8 @@ public interface ProductDao {
 
     Product get(String name);
 
-    ArrayList<Product>getListByPage(ArrayList<Product> arr, int start, int end);
+   ArrayList<Product> getProduct(int a, int b);/*giới hạn số lượng sản phẩm*/
+    int getCount();/*đếm số lượng sản phẩm*/
 
     ArrayList<Product> getAll();
 
