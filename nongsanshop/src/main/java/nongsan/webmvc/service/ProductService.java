@@ -22,4 +22,6 @@ public interface ProductService {
     List<Product> searchByName(String productName);
 
     List<Product> getProductByIdCate(int idCate);
+    ArrayList<Product> getProduct(int a, int b);
+    int getCount();
 }
