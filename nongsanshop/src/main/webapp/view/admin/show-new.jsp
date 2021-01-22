@@ -12,6 +12,7 @@
   }
   %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,42 +154,36 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/cate/add">Thêm chuyên mục</a></button>
+            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/new/add">Thêm tin tức</a></button>
           </div>
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Danh sách chuyên mục</h5>
+                <h5 class="card-title">Danh sách tin tức</h5>
                 <div class="table-responsive">
                   <table class="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Tên chuyên mục</th>
-                        <th scope="col">Chuyên mục cha</th>
-                        <th scope="col">Hành động</th>
-                        
+                        <th scope="col">Tiêu đề</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Người đăng</th>
+                        <th scope="col">Ngày đăng</th>
+                         <th scope="col">Hành động</th>
                       </tr>
                     </thead>
                     <tbody>
-                  <c:forEach items="${catelist}" var="cate">
+                  <c:forEach items="${boardnewlist}" var="boardnew">
                       <tr>
-                        <td scope="row">${cate.id}</td>
-                        <td>${cate.name}</td>
-        				<td>
-        					<c:choose>
-	                        <c:when test="${cate.parent_id == 0}"> 
-	                        	<c:out value="NULL"/>
-	                       	</c:when>
-	                       	<c:otherwise>
-						        <c:out value="Sản phẩm mới"/>
-						    </c:otherwise>
-                       	</c:choose>
-        				</td>
+                        <td scope="row">${boardnew.id}</td>
+                        <td>${boardnew.title}</td>
+        				<td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="${pageContext.request.contextPath}/view/client/assets/images/news/${boardnew.image_link}"></td>
+        				<td>${boardnew.author}</td>
+        				<td>${boardnew.created}</td>
         				 <td>
-                         <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/cate/delete?id=${cate.id}">Xóa</a></button>
+                         <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/new/delete?id=${boardnew.id}">Xóa</a></button>
                          
-                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/cate/edit?id=${cate.id}">Sửa</a></button>
+                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/new/edit?id=${boardnew.id}">Sửa</a></button>
                         </td>
                      </tr>
                     </c:forEach>
@@ -201,8 +196,6 @@
         </div>
       </div>
     </div>
-
-
 
   <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
   <div class="right-sidebar">

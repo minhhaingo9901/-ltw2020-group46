@@ -1,17 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
-<%
-  response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
-  response.setHeader("Pragma" , "no-cache");
-  response.setHeader("Expires" , "0");
-  
-  
-  if (session.getAttribute("username") == null){
-	  response.sendRedirect(request.getContextPath() + "/view/client/login");
-  }
-  %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,45 +139,34 @@
       <div class="container-fluid">
         <!--End Row-->
 
-
-        <div class="row">
-          <div class="col-lg-12">
-            <button class="add-catalog"><a href="${pageContext.request.contextPath}/admin/cate/add">Thêm chuyên mục</a></button>
-          </div>
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Danh sách chuyên mục</h5>
+                <h5 class="card-title">Danh sách Review</h5>
                 <div class="table-responsive">
                   <table class="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Tên chuyên mục</th>
-                        <th scope="col">Chuyên mục cha</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Id Sản Phẩm</th>
+                        <th scope="col">Nội dung</th>
+                        <th scope="col">Ngày đánh giá</th>
                         <th scope="col">Hành động</th>
-                        
                       </tr>
                     </thead>
                     <tbody>
-                  <c:forEach items="${catelist}" var="cate">
+                  <c:forEach items="${reviewlist}" var="review">
                       <tr>
-                        <td scope="row">${cate.id}</td>
-                        <td>${cate.name}</td>
-        				<td>
-        					<c:choose>
-	                        <c:when test="${cate.parent_id == 0}"> 
-	                        	<c:out value="NULL"/>
-	                       	</c:when>
-	                       	<c:otherwise>
-						        <c:out value="Sản phẩm mới"/>
-						    </c:otherwise>
-                       	</c:choose>
-        				</td>
+                        <td scope="row">${review.id}</td>
+                        <td>${review.name}</td>
+        				<td>${review.email}</td>
+        				<td>${review.product_id}</td>
+        				<td>${review.content}</td>
+        				<td>${review.created}</td>
         				 <td>
-                         <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/cate/delete?id=${cate.id}">Xóa</a></button>
-                         
-                          <button class="btn btn-success"><a href="${pageContext.request.contextPath}/admin/cate/edit?id=${cate.id}">Sửa</a></button>
+                         <button class="btn btn-danger"><a href="${pageContext.request.contextPath}/admin/review/delete?id=${review.id}">Xóa</a></button>
                         </td>
                      </tr>
                     </c:forEach>
@@ -202,39 +180,37 @@
       </div>
     </div>
 
-
-
-  <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-  <div class="right-sidebar">
-    <div class="switcher-icon">
-      <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-    </div>
-    <div class="right-sidebar-content">
-      <p class="mb-0">Màu nền admin</p>
-      <hr>
-      <ul class="switcher">
-        <li id="theme1"></li>
-        <li id="theme2"></li>
-        <li id="theme3"></li>
-        <li id="theme4"></li>
-        <li id="theme5"></li>
-        <li id="theme6"></li>
-      </ul>
-      <p class="mb-0">Màu nền gradient</p>
-      <hr>
-      <ul class="switcher">
-        <li id="theme7"></li>
-        <li id="theme8"></li>
-        <li id="theme9"></li>
-        <li id="theme10"></li>
-        <li id="theme11"></li>
-        <li id="theme12"></li>
-        <li id="theme13"></li>
-        <li id="theme14"></li>
-        <li id="theme15"></li>
-      </ul>
-    </div>
+<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+<div class="right-sidebar">
+  <div class="switcher-icon">
+    <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
   </div>
+  <div class="right-sidebar-content">
+    <p class="mb-0">Màu nền admin</p>
+    <hr>
+    <ul class="switcher">
+      <li id="theme1"></li>
+      <li id="theme2"></li>
+      <li id="theme3"></li>
+      <li id="theme4"></li>
+      <li id="theme5"></li>
+      <li id="theme6"></li>
+    </ul>
+    <p class="mb-0">Màu nền gradient</p>
+    <hr>
+    <ul class="switcher">
+      <li id="theme7"></li>
+      <li id="theme8"></li>
+      <li id="theme9"></li>
+      <li id="theme10"></li>
+      <li id="theme11"></li>
+      <li id="theme12"></li>
+      <li id="theme13"></li>
+      <li id="theme14"></li>
+      <li id="theme15"></li>
+    </ul>
+  </div>
+</div>
 </div>
 <script src="${url}/js/jquery.min.js"></script>
 <script src="${url}/js/popper.min.js"></script>
