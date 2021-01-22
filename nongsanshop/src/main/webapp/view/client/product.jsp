@@ -13,12 +13,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <c:url value = "/view/client/assets" var="url"/>
-
 <!-- Start header section -->
 <jsp:include page = "./header/mainHeader.jsp" flush = "true" />
 <!-- / header section -->
-
-<!--  content -->
 <!-- catg header banner section -->
 
 <section id="aa-catg-head-banner">
@@ -37,7 +34,6 @@
     </div>
 </section>
 <!-- / catg header banner section -->
-
 <!-- product category -->
 <section id="aa-product-category">
     <div class="container">
@@ -48,40 +44,41 @@
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg">
                             <!-- start single product item -->
-                            <c:if test="${empty productlist}">
-                                <p style="margin-left: 30px">Chưa có sản phẩm!</p>
-                            </c:if>
-                            <c:forEach items="${productlist}" var="product">
-                                <li>
-                                    <figure>
-                                        <a class="aa-product-img" href="${pageContext.request.contextPath}/view/client/product-detail?id=${product.id}"><img src="${pageContext.request.contextPath}/view/client/assets/images/products/img-test/${product.image_link}" alt="${product.name}"></a>
-                                        <a class="aa-add-card-btn"href="${pageContext.request.contextPath}/view/client/add-cart?product-id=${product.id}"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                                        <figcaption>
-                                            <h4 class="aa-product-title"><a href="${pageContext.request.contextPath}/view/client/product-detail?id=${product.id}">${product.name}</a></h4>
+                            <%
+                                int first = 0, last = 0, pages = 1;
 
-                                            <c:choose>
-                                                <c:when test="${product.discount == 0}">
-                                                    <span class="aa-product-price">${product.price} VNĐ</span><span class="aa-product-price"></span>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <c:forEach items="${productlist1}" var="product1">
-                                                        <c:if test="${product1.id == product.id}">
-                                                            <span class="aa-product-price">${product1.price} VNĐ</span>
-                                                            <span class="aa-product-price"><del>${product.price} VNĐ</del></span>
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </figcaption>
-                                    </figure>
+                                if (request.getParameter("pages") != null) {
+                                    pages = (int) Integer.parseInt(request.getParameter("pages"));
+                                }
+                                //Lấy tổng sản phẩm trong data bằng query select count(id) from name_table với JDBC Connect
+                                int total = new ProductDaoImpl().getCount();
 
-                                    <c:if test="${product.discount != 0}">
-                                        <!-- product badge -->
-                                        <span class="aa-badge aa-sale">- ${product.discount}%</span>
-                                    </c:if>
+                                if (total <= 9) {
+                                    first = 0;
+                                    last = total;
+                                } else {
+                                    first = (pages - 1) * 9;
+                                    last = 9;
+                                }
+                                //Lấy ra danh sách sản phẩm
+                                List<Product> list = new ProductDaoImpl().getProduct(first, last);
+                                for (Product product : list) {
+                            %>
+                            <li>
+                                <figure>
+                                    <a class="aa-product-img" href="${pageContext.request.contextPath}/view/client/product-detail?id=<%=product.getId()%>"><img src="${pageContext.request.contextPath}/view/client/assets/images/products/img-test/<%=product.getImage_link() %>" alt="<%=product.getName() %>"></a>
+                                    <a class="aa-add-card-btn"href="${pageContext.request.contextPath}/view/client/add-cart?product-id=<%=product.getId() %>"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                                    <figcaption>
+                                        <h4 class="aa-product-title"><a href="${pageContext.request.contextPath}/view/client/product-detail?id=<%=product.getId() %>"><%=product.getName() %></a></h4>
+                                        <span class="aa-product-price"><%=product.getPrice()%> VNĐ</span><span class="aa-product-price"></span>
+                                    </figcaption>
+                                </figure>
+                                <!-- product badge -->
+                                <span class="aa-badge aa-sale">-<%=product.getDiscount()%>%</span>
 
-                                </li>
-                            </c:forEach>
+                            </li>
+
+                            <%}%>
                         </ul>
 
                         <!-- / quick view modal -->
@@ -89,6 +86,79 @@
                 </div>
 
                 <%--PAGING--%>
+                <ul class="pagination">
+                    <%                //Button Previous
+                        int back = 0;
+                        if (pages == 0 || pages == 1) {
+                            back = 1;//Luon la page 1
+                        } else {
+                            back = pages - 1;//Neu pages tu 2 tro len thi back tru 1
+                        }
+                    %>
+                    <li ><a href="product?pages=<%=back%>"><i></i>Trang Trước</a></li>
+                    <%
+                        //Button Number pages
+                        int loop = 0, num = 0;
+                        if ((total / 9) % 2 == 0) {
+                            num = total / 9;
+                        } else {
+                            num = (total + 1) / 9;
+                        }
+                        //Nếu total lẻ thêm 1
+                        if (total % 2 != 0) {
+                            loop = (total / 9) + 1;
+
+                        } else {
+                            //Nếu total chẵn nhỏ hơn fullpage và # fullPage thì thêm 1
+                            if (total < (num * 9) + 9 && total != num * 9) {
+                                loop = (total / 9) + 1;
+                            } else {
+                                //Nếu bằng fullPage thì không thêm
+                                loop = (total / 9);
+                            }
+                        }
+                        //Lap so pages
+                        for (int i = 1; i <= loop; i++) {%>
+                    <% if (pages == i) {%>
+
+                    <li><span><a href="product?pages=<%=i%>"><%=i%></a></span></li>
+                    <%} else {%>
+                    <li class="arrow"><a href="product?pages=<%=i%>"><%=i%></a> </li>
+
+                    <%}
+                    }%>
+                    <%
+                        //Button Next
+                        int next = 0;
+                        //Nếu total lẻ
+                        if (total % 2 != 0) {
+                            if (pages == (total / 4) + 1) {
+                                next = pages;//Khong next
+                            } else {
+                                next = pages + 1;//Co next
+                            }
+                        } else {
+                            //Nếu total chẵn nhỏ hơn fullpage
+                            //Và không fullPage thì thêm 1
+                            if (total < (num * 4) + 4 && total != num * 4) {
+                                if (pages == (total / 4) + 1) {
+                                    next = pages;//Khong next
+                                } else {
+                                    next = pages + 1;//Co next
+                                }
+                            } else {
+                                //Nếu fullPage đến trang cuối dừng
+                                //Chưa tới trang cuối thì được next
+                                if (pages == (total / 4)) {
+                                    next = pages;//Khong next
+                                } else {
+                                    next = pages + 1;//Co next
+                                }
+                            }
+                        }
+                    %>
+                    <li ><a href="product?pages=<%=next%>"><i class="next"></i>Trang Sau</a></li>
+                </ul>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
                 <aside class="aa-sidebar">
@@ -143,30 +213,17 @@
         </div>
 
     </div>
-    <div class="container">
-        <nav aria-label="Page navigation">
-            <ul class="pagination" id="pagination"></ul>
-        </nav>
-    </div>
+
+
+
+
 
 </section>
 <!-- / product category -->
 <!--  end content-->
 
 <!--  footer-->
-<script type="text/javascript">
-    $(function () {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: 35,
-            visiblePages: 10,
-            onPageClick: function (event, page) {
-                console.info(page + ' (from options)');
-            }
-        }).on('page', function (event, page) {
-            console.info(page + ' (from event listening)');
-        });
-    });
-</script>
+
 
 <jsp:include page = "./footer/footer.jsp" flush = "true" />
 <!-- end footer-->
