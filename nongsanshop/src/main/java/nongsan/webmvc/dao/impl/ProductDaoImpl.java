@@ -123,6 +123,55 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 	}
 
 	@Override
+	public ArrayList<Product> getProduct(int a, int b) {
+		Connection conn = connectDB.getConnect();
+		ArrayList<Product> list = new ArrayList();
+		String sql = "SELECT * FROM product Limit ?,?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, a);
+			ps.setInt(2, b);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Product product = new Product();
+				product.setId(rs.getString("id"));
+				product.setCatalog_id(rs.getString("catalog_id"));
+				product.setName(rs.getString("name"));
+				product.setPrice(rs.getString("price"));
+				product.setQty(rs.getInt("qty"));
+				product.setStatus(rs.getString("status"));
+				product.setDescription(rs.getString("description"));
+				product.setContent(rs.getString("content"));
+				product.setDiscount(rs.getString("discount"));
+				product.setImage_link(rs.getString("image_link"));
+				product.setCreated(rs.getString("created"));
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int getCount() {/*tổng số lượng sản phẩm*/
+		Connection conn = connectDB.getConnect();
+		ArrayList<Product> list = new ArrayList();
+		String sql = "SELECT count(id) FROM product";
+		int count = 0;
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	@Override
 	public ArrayList<Product> getAll() {
 		Connection conn = connectDB.getConnect();
 		ArrayList<Product> products = new ArrayList<Product>();
@@ -236,52 +285,7 @@ public class ProductDaoImpl extends connectDB implements ProductDao {
 		return productList;
 	}
 
-	@Override
-	public ArrayList<Product> getProduct(int a, int b) {
-		Connection conn = connectDB.getConnect();
-		ArrayList<Product> list = new ArrayList();
-		String sql = "SELECT * FROM product Limit ?,?";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, a);
-			ps.setInt(2, b);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				Product product = new Product();
-				product.setId(rs.getString("id"));
-				product.setCatalog_id(rs.getString("catalog_id"));
-				product.setName(rs.getString("name"));
-				product.setPrice(rs.getString("price"));
-				product.setQty(rs.getInt("qty"));
-				product.setStatus(rs.getString("status"));
-				product.setDescription(rs.getString("description"));
-				product.setContent(rs.getString("content"));
-				product.setDiscount(rs.getString("discount"));
-				product.setImage_link(rs.getString("image_link"));
-				product.setCreated(rs.getString("created"));
-				list.add(product);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
 
-	@Override
-	public int getCount() {/*tổng số lượng sản phẩm*/
-		Connection conn = connectDB.getConnect();
-		ArrayList<Product> list = new ArrayList();
-		String sql = "SELECT count(id) FROM product";
-		int count = 0;
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				count = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return count;
-	}
+
+
 }

@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="aa-footer-bottom-area">
-                        <p>Copyright 2020 &copy VT3 Team</p>
+                        <p>Copyright 2020 &copy Group46</p>
                         <div class="aa-footer-payment">
                             <span class="fab fa-cc-mastercard"></span>
                             <span class="fab fa-cc-visa"></span>

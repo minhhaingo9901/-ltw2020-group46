@@ -42,7 +42,7 @@
 
                             <c:if test="${sessionScope.username != null}">
                                 <li>
-                                    <a><strong>Chào</strong> ${username }</a>
+                                    <a href="#"><strong>Chào</strong> ${username }</a>
                                 </li>
                                 <li class="hidden-xs"><a href="${pageContext.request.contextPath}/view/client/logout">Đăng xuất</a></li>
                             </c:if>

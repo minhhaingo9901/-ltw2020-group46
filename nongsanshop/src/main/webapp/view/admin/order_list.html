@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Quản lí đơn hàng</title>
+    <!-- loader-->
+    <link href="assets/css/pace.min.css" rel="stylesheet"/>
+    <script src="assets/js/pace.min.js"></script>
+    <!--favicon-->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Vector CSS -->
+    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
+    <!-- simplebar CSS-->
+    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+    <!-- Bootstrap core CSS-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- animate CSS-->
+    <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
+    <!-- Icons CSS-->
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <!-- Sidebar CSS-->
+    <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
+    <!-- Custom Style-->
+    <link href="assets/css/app-style.css" rel="stylesheet"/>
+
+</head>
+
+<body class="bg-theme bg-theme1">
+
+<!-- Start wrapper-->
+<div id="wrapper">
+
+    <!--Start sidebar-wrapper-->
+    <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+        <div class="brand-logo">
+            <a href="index.html">
+                <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                <h5 class="logo-text">Admin Web Nông Sản</h5>
+            </a>
+        </div>
+        <ul class="sidebar-menu do-nicescrol">
+            <li class="sidebar-header">Menu Admin</li>
+            <li>
+                <a href="index.html">
+                    <i class="zmdi zmdi-view-dashboard"></i> <span>Tổng Quan</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="role_admin_list.html">
+                    <i class="zmdi zmdi-account-box"></i> <span>Quản Lí Admin</span>
+                </a>
+            </li>
+            <li>
+                <a href="user_list.html">
+                    <i class="zmdi zmdi-accounts"></i> <span>Quản lí User</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="cate_list.html">
+                    <i class="zmdi zmdi-grid"></i> <span>Chuyên Mục</span>
+                </a>
+            </li>
+            <li>
+                <a href="product_list.html">
+                    <i class="zmdi zmdi-widgets"></i> <span>Danh Sách Sản Phẩm</span>
+                </a>
+            </li>
+            <li>
+                <a href="order_list.html">
+                    <i class="zmdi zmdi-shopping-cart"></i> <span>Đơn Hàng</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="order_list_detail.html">
+                    <i class="zmdi zmdi-shopping-cart"></i> <span>Chi Tiết Đơn Hàng</span>
+                </a>
+            </li>
+            <li>
+                <a href="review_list.html">
+                    <i class="zmdi zmdi-calendar-check"></i> <span>Review</span>
+                </a>
+            </li>
+            <li>
+                <a href="news_list.html">
+                    <i class="icon-envelope-open"></i> <span>Tin Tức</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--End sidebar-wrapper-->
+    <!-- start loader -->
+    <div id="pageloader-overlay" class="visible incoming">
+        <div class="loader-wrapper-outer">
+            <div class="loader-wrapper-inner">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--Start topbar header-->
+    <header class="topbar-nav">
+        <nav class="navbar navbar-expand fixed-top">
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link toggle-menu" href="javascript:void();">
+                        <i class="icon-menu menu-icon"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav align-items-center right-nav-link">
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                        <span class="user-profile"><img src="assets/images/avatar-admin.png" class="img-circle" alt="user avatar"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item user-details">
+                            <a href="javaScript:void();">
+                                <div class="media">
+                                    <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatar-admin.png" alt="user avatar"></div>
+                                    <div class="media-body">
+                                        <h6 class="mt-2 user-title">Webnongsan</h6>
+                                        <b> Admin:  Quang</b>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-power mr-2"></i><a href="index.html"> Đăng xuất</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--End topbar header-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger">Xóa</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <div class="clearfix"></div>
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Danh sách đơn hàng</h5>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID ĐƠN HÀNG</th>
+                                        <th scope="col">TÀI KHOẢN USER</th>
+                                        <th scope="col">HỌ TÊN</th>
+                                        <th scope="col">EMAIL</th>
+                                        <th scope="col">SĐT</th>
+                                        <th scope="col">ĐỊA CHỈ</th>
+                                        <th scope="col">GHI CHÚ</th>
+                                        <th scope="col">TỔNG TIỀN</th>
+                                        <th scope="col">PHƯƠNG THỨC THANH TOÁN</th>
+                                        <th scope="col">TRẠNG THÁI</th>
+                                        <th scope="col">NGÀY ĐẶT</th>
+                                        <th scope="col">HÀNH ĐỘNG</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td scope="row">123456</td>
+                                        <td>macphamhoangduong@gmail.com</td>
+                                        <td>Dương</td>
+                                        <td>macphamhoangduong@gmail.com</td>
+                                        <td>0388929625</td>
+                                        <td>KTX Khu B</td>
+                                        <td>Không</td>
+                                        <td>15.000 VNĐ</td>
+                                        <td>MOMO</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-28</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">132456</td>
+                                        <td>tranminhquang@gmail.com</td>
+                                        <td>Quang</td>
+                                        <td>tranminhquang@gmail.com</td>
+                                        <td>038826598</td>
+                                        <td>KTX Khu A</td>
+                                        <td>Không</td>
+                                        <td>45.000 VNĐ</td>
+                                        <td>MOMO</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-28</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">134256</td>
+                                        <td>phucnguyen@gmail.com</td>
+                                        <td>Phúc</td>
+                                        <td>phucnguyen@gmail.com</td>
+                                        <td>0388977625</td>
+                                        <td>KTX Khu B</td>
+                                        <td>Không</td>
+                                        <td>150.000 VNĐ</td>
+                                        <td>MOMO</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-28</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">123546</td>
+                                        <td>hoangduon1608@gmail.com</td>
+                                        <td>Duong</td>
+                                        <td>hoangduon1608@gmail.com </td>
+                                        <td>0388925525</td>
+                                        <td>KTX Khu B</td>
+                                        <td>Không</td>
+                                        <td>120.000 VNĐ</td>
+                                        <td>MOMO</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-28</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">123465</td>
+                                        <td>ngominhquang@gmail.com</td>
+                                        <td>Quang</td>
+                                        <td>ngominhquang@gmail.com</td>
+                                        <td>0388922625</td>
+                                        <td>KTX Khu A</td>
+                                        <td>Không</td>
+                                        <td>160.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-27</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">213456</td>
+                                        <td>tungle@gmail.com</td>
+                                        <td>Tùng</td>
+                                        <td>tungle@gmail.com</td>
+                                        <td>03889296662</td>
+                                        <td>KTX Khu A</td>
+                                        <td>Không</td>
+                                        <td>175.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-27</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">214356</td>
+                                        <td>macphamhoangduong@gmail.com</td>
+                                        <td>Duong</td>
+                                        <td>macphamhoangduong@gmail.com</td>
+                                        <td>0388929625</td>
+                                        <td>KTX Khu B</td>
+                                        <td>Không</td>
+                                        <td>150.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-27</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">412346</td>
+                                        <td>lehuytung@gmail.com</td>
+                                        <td>Tùng</td>
+                                        <td>lehuytung@gmail.com</td>
+                                        <td>038596865</td>
+                                        <td>KTX Khu A</td>
+                                        <td>Không</td>
+                                        <td>150.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-27</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">224536</td>
+                                        <td>ngominhhai@gmail.com</td>
+                                        <td>Duong</td>
+                                        <td>ngominhhai@gmail.com</td>
+                                        <td>095358112</td>
+                                        <td>ĐH Nông Lâm TPHCM</td>
+                                        <td>Không</td>
+                                        <td>160.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-27</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321456</td>
+                                        <td>tranminhquang@gmail.com</td>
+                                        <td>Duong</td>
+                                        <td>tranminhquang@gmail.com</td>
+                                        <td>0388963582</td>
+                                        <td>KHTN</td>
+                                        <td>Không</td>
+                                        <td>195.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-26</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321476</td>
+                                        <td>thiennguyen123@gmail.com</td>
+                                        <td>Thiện</td>
+                                        <td>thiennguyen123@gmail.com</td>
+                                        <td>0388963582</td>
+                                        <td>KHTN</td>
+                                        <td>Không</td>
+                                        <td>225.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-26</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">221456</td>
+                                        <td>sonnguyen123@gmail.com</td>
+                                        <td>Sơn</td>
+                                        <td>sonnguyen123@gmail.com</td>
+                                        <td>0388963595</td>
+                                        <td>KHTN</td>
+                                        <td>Không</td>
+                                        <td>225.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-26</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">334456</td>
+                                        <td>kimson6358@gmail.com</td>
+                                        <td>Sơn</td>
+                                        <td>kimson6358@gmail.com</td>
+                                        <td>0377963582</td>
+                                        <td>ITU</td>
+                                        <td>Không</td>
+                                        <td>230.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-26</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">32145622</td>
+                                        <td>nguyenanh53@gmail.com</td>
+                                        <td>Ánh</td>
+                                        <td>nguyenanh53@gmail.com</td>
+                                        <td>0388353582</td>
+                                        <td>KHTN</td>
+                                        <td>Xem hàng trước khi nhận</td>
+                                        <td>225.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-26</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321433</td>
+                                        <td>thanhnguyen456@gmail.com</td>
+                                        <td>Thạnh</td>
+                                        <td>thanhnguyen456@gmail.com</td>
+                                        <td>0388912582</td>
+                                        <td>KHTN</td>
+                                        <td>Không</td>
+                                        <td>245.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-26</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">121456</td>
+                                        <td>thiennguyen123@gmail.com</td>
+                                        <td>Thiện</td>
+                                        <td>thiennguyen123@gmail.com</td>
+                                        <td>0388963582</td>
+                                        <td>KHTN</td>
+                                        <td>Không</td>
+                                        <td>225.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-26</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">421456</td>
+                                        <td>trantrungtin56@gmail.com</td>
+                                        <td>Tín</td>
+                                        <td>trantruntinh@gmail.com</td>
+                                        <td>0389829625</td>
+                                        <td>ĐH Nông Lâm TP HCM</td>
+                                        <td>Không</td>
+                                        <td>150.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">323256</td>
+                                        <td>nguyettran56@gmail.com</td>
+                                        <td>Nguyệt</td>
+                                        <td>nguyettran56@gmail.com</td>
+                                        <td>037989625</td>
+                                        <td>ĐH Nông Lâm TP HCM</td>
+                                        <td>Không</td>
+                                        <td>170.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">322356</td>
+                                        <td>trantrungnguyen56@gmail.com</td>
+                                        <td>Tín</td>
+                                        <td>trantrunnguyen56@gmail.com</td>
+                                        <td>03898293565</td>
+                                        <td>ĐH Nông Lâm TP HCM</td>
+                                        <td>Không</td>
+                                        <td>60.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">312456</td>
+                                        <td>tangnguyen89@gmail.com</td>
+                                        <td>Tân</td>
+                                        <td>tangnguyen89@gmail.com</td>
+                                        <td>03893569625</td>
+                                        <td>ĐH Nông Lâm TP HCM</td>
+                                        <td>Không</td>
+                                        <td>195.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">323256</td>
+                                        <td>vocaotrinh56@gmail.com</td>
+                                        <td>Trịnh</td>
+                                        <td>vocaotrinh56@gmail.com</td>
+                                        <td>03898296565</td>
+                                        <td>ĐH Nông Lâm TP HCM</td>
+                                        <td>Không</td>
+                                        <td>150.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">312456</td>
+                                        <td>mytrinh569@gmail.com</td>
+                                        <td>Trinh</td>
+                                        <td>mytrinh569@gmail.com</td>
+                                        <td>03898293565</td>
+                                        <td>ĐH Nông Lâm TP HCM</td>
+                                        <td>Không</td>
+                                        <td>123.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">323214</td>
+                                        <td>mytien569@gmail.com</td>
+                                        <td>Tiên</td>
+                                        <td>mytien569@gmail.com</td>
+                                        <td>03898293565</td>
+                                        <td>ĐH Nông Lâm TP HCM</td>
+                                        <td>Không</td>
+                                        <td>143.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321477</td>
+                                        <td>tunglam56@gmail.com</td>
+                                        <td>Lâm</td>
+                                        <td>tunglam56@gmail.com</td>
+                                        <td>03898293355</td>
+                                        <td>ĐH Nông Lâm TP HCM</td>
+                                        <td>Không</td>
+                                        <td>199.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321453</td>
+                                        <td>lamtamnhu23@gmail.com</td>
+                                        <td>Như</td>
+                                        <td>lamtamnhu23@gmail.com</td>
+                                        <td>03368293565</td>
+                                        <td>ĐH ITU</td>
+                                        <td>Không</td>
+                                        <td>156.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">332456</td>
+                                        <td>lamtonhu253@gmail.com</td>
+                                        <td>Như</td>
+                                        <td>lamtonhu253@gmail.com</td>
+                                        <td>0336822565</td>
+                                        <td>ĐH ITU</td>
+                                        <td>Không</td>
+                                        <td>179.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321465</td>
+                                        <td>minhthanh79@gmail.com</td>
+                                        <td>Thành</td>
+                                        <td>minhthanh79@gmail.com</td>
+                                        <td>0336822565</td>
+                                        <td>ĐH ITU</td>
+                                        <td>Không</td>
+                                        <td>180.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321356</td>
+                                        <td>minhanh79@gmail.com</td>
+                                        <td>Anh</td>
+                                        <td>minhanh79@gmail.com</td>
+                                        <td>0336825665</td>
+                                        <td>ĐH ITU</td>
+                                        <td>Không</td>
+                                        <td>170.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321435</td>
+                                        <td>themyanh89@gmail.com</td>
+                                        <td>Mỹ Anh</td>
+                                        <td>themyanh89@gmail.com</td>
+                                        <td>03898293565</td>
+                                        <td>ĐH SPKT</td>
+                                        <td>Không</td>
+                                        <td>199.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321359</td>
+                                        <td>daongocmyuyen@gmail.com</td>
+                                        <td>Mỹ Anh</td>
+                                        <td>daongocmyuyen@gmail.com</td>
+                                        <td>03855293565</td>
+                                        <td>ĐH SPKT</td>
+                                        <td>Không</td>
+                                        <td>255.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">121456</td>
+                                        <td>vanthang23@gmail.com</td>
+                                        <td>Thắng</td>
+                                        <td>vanthang23@gmail.com</td>
+                                        <td>0388929625</td>
+                                        <td>KTX A</td>
+                                        <td>Không</td>
+                                        <td>155.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">251456</td>
+                                        <td>minhhy23@gmail.com</td>
+                                        <td>Thắng</td>
+                                        <td>minhhy23@gmail.com</td>
+                                        <td>0388239625</td>
+                                        <td>DH An Ninh</td>
+                                        <td>Không</td>
+                                        <td>635.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-25</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321656</td>
+                                        <td>truongthanhyen@gmail.com</td>
+                                        <td>Yên</td>
+                                        <td>truongthanhyen@gmail.com</td>
+                                        <td>0388929625</td>
+                                        <td>ĐH SPKT</td>
+                                        <td>Không</td>
+                                        <td>165.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">327456</td>
+                                        <td>truongnguyen@gmail.com</td>
+                                        <td>Yến</td>
+                                        <td>truongnguyen@gmail.com</td>
+                                        <td>0388699625</td>
+                                        <td>ĐH SPKT</td>
+                                        <td>Không</td>
+                                        <td>135.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">339456</td>
+                                        <td>thoithethaydoi@gmail.com</td>
+                                        <td>Đổi</td>
+                                        <td>thoithethaydoi@gmail.com</td>
+                                        <td>0388955625</td>
+                                        <td>ĐH Kinh Tế</td>
+                                        <td>Không</td>
+                                        <td>185.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">323256</td>
+                                        <td>doandu896@gmail.com</td>
+                                        <td>Dự</td>
+                                        <td>doandu896@gmail.com</td>
+                                        <td>038859625</td>
+                                        <td>ĐH SP Mở TPHCM</td>
+                                        <td>Không</td>
+                                        <td>355.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321488s</td>
+                                        <td>doandu896@gmail.com</td>
+                                        <td>Dự</td>
+                                        <td>doandu896@gmail.com</td>
+                                        <td>038859625</td>
+                                        <td>ĐH SP Mở TPHCM</td>
+                                        <td>Không</td>
+                                        <td>355.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321435</td>
+                                        <td>Kieuphong753@gmail.com</td>
+                                        <td>Phong</td>
+                                        <td>Kieuphong753@gmail.com</td>
+                                        <td>0388941625</td>
+                                        <td>ĐH Mở TPHCM</td>
+                                        <td>Không</td>
+                                        <td>150.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa  thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321436</td>
+                                        <td>dongta869@gmail.com</td>
+                                        <td>Đông</td>
+                                        <td>dongta869@gmail.com</td>
+                                        <td>038254525</td>
+                                        <td>ĐH Mở TPHCM</td>
+                                        <td>Không</td>
+                                        <td>650.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">338456</td>
+                                        <td>taydoc869@gmail.com</td>
+                                        <td>Tây</td>
+                                        <td>taydoc869@gmail.com</td>
+                                        <td>038254369</td>
+                                        <td>ĐH SPKT</td>
+                                        <td>Không</td>
+                                        <td>550.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">3321458</td>
+                                        <td>namde869@gmail.com</td>
+                                        <td>Nam</td>
+                                        <td>namde869@gmail.com</td>
+                                        <td>038232925</td>
+                                        <td>ĐH Mở TPHCM</td>
+                                        <td>Không</td>
+                                        <td>650.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">214569</td>
+                                        <td>hutruc869@gmail.com</td>
+                                        <td>Trúc</td>
+                                        <td>hutruc869@gmail.com</td>
+                                        <td>038232925</td>
+                                        <td>ĐH Mở TPHCM</td>
+                                        <td>Không</td>
+                                        <td>950.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321456</td>
+                                        <td>duongtang869@gmail.com</td>
+                                        <td>Tăng</td>
+                                        <td>duongtang869@gmail.com</td>
+                                        <td>038236925</td>
+                                        <td>ĐH Bách Khoa</td>
+                                        <td>Không</td>
+                                        <td>650.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">361456</td>
+                                        <td>duongnguyen555@gmail.com</td>
+                                        <td>Nguyên</td>
+                                        <td>duongnguyen555@gmail.com</td>
+                                        <td>03823365925</td>
+                                        <td>ĐH SPKT</td>
+                                        <td>Không</td>
+                                        <td>950.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-24</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">432141</td>
+                                        <td>thuhang365@gmail.com</td>
+                                        <td>Hằng</td>
+                                        <td>thuhang365@gmail.com</td>
+                                        <td>034132925</td>
+                                        <td>ĐH Mở TPHCM</td>
+                                        <td>Không</td>
+                                        <td>950.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">414562</td>
+                                        <td>minhnguyen789@gmail.com</td>
+                                        <td>Nguyên</td>
+                                        <td>minhnguyen789@gmail.com</td>
+                                        <td>0382969925</td>
+                                        <td>ĐH Nông LâmTPHCM</td>
+                                        <td>Không</td>
+                                        <td>450.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">432142</td>
+                                        <td>trungkhanh789@gmail.com</td>
+                                        <td>Khánh</td>
+                                        <td>trungkhanh789@gmail.com</td>
+                                        <td>0382966925</td>
+                                        <td>ĐH Nông LâmTPHCM</td>
+                                        <td>Không</td>
+                                        <td>640.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">432143</td>
+                                        <td>minhthien8789@gmail.com</td>
+                                        <td>Thiện</td>
+                                        <td>minhthien8789@gmail.com</td>
+                                        <td>0384269925</td>
+                                        <td>ĐH Nông LâmTPHCM</td>
+                                        <td>Không</td>
+                                        <td>480.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">214564</td>
+                                        <td>caotrungvinh569@gmail.com</td>
+                                        <td>Vĩnh</td>
+                                        <td>caotrungvinh569@gmail.com</td>
+                                        <td>0252969925</td>
+                                        <td>ĐH Nông LâmTPHCM</td>
+                                        <td>Không</td>
+                                        <td>660.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">32177456</td>
+                                        <td>nguyenmanhcuong896@gmail.com</td>
+                                        <td>Cường</td>
+                                        <td>nguyenmanhcuong896@gmail.com</td>
+                                        <td>0325969925</td>
+                                        <td>ĐH Nông LâmTPHCM</td>
+                                        <td>Không</td>
+                                        <td>260.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Chưa thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321462</td>
+                                        <td>caoson256@gmail.com</td>
+                                        <td>Sơn</td>
+                                        <td>caoson256@gmail.com</td>
+                                        <td>0382969585</td>
+                                        <td>ĐH Mở TPHCM</td>
+                                        <td>Không</td>
+                                        <td>350.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321896</td>
+                                        <td>myhanh556@gmail.com</td>
+                                        <td>Hạnh</td>
+                                        <td>myhanh556@gmail.com</td>
+                                        <td>0382969925</td>
+                                        <td>ĐH Sài Gòn</td>
+                                        <td>Không</td>
+                                        <td>550.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">321468</td>
+                                        <td>viethchuong556@gmail.com</td>
+                                        <td>Chương</td>
+                                        <td>viethchuong556@gmail.com</td>
+                                        <td>0382669925</td>
+                                        <td>ĐH Duy Tân</td>
+                                        <td>Không</td>
+                                        <td>559.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">431456</td>
+                                        <td>huynhthenghia556@gmail.com</td>
+                                        <td>Nghĩa</td>
+                                        <td>huynhthenghia556@gmail.com</td>
+                                        <td>0388929625</td>
+                                        <td>KTX Khu B</td>
+                                        <td>Không</td>
+                                        <td>150.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">265486</td>
+                                        <td>daotiensy556@gmail.com</td>
+                                        <td>Chương</td>
+                                        <td>daotiensy556@gmail.com</td>
+                                        <td>0382666625</td>
+                                        <td>ĐH SƯ phạm TPHCM</td>
+                                        <td>Không</td>
+                                        <td>789.000 VNĐ</td>
+                                        <td>COD</td>
+                                        <td>Đã thanh toán</td>
+                                        <td>2020-09-23</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="order_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay toggle-menu"></div>
+        </div>
+    </div>
+    <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+
+    <!--start color switcher-->
+    <div class="right-sidebar">
+        <div class="switcher-icon">
+            <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+        </div>
+        <div class="right-sidebar-content">
+
+            <p class="mb-0">Gaussion Texture</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme1"></li>
+                <li id="theme2"></li>
+                <li id="theme3"></li>
+                <li id="theme4"></li>
+                <li id="theme5"></li>
+                <li id="theme6"></li>
+            </ul>
+
+            <p class="mb-0">Gradient Background</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme7"></li>
+                <li id="theme8"></li>
+                <li id="theme9"></li>
+                <li id="theme10"></li>
+                <li id="theme11"></li>
+                <li id="theme12"></li>
+                <li id="theme13"></li>
+                <li id="theme14"></li>
+                <li id="theme15"></li>
+            </ul>
+
+        </div>
+    </div>
+    <!--end color switcher-->
+
+</div><!--End wrapper-->
+
+<!-- Bootstrap core JavaScript-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- simplebar js -->
+<script src="assets/plugins/simplebar/js/simplebar.js"></script>
+<!-- sidebar-menu js -->
+<script src="assets/js/sidebar-menu.js"></script>
+<!-- loader scripts -->
+<script src="assets/js/jquery.loading-indicator.js"></script>
+<!-- Custom scripts -->
+<script src="assets/js/app-script.js"></script>
+<!-- Chart js -->
+
+<script src="assets/plugins/Chart.js/Chart.min.js"></script>
+
+<!-- Index js -->
+<script src="assets/js/index.js"></script>
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
+
+
+</body>
+</html>

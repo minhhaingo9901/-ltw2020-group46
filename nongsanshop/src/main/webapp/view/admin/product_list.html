@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Quản lí sản phẩm</title>
+    <!-- loader-->
+    <link href="assets/css/pace.min.css" rel="stylesheet"/>
+    <script src="assets/js/pace.min.js"></script>
+    <!--favicon-->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Vector CSS -->
+    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
+    <!-- simplebar CSS-->
+    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+    <!-- Bootstrap core CSS-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- animate CSS-->
+    <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
+    <!-- Icons CSS-->
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <!-- Sidebar CSS-->
+    <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
+    <!-- Custom Style-->
+    <link href="assets/css/app-style.css" rel="stylesheet"/>
+
+</head>
+
+<body class="bg-theme bg-theme1">
+
+<!-- Start wrapper-->
+<div id="wrapper">
+
+    <!--Start sidebar-wrapper-->
+    <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+        <div class="brand-logo">
+            <a href="index.html">
+                <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                <h5 class="logo-text">Admin Web Nông Sản</h5>
+            </a>
+        </div>
+        <ul class="sidebar-menu do-nicescrol">
+            <li class="sidebar-header">Menu Admin</li>
+            <li>
+                <a href="index.html">
+                    <i class="zmdi zmdi-view-dashboard"></i> <span>Tổng Quan</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="role_admin_list.html">
+                    <i class="zmdi zmdi-account-box"></i> <span>Quản Lí Admin</span>
+                </a>
+            </li>
+            <li>
+                <a href="user_list.html">
+                    <i class="zmdi zmdi-accounts"></i> <span>Quản Lí User</span>
+                </a>
+            </li>
+            <li>
+                <a href="cate_list.html">
+                    <i class="zmdi zmdi-grid"></i> <span>Chuyên Mục</span>
+                </a>
+            </li>
+            <li>
+                <a href="product_list.html">
+                    <i class="zmdi zmdi-widgets"></i> <span>Danh Sách Sản Phẩm</span>
+                </a>
+            </li>
+            <li>
+                <a href="order_list.html">
+                    <i class="zmdi zmdi-shopping-cart"></i> <span>Đơn Hàng</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="order_list_detail.html">
+                    <i class="zmdi zmdi-shopping-cart"></i> <span>Chi Tiết Đơn Hàng</span>
+                </a>
+            </li>
+            <li>
+                <a href="review_list.html">
+                    <i class="zmdi zmdi-calendar-check"></i> <span>Review</span>
+                </a>
+            </li>
+            <li>
+                <a href="news_list.html">
+                    <i class="icon-envelope-open"></i> <span>Tin Tức</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--End sidebar-wrapper-->
+    <!-- start loader -->
+    <div id="pageloader-overlay" class="visible incoming">
+        <div class="loader-wrapper-outer">
+            <div class="loader-wrapper-inner">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--Start topbar header-->
+    <header class="topbar-nav">
+        <nav class="navbar navbar-expand fixed-top">
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link toggle-menu" href="javascript:void();">
+                        <i class="icon-menu menu-icon"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav align-items-center right-nav-link">
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                        <span class="user-profile"><img src="assets/images/avatar-admin.png" class="img-circle" alt="user avatar"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item user-details">
+                            <a href="javaScript:void();">
+                                <div class="media">
+                                    <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatar-admin.png" alt="user avatar"></div>
+                                    <div class="media-body">
+                                        <h6 class="mt-2 user-title">Webnongsan</h6>
+                                        <b> Admin:  Quang</b>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-power mr-2"></i><a href="index.html"> Đăng xuất</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--End topbar header-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger">Xóa</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <div class="clearfix"></div>
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                    <button class="add-catalog btn btn-info"><a href="product_add.html">Thêm sản phẩm</a></button>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Danh sách sản phẩm</h5>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">TÊN SẢN PHẨM</th>
+                                        <th scope="col">HÌNH ẢNH</th>
+                                        <th scope="col">ID DANH MỤC</th>
+                                        <th scope="col">GIÁ</th>
+                                        <th scope="col">STATUS</th>
+                                        <th scope="col">GIẢM GIÁ</th>
+                                        <th scope="col">NGÀY TẠO</th>
+                                        <th scope="col">HÀNH ĐỘNG</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td scope="row">1</td>
+                                        <td>Rau cải</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/rau_cai.jpg" alt="Rau cải"></td>
+                                        <td>1</td>
+                                        <td>15.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>0%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">2</td>
+                                        <td>Rau muống</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/rau_muong.jpg" alt="Rau Muống"></td>
+                                        <td>1</td>
+                                        <td>14.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">3</td>
+                                        <td>Rau cần tay</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/rau_can_tay.jpg" alt="Rau cần tay"></td>
+                                        <td>1</td>
+                                        <td>20.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">4</td>
+                                        <td>Rau mùi</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/rau_mui.jpg" alt="Rau Mùi"></td>
+                                        <td>1</td>
+                                        <td>15.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">5</td>
+                                        <td>Hành Baro</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hanh_baro.jpg" alt="Hành Baro"></td>
+                                        <td>1</td>
+                                        <td>20.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">6</td>
+                                        <td>Bí đao</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/bi-dao.jpg" alt="Bí đao"></td>
+                                        <td>1</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>20%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">7</td>
+                                        <td>Bí đỏ</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/bi-do.jpg" alt="Bí đỏ"></td>
+                                        <td>1</td>
+                                        <td>25.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">8</td>
+                                        <td>Hông xiêm</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hong_xiem.jpg" alt="Hồng xiêm"></td>
+                                        <td>1</td>
+                                        <td>30.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">9</td>
+                                        <td>Đậu nhật</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dau_nhat.jpg" alt="Đậu nhật"></td>
+                                        <td>1</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">10</td>
+                                        <td>Đậu chuột</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dau-chuot.jpg" alt="Đậu chuột"></td>
+                                        <td>1</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">11</td>
+                                        <td>Khoai lang</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/khoai-lang.jpg" alt="Khoai lang"></td>
+                                        <td>1</td>
+                                        <td>20.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>0%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">12</td>
+                                        <td>Hạnh nhân</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hanh_nhan.jpg" alt="Hạnh nhân"></td>
+                                        <td>1</td>
+                                        <td>60.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">13</td>
+                                        <td>Hành tía</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hanh_tia.jpg" alt="Hành tía"></td>
+                                        <td>1</td>
+                                        <td>50.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">14</td>
+                                        <td>Măng tây</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/mangtay.jpg" alt="Măng tây"></td>
+                                        <td>1</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">15</td>
+                                        <td>Ô mai</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/o_mai.jpg" alt="Ô mai"></td>
+                                        <td>1</td>
+                                        <td>55.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">16</td>
+                                        <td>Sa Nhãn</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/sa_nhan.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>120.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">17</td>
+                                        <td>Salach</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/salach.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>20.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">18</td>
+                                        <td>Súp lơ xanh</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/thao_qua.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">19</td>
+                                        <td>Thảo quả</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/rau-den-xanh-la-non.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">20</td>
+                                        <td>Rau dền xanh lá nón</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/rau-cai-bo-xoi.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>45.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">21</td>
+                                        <td>Rau cải bó xôi</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cai-brussel.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>25.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">22</td>
+                                        <td>Cải brussel</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cai-cau-vong.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>25.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">22</td>
+                                        <td>Cải brussel</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/bi-ngo.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>25.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">23</td>
+                                        <td>Cải cầu vồng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/rau-ngot.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>125.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">24</td>
+                                        <td>Bí ngô</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cai%20xoan.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>225.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">25</td>
+                                        <td>Rau ngót</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/rau-ngot.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">26</td>
+                                        <td>Cải xoăn</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cai%20xoan.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>95.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">27</td>
+                                        <td>Tỏi</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/toi.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>5.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">28</td>
+                                        <td>Củ dền</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cu-den.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>35.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">29</td>
+                                        <td>Cải bó xôi</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cai-bo-xoi.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>62.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">30</td>
+                                        <td>Ớt chuông</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/ot-chuong.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>25.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                        <td scope="row">31</td>
+                                        <td>Đậu bắp</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dau-bap.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>66.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td></tr><tr>
+                                    </tr><tr>
+                                        <td scope="row">32</td>
+                                        <td>Cải xoăn kale</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cai-xoan-kale.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>100.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">33</td>
+                                        <td>Đậu Hà Lan</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dau-ha-lan.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>110.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">34</td>
+                                        <td>Cải cầu vồng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cai-cau-vong.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>100.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">35</td>
+                                        <td>Hạt sen</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat_sen.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>50.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">36</td>
+                                        <td>Hạt tiêu</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-tieu.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>50.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">37</td>
+                                        <td>Hạt Uoi</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat_uoi.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>10.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">38</td>
+                                        <td>Hạt phi</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat_phi.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>100.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">39</td>
+                                        <td>Hạt thông</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-thong.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>165.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+
+                                    </tr><tr>
+                                        <td scope="row">40</td>
+                                        <td>Hạt dẻ</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-de.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>35.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">41</td>
+                                        <td>Hạt bí ngô</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-bi-ngo.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">42</td>
+                                        <td>Hạt hướng dương</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-huong-duong.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">43</td>
+                                        <td>Hạt ca cao</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-ca-cao.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">44</td>
+                                        <td>Hạt dưa hấu</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-dua-hau.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">45</td>
+                                        <td>Hạt chia</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-chia.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>75.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">46</td>
+                                        <td>Hạt đậu gà trắng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-dau-ga-trang.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>75.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">47</td>
+                                        <td>Đậu cúc</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dau-cuc.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>25.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">48</td>
+                                        <td>Hạt kê vàng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-ke-vang.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">49</td>
+                                        <td>Hạt kê trắng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-ke-trang.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>85.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">50</td>
+                                        <td>Hạt bobo trắng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-boo-trang.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>125.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">51</td>
+                                        <td>Hạt bobo vàng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-bobo-vang.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>75.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">52</td>
+                                        <td>Hạt ba khía</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-ba-khia.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>95.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">53</td>
+                                        <td>Hạt đác</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-dat.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>79.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">54</td>
+                                        <td>Hạt hồ đào</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-ho-dao.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>55.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">55</td>
+                                        <td>Hạt thìa là</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-thia-la.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">56</td>
+                                        <td>Hạt phỉ</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-phi.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>2%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">57</td>
+                                        <td>Hạt diêm mạch</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-die-mach.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>5.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>3%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">58</td>
+                                        <td>Hạt hồ trăn</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-ho-trang.jpg" alt=""></td>
+                                        <td>2</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">59</td>
+                                        <td>Hạt quả hạch Brazil</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-brazil.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">60</td>
+                                        <td>Hạt lanh</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/hat-lanh.jpg" alt=""></td>
+                                        <td>1</td>
+                                        <td>99.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>20%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">61</td>
+                                        <td>Vú sữa</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/vu-sua.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>55.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">62</td>
+                                        <td>Xoài tượng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/xoai-tuong.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>686.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">63</td>
+                                        <td>Na</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/na.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">64</td>
+                                        <td>Táo</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/tao_xanh.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>25.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">65</td>
+                                        <td>Chuối xanh</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/chuoi-xanh.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>92.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">66</td>
+                                        <td>Cam sành</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cam-sanh.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">67</td>
+                                        <td>Cherry Mỹ</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/cherry-my.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>75.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">68</td>
+                                        <td>Dưa lưới</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dua-luoi.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">69</td>
+                                        <td>Dưa chuột</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dua_chuot.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">70</td>
+                                        <td>Nhãn lông</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/nhan_long.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">71</td>
+                                        <td>Thanh long</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/thanh_long.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>99.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">72</td>
+                                        <td>Xoài tượng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/xoai-tuong.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>55.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">73</td>
+                                        <td>Mít</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/mit.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>35.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">74</td>
+                                        <td>Ỏi</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/oi.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>99.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>12%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">75</td>
+                                        <td>Măng cụt</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/mang-cuc.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">76</td>
+                                        <td>Sầu riêng</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/sau-rieng.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>45.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">76</td>
+                                        <td>Chôm chôm</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/chom-chom.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">77</td>
+                                        <td>Đào</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dao.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>78.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">78</td>
+                                        <td>Vải</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/vai.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>66.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">79</td>
+                                        <td>Nho</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/nho.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>53.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">80</td>
+                                        <td>Lựu</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/luu.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">81</td>
+                                        <td>Dừa</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dua.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>25.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">82</td>
+                                        <td>Đu đủ</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/du-du.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>15.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">83</td>
+                                        <td>Kiwi</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/kiwi.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>55.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">84</td>
+                                        <td>Lê</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/le.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>65.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">85</td>
+                                        <td>Sơ ri</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/so-ri.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>55.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>6%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">86</td>
+                                        <td>Việt quất</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/viet-quat.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>85.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">87</td>
+                                        <td>Lê ki ma</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/le-ki-ma.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>55.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>4%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">88</td>
+                                        <td>Cốc</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/coc.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>120.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">89</td>
+                                        <td>Keo</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/keo.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>45.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">90</td>
+                                        <td>Mận</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/trai-man.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>55.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>15%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">91</td>
+                                        <td>Mật ong</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/mat_ong.jpg" alt="Rau Muống"></td>
+                                        <td>4</td>
+                                        <td>165.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>0%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">92</td>
+                                        <td>Mật ong bạc hà</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/mat_ong_bac_ha.jpg" alt=""></td>
+                                        <td>4</td>
+                                        <td>1955.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">93</td>
+                                        <td>Sâm nghệ mật ông Mama</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/mat_ong_gung.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>690.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">94</td>
+                                        <td>Dầu ô liu</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/dau-o-kiu.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>75.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">95</td>
+                                        <td>Tinh dâu Aotanica</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/aotanica.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>672.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>3%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">96</td>
+                                        <td>Tinh dầu oải hương kepha</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/kepha.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>155.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">97</td>
+                                        <td>Tinh dầu vape</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/vape.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>455.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>10%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">98</td>
+                                        <td>Tinh dầu tràm</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/tram.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>265.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>8%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">99</td>
+                                        <td>Tinh dầu Bưởi Milaganics</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/Milaganics.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>465.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                        <td scope="row">100</td>
+                                        <td>Tinh dầu sả chanh OILLA</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;"src="products/img-test/oilla.jpg" alt=""></td>
+                                        <td>3</td>
+                                        <td>165.000</td>
+                                        <td>Còn hàng</td>
+                                        <td>5%</td>
+                                        <td>2020-05-22</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+
+                                            <button class="btn btn-success"><a href="product_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr><tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay toggle-menu"></div>
+        </div>
+    </div>
+    <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+
+    <!--start color switcher-->
+    <div class="right-sidebar">
+        <div class="switcher-icon">
+            <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+        </div>
+        <div class="right-sidebar-content">
+
+            <p class="mb-0">Gaussion Texture</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme1"></li>
+                <li id="theme2"></li>
+                <li id="theme3"></li>
+                <li id="theme4"></li>
+                <li id="theme5"></li>
+                <li id="theme6"></li>
+            </ul>
+
+            <p class="mb-0">Gradient Background</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme7"></li>
+                <li id="theme8"></li>
+                <li id="theme9"></li>
+                <li id="theme10"></li>
+                <li id="theme11"></li>
+                <li id="theme12"></li>
+                <li id="theme13"></li>
+                <li id="theme14"></li>
+                <li id="theme15"></li>
+            </ul>
+
+        </div>
+    </div>
+    <!--end color switcher-->
+
+</div><!--End wrapper-->
+
+<!-- Bootstrap core JavaScript-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- simplebar js -->
+<script src="assets/plugins/simplebar/js/simplebar.js"></script>
+<!-- sidebar-menu js -->
+<script src="assets/js/sidebar-menu.js"></script>
+<!-- loader scripts -->
+<script src="assets/js/jquery.loading-indicator.js"></script>
+<!-- Custom scripts -->
+<script src="assets/js/app-script.js"></script>
+<!-- Chart js -->
+
+<script src="assets/plugins/Chart.js/Chart.min.js"></script>
+
+<!-- Index js -->
+<script src="assets/js/index.js"></script>
+
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
+
+
+</body>
+</html>

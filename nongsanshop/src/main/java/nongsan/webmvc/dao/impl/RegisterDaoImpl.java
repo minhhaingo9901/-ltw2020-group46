@@ -35,6 +35,6 @@ public class RegisterDaoImpl {
         {
             e.printStackTrace();
         }
-        return set;  // On failure, send a message from here.
+        return set;
     }
 }

@@ -7,6 +7,7 @@ CREATE TABLE role (
                       code VARCHAR ( 150 ) NOT NULL,
                       created date NOT NULL
 );
+Alter TABLE role AUTO_INCREMENT 1 ;
 CREATE TABLE user (
                       id INT NOT NULL PRIMARY KEY auto_increment,
                       roleid INT NOT NULL,
@@ -19,6 +20,8 @@ CREATE TABLE user (
                       created date NOT NULL
 
 );
+Alter TABLE user AUTO_INCREMENT 1 ;
+
 ALTER TABLE user ADD CONSTRAINT fk_user_role FOREIGN KEY ( roleid ) REFERENCES role ( id ) ON DELETE CASCADE;
 
 CREATE TABLE catalog (
@@ -26,6 +29,9 @@ CREATE TABLE catalog (
                          name nvarchar ( 50 ) NOT NULL,
                          parent_id INT NULL
 );
+
+Alter TABLE catalog AUTO_INCREMENT 1 ;
+
 CREATE TABLE product (
                          id INT NOT NULL PRIMARY KEY auto_increment,
                          catalog_id INT NOT NULL,
@@ -39,6 +45,8 @@ CREATE TABLE product (
                          image_link nvarchar ( 4000 ) NOT NULL,
                          created date NOT NULL
 );
+
+Alter TABLE product AUTO_INCREMENT 1 ;
 ALTER TABLE product ADD CONSTRAINT fk_product_catalog FOREIGN KEY ( catalog_id ) REFERENCES catalog ( id ) ON DELETE CASCADE;
 
 CREATE TABLE review (
@@ -49,6 +57,7 @@ CREATE TABLE review (
                         content nvarchar ( 4000 ) NOT NULL,
                         created date
 );
+Alter TABLE review AUTO_INCREMENT 1 ;
 ALTER TABLE review ADD CONSTRAINT fk_review_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE;
 
 create table boardnew
@@ -60,6 +69,7 @@ create table boardnew
     author nvarchar(50) not null,
     created date not null
 );
+Alter TABLE boardnew AUTO_INCREMENT 1 ;
 
 CREATE TABLE COMMENT (
                          id INT NOT NULL PRIMARY KEY auto_increment,
@@ -69,18 +79,20 @@ CREATE TABLE COMMENT (
                          content nvarchar ( 4000 ) NOT NULL,
                          created date NOT NULL
 );
+Alter TABLE comment AUTO_INCREMENT 1 ;
 ALTER TABLE COMMENT ADD CONSTRAINT fk_comment_boardnew FOREIGN KEY (boardnew_id) REFERENCES boardnew (id) ON DELETE CASCADE;
 
 CREATE TABLE invoice (
                          id int NOT NULL PRIMARY KEY auto_increment,
                          user_id int NOT NULL,
-                         address nvarchar ( 300 ) NOT NULL,
-                         message nvarchar ( 4000 ) NOT NULL,
-                         amount nvarchar ( 20 ) NOT NULL,
-                         payment nvarchar ( 30 ) NOT NULL,
-                         status nvarchar ( 30 ),
-                         created date NOT NULL
+                         address nvarchar ( 300 ) NOT NULL, --địa chỉ giao hàng
+                         message nvarchar ( 4000 ) NOT NULL,--ghi chú giao hàng
+                         amount nvarchar ( 20 ) NOT NULL,   --số tiền phải thanh toán
+                         payment nvarchar ( 30 ) NOT NULL,  --phương thức thanh toán
+                         status nvarchar ( 30 ),            --trạng thái đơn hàng
+                         created date NOT NULL              --ngày mua hàng
 );
+Alter TABLE invoice AUTO_INCREMENT 1 ;
 ALTER TABLE invoice ADD CONSTRAINT fk_invoice_user FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE;
 
 CREATE TABLE invoicedetail (
@@ -89,6 +101,8 @@ CREATE TABLE invoicedetail (
                                invoice_id INT NOT NULL,
                                qty INT NOT NULL
 );
+Alter TABLE invoicedetail AUTO_INCREMENT 1 ;
+
 ALTER TABLE invoicedetail ADD CONSTRAINT fk_invoicedetail_product FOREIGN KEY ( product_id ) REFERENCES product ( id ) ON DELETE CASCADE;
 ALTER TABLE invoicedetail ADD CONSTRAINT fk_invoicedetail_invoice FOREIGN KEY ( invoice_id ) REFERENCES invoice ( id ) ON DELETE CASCADE;
 

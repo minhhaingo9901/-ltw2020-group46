@@ -2,7 +2,7 @@ package nongsan.webmvc.service;
 
 import nongsan.webmvc.model.Product;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface ProductService {
     void insert(Product product);
@@ -15,13 +15,14 @@ public interface ProductService {
 
     Product get(String name);
 
-    List<Product> getAll();
+    ArrayList<Product> getAll();
 
-    List<Product> getProductById(int id);
+    ArrayList<Product> getProductById(int id);
 
-    List<Product> searchByName(String productName);
+    ArrayList<Product> searchByName(String productName);
 
-    List<Product> getProductByIdCate(int idCate);
+    ArrayList<Product> getProductByIdCate(int idCate);
+
     ArrayList<Product> getProduct(int a, int b);
     int getCount();
 }

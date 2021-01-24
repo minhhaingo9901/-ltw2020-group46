@@ -24,25 +24,5 @@
         <location>/404</location>
     </error-page>
 
-    <servlet>
-        <servlet-name>addUser</servlet-name>
-        <servlet-class>nongsan.webmvc.controller.admin.UserAddController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>addUser</servlet-name>
-        <url-pattern>/admin/user/add</url-pattern>
-    </servlet-mapping>
-    <!--  Client Router -->
-
-
-    <servlet>
-        <servlet-name>ClientRegister</servlet-name>
-        <servlet-class>nongsan.webmvc.controller.RegistrationController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ClientRegister</servlet-name>
-        <url-pattern>/view/client/register</url-pattern>
-    </servlet-mapping>
 
 </web-app>

@@ -40,7 +40,7 @@
                         <li class="aa-search"><!-- search box -->
                             <a class="aa-search-box">
                                 <form action="${pageContext.request.contextPath}/view/client/product/search" method="GET">
-                                    <input type="text" name="s" id="" placeholder="Tìm kiếm sản phẩm..">
+                                    <input type="text" name="s" id="tags" placeholder="Tìm kiếm sản phẩm..">
                                     <button class="serach-box"><span class="fa fa-search"></span></button>
                                 </form>
                             </a>

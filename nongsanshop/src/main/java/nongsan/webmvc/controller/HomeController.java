@@ -6,6 +6,8 @@ import nongsan.webmvc.service.impl.ProductServiceImpl;
 import nongsan.webmvc.model.Boardnew;
 import nongsan.webmvc.service.BoardnewService;
 import nongsan.webmvc.service.impl.BoardnewServicesImpl;
+
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +19,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "HomeController", urlPatterns = "/HomePage")
+@WebServlet(name = "homePage",urlPatterns = "")
 public class HomeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     ProductService productService = new ProductServiceImpl();

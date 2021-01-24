@@ -70,6 +70,7 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public ArrayList<Product> getProduct(int a, int b) {
 		return productDao.getProduct(a,b);
@@ -79,7 +80,6 @@ public class ProductServiceImpl implements ProductService {
 	public int getCount() {
 		return productDao.getCount();
 	}
-
 
 
 }

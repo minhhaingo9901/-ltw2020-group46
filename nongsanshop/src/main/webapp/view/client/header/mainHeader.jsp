@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nông sản 24h - Sự lựa chọn tin cậy</title>
+    <title>Nông sản 46 - Sự lựa chọn tin cậy</title>
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
@@ -16,6 +16,11 @@
     <link href="${url}/css/font-awesome.css" rel="stylesheet">
 
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <link href="${url}/css/bootstrap.css" rel="stylesheet">
     <link rel="icon" href="${url}/images/favicon.png" type="image/x-icon">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->

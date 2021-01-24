@@ -13,7 +13,7 @@ public class VerifyUser {
 
         try
         {
-            String sql = "select * from user where username=?";
+            String sql = "select * from users where username=?";
             Connection con = connectDB.getConnect();
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, username);
@@ -24,11 +24,11 @@ public class VerifyUser {
                 usernameCounter =  r1.getString("username");
                 if(usernameCounter.equalsIgnoreCase(username))
                 {
-                    System.out.println("Username already exists");
+                    System.out.println("Tên đăng nhập đã tồn tại");
                 }
                 else
                 {
-                    System.out.println("Username is available");
+                    System.out.println("Tên đăng nhập hợp lệ");
                 }
             }
         }

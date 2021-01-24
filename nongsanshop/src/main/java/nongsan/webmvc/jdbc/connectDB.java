@@ -13,9 +13,9 @@ public class connectDB {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection= DriverManager.getConnection("jdbc:mysql://localhost:3307/qlns?useUnicode=true&characterEncoding=UTF-8","root","");
-            System.out.println("Kết nối thành công!");
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Kết nối thất bại!"+e.getMessage());
+            System.out.println("KN thành công!");
+        } catch (RuntimeException | ClassNotFoundException | SQLException e) {
+            System.out.println("KN thất bại!"+e.getMessage());
         }
         return connection;
     }

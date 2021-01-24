@@ -26,7 +26,7 @@ public class User {
         this.created = created;
     }
 
-    public User(int roleid,String email,String name,String phone,String username,String password, int status,String created) {
+    public User(int roleid, String name, String email, String phone, String username, String password, int status, String created) {
         this.roleid = roleid;
         this.name = name;
         this.email = email;
@@ -36,6 +36,8 @@ public class User {
         this.status = status;
         this.created = created;
     }
+
+
 
     public int getId() {
         return id;
@@ -123,4 +125,5 @@ public class User {
                 ", created='" + created + '\'' +
                 '}';
     }
+
 }

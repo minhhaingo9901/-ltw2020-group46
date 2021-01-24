@@ -154,7 +154,6 @@ img {
 .aa-browse-btn:hover, .aa-browse-btn:focus {
   background-color: #fff;
 }
-
 .aa-add-to-cart-btn {
   border: 1px solid #ccc;
   color: #555;
@@ -694,6 +693,7 @@ img {
   background-color: #fff;
   color: #339900;
 }
+
 #menu .menu-area .navbar-default .navbar-nav .open a {
   background-color: #fff;
 }
@@ -2551,6 +2551,7 @@ a.aa-product-img img {
   margin-bottom: 15px;
   padding: 10px;
   width: 100%;
+
 }
 #checkout .checkout-area .checkout-left .panel-group .aa-checkout-login label {
   cursor: pointer;
@@ -2677,20 +2678,25 @@ a.aa-product-img img {
   padding-bottom: 15px;
 }
 #aa-myaccount .aa-myaccount-area .aa-myaccount-login {
-  display: inline;
-  float: left;
-  width: 100%;
+  display: block;
+  /*display: inline;*/
+  /*float: left;*/
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+
 }
-#aa-myaccount .aa-myaccount-area .aa-myaccount-register {
-  display: inline;
-  float: left;
-  width: 100%;
+#aa-myaccount .aa-myaccount-area .aa-myaccount-forgotPass {
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*---- Login form ----*/
 
 .aa-login-form input[type="text"],
-.aa-login-form input[type="password"] {
+.aa-login-form input[type="password"]{
   border: 1px solid #ccc;
   font-size: 16px;
   height: 40px;
@@ -2698,6 +2704,85 @@ a.aa-product-img img {
   padding: 10px;
   width: 100%;
 }
+.aa-login-form input[type="text"]:focus,
+.aa-login-form input[type="password"]:focus{
+  border: none;
+  outline: 1px solid #339900;
+}
+/*btn-show-pass*/
+.btn-show-pass {
+  float: right;
+  position: relative;
+  margin-right: 5px;
+  margin-top: -46px;
+  color: #999;
+  background-color: #fff;
+  border: none;
+  height: 40px;
+  outline: none;
+  width: 20%;
+  height: 20px;
+}
+.btn-show-pass:hover{
+  color: #339900;
+}
+.aa-login-form.input[type="btn-show-pass" i] {
+  cursor: pointer;
+
+}
+
+/*! btn-show-pass*/
+/*checkbox*/
+.aa-login-form input[type="checkbox"] {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  color: black;
+  border: 1px solid #ccc;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1)
+}
+.aa-login-form input[type="checkbox"]:before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 1px;
+  left: 5px;
+  width: 5px;
+  height: 10px;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(40deg);
+  opacity: 0;
+}
+.aa-login-form input[type="checkbox"]:hover {
+  background-color: #ddffcc;
+  border: 1px solid #339900;
+}
+.aa-login-form input[type="checkbox"]:checked {
+  background: #339900;
+  border: 1px solid #339900;
+}
+.aa-login-form input[type="checkbox"]:checked:hover {
+  background: #ddffcc;
+  border: 1px solid #339900;
+}
+.aa-login-form input[type="checkbox"]:checked:before {
+  opacity: 1;
+}
+.aa-login-form input[type="checkbox"]:checked:hover:before {
+  border-color: #339900;;
+}
+/*checkbox*/
+/*forget-pass*/
+.aa-login-form .forget-pass{
+  float: right;
+  margin-top: 8px;
+}
+/*forget-pass*/
 .aa-login-form label {
   font-weight: normal;
   margin-top: 8px;
@@ -2709,15 +2794,13 @@ a.aa-product-img img {
   cursor: pointer;
   margin-top: 0px;
 }
-.aa-login-form input[type="checkbox"] {
-  margin-top: 5px;
-}
 .aa-login-form button {
   font-size: 14px;
   padding: 8px 20px;
-  margin-right: 5px;
-  margin-top: 10px;
+  margin-right: 0px;
+  margin-top: 0px;
   float: left;
+  width: 100%;
 }
 .aa-login-form .aa-lost-password {
   color: #555;
@@ -2727,7 +2810,6 @@ a.aa-product-img img {
 .aa-login-form .aa-lost-password a {
   color: #555;
 }
-
 /*---- LOGIN MODAL ----*/
 
 #login-modal .modal-content {
@@ -2778,6 +2860,7 @@ a.aa-product-img img {
   float: left;
   width: 100%;
   margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-content .aa-blog-content-single h4 {
   font-size: 20px;
@@ -3103,7 +3186,7 @@ a.aa-product-img img {
   display: inline-block;
   color: #fff;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 1px;border-bottom: 1px solid #ccc;
   line-height: 20px;
   padding: 8px 15px;
   text-transform: uppercase;
@@ -4389,4 +4472,148 @@ a.aa-product-img img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.form-comment :focus{
+  border: 1px solid #339900;
+}
+/*---- Register form ----*/
+
+.aa-register-form input[type="text"],
+.aa-register-form  input[type="password"]{
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 40px;
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+}
+.aa-register-form input[type="text"]:focus,
+.aa-register-form input[type="password"]:focus{
+  border: none;
+  outline: 1px solid #339900;
+}
+/*checkbox*/
+.aa-register-form input[type="checkbox"] {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  color: black;
+  border: 1px solid #ccc;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1)
+}
+.aa-register-form input[type="checkbox"]:before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 1px;
+  left: 5px;
+  width: 5px;
+  height: 10px;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(40deg);
+  opacity: 0;
+}
+.aa-register-form input[type="checkbox"]:hover {
+  background-color: #ddffcc;
+  border: 1px solid #339900;
+}
+.aa-register-form input[type="checkbox"]:checked {
+  background: #339900;
+  border: 1px solid #339900;
+}
+.aa-register-form input[type="checkbox"]:checked:hover {
+  background: #ddffcc;
+  border: 1px solid #339900;
+}
+.aa-register-form input[type="checkbox"]:checked:before {
+  opacity: 1;
+}
+.aa-register-form input[type="checkbox"]:checked:hover:before {
+  border-color: #339900;;
+}
+/*checkbox*/
+/*forget-pass*/
+.aa-register-form  .forget-pass{
+  float: right;
+  margin-top: 8px;
+}
+/*forget-pass*/
+.aa-register-form  label {
+  font-weight: normal;
+  margin-top: 8px;
+}
+.aa-register-form  label span {
+  color: red;
+}
+.aa-register-form .rememberme1 {
+  cursor: pointer;
+  margin-top: 0px;
+}
+.aa-register-form  button {
+  font-size: 14px;
+  padding: 8px 20px;
+  margin-right: 0px;
+  margin-top: 0px;
+  float: left;
+  width: 100%;
+}
+.aa-register-form .aa-lost-password {
+  color: #555;
+  margin-top: 10px;
+  width: 100%;
+}
+.aa-register-form .aa-lost-password a {
+  color: #555;
+}
+.register-with{
+  text-align: center;
+  padding-top: 3.7em;
+  padding-bottom: 10px;
+}
+.google-icon{
+  height: 20px;
+  float: left;
+}
+.facebook-icon{
+  height: 20px;
+  float: left;
+}
+.btn-sign-up-google {
+  display: inline-block;
+  font-size: 16px;
+  padding: 12px 18px;
+  color: #757575;
+  background-color: #fcfcfc;
+  border: 1px solid #4285f4;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  margin-bottom: 5px;
+}
+.btn-sign-up-facebook {
+  display: inline-block;
+  font-size: 16px;
+  padding: 12px 18px;
+  color: #fff;
+  background-color: #1877f2;
+  border: 1px solid #1877f2;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  margin-bottom: 5px;
+}
+.title-span {
+  padding-top: 4em;
+  text-align: center;
+  font-size: 16px;
+  font-weight: normal;
 }

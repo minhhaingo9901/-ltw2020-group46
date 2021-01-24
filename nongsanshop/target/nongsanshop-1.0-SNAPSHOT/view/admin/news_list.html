@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Tin tức</title>
+    <!-- loader-->
+    <link href="assets/css/pace.min.css" rel="stylesheet"/>
+    <script src="assets/js/pace.min.js"></script>
+    <!--favicon-->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Vector CSS -->
+    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
+    <!-- simplebar CSS-->
+    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+    <!-- Bootstrap core CSS-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- animate CSS-->
+    <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
+    <!-- Icons CSS-->
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <!-- Sidebar CSS-->
+    <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
+    <!-- Custom Style-->
+    <link href="assets/css/app-style.css" rel="stylesheet"/>
+
+</head>
+
+<body class="bg-theme bg-theme1">
+
+<!-- Start wrapper-->
+<div id="wrapper">
+
+    <!--Start sidebar-wrapper-->
+    <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+        <div class="brand-logo">
+            <a href="index.html">
+                <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                <h5 class="logo-text">Admin Web Nông Sản</h5>
+            </a>
+        </div>
+        <ul class="sidebar-menu do-nicescrol">
+            <li class="sidebar-header">Menu Admin</li>
+            <li>
+                <a href="index.html">
+                    <i class="zmdi zmdi-view-dashboard"></i> <span>Tổng quan</span>
+                </a>
+            </li>
+            <li>
+                <a href="user_list.html">
+                    <i class="zmdi zmdi-accounts"></i> <span>Quản Lí User</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="role_admin_list.html">
+                    <i class="zmdi zmdi-account-box"></i> <span>Quản Lí Admin</span>
+                </a>
+            </li>
+            <li>
+                <a href="cate_list.html">
+                    <i class="zmdi zmdi-grid"></i> <span>Chuyên Mục</span>
+                </a>
+            </li>
+            <li>
+                <a href="product_list.html">
+                    <i class="zmdi zmdi-widgets"></i> <span>Danh Sách Sản Phẩm</span>
+                </a>
+            </li>
+            <li>
+                <a href="order_list.html">
+                    <i class="zmdi zmdi-shopping-cart"></i> <span>Đơn Hàng</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="order_list_detail.html">
+                    <i class="zmdi zmdi-shopping-cart"></i> <span>Chi Tiết Đơn Hàng</span>
+                </a>
+            </li>
+            <li>
+                <a href="review_list.html">
+                    <i class="zmdi zmdi-calendar-check"></i> <span>Review</span>
+                </a>
+            </li>
+            <li>
+                <a href="news_list.html">
+                    <i class="icon-envelope-open"></i> <span>Tin Tức</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--End sidebar-wrapper-->
+    <!-- start loader -->
+    <div id="pageloader-overlay" class="visible incoming">
+        <div class="loader-wrapper-outer">
+            <div class="loader-wrapper-inner">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--Start topbar header-->
+    <header class="topbar-nav">
+        <nav class="navbar navbar-expand fixed-top">
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link toggle-menu" href="javascript:void();">
+                        <i class="icon-menu menu-icon"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav align-items-center right-nav-link">
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                        <span class="user-profile"><img src="assets/images/avatar-admin.png" class="img-circle" alt="user avatar"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item user-details">
+                            <a href="javaScript:void();">
+                                <div class="media">
+                                    <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatar-admin.png" alt="user avatar"></div>
+                                    <div class="media-body">
+                                        <h6 class="mt-2 user-title">Webnongsan</h6>
+                                        <b> Admin:  Quang</b>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-power mr-2"></i><a href="index.html"> Đăng xuất</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--End topbar header-->
+
+    <div class="clearfix"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: #0a1219;font-size: 17px">Bạn có chắc chắn xóa mục này không?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"><a href="news_list.html">Xóa</a></button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!--End Row-->
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="add-catalog"><a href="news_add.html">Thêm tin tức</a></button>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Danh sách tin tức</h5>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Tiêu đề</th>
+                                        <th scope="col">Hình ảnh</th>
+                                        <th scope="col">Người đăng</th>
+                                        <th scope="col">Ngày đăng</th>
+                                        <th scope="col">Hành động</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Thực phẩm sạch tăng mạnh sau dịch Covid-19</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_1.jpg"></td>
+                                        <td>Mạc Dương</td>
+                                        <td>2020-12-11</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                            <button class="btn btn-success"><a href="news_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Phát hiện loại rau củ chứa chất chữa được bệnh nan y</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_2.jpg"</td>
+                                        <td>Minh Quang</td>
+                                        <td>2020-12-12</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                            <button class="btn btn-success"><a href="news_edit.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <td>3</td>
+                                    <td>Việt Nam đứng thứ 6 thế giới về xuất khẩu mật ong</td>
+                                    <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_3.jpg"></td>
+                                    <td>Minh Hải</td>
+                                    <td>2020-12-09</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                        <button class="btn btn-success"><a href="news_list.html">Sửa</a></button>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Phù phép rau chợ đầu mối thành rau sạch tuồn vào trường học</td>
+                                        <td><img style="width: 110px;height: 67px; object-fit: cover;border: 1px solid #fff;" src="assets/images/news/blog_4.jpg"></td>
+                                        <td>Minh Hải</td>
+                                        <td>2020-12-09</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                                            <button class="btn btn-success"><a href="news_list.html">Sửa</a></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+
+    <!--start color switcher-->
+    <div class="right-sidebar">
+        <div class="switcher-icon">
+            <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+        </div>
+        <div class="right-sidebar-content">
+
+            <p class="mb-0">Gaussion Texture</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme1"></li>
+                <li id="theme2"></li>
+                <li id="theme3"></li>
+                <li id="theme4"></li>
+                <li id="theme5"></li>
+                <li id="theme6"></li>
+            </ul>
+
+            <p class="mb-0">Gradient Background</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme7"></li>
+                <li id="theme8"></li>
+                <li id="theme9"></li>
+                <li id="theme10"></li>
+                <li id="theme11"></li>
+                <li id="theme12"></li>
+                <li id="theme13"></li>
+                <li id="theme14"></li>
+                <li id="theme15"></li>
+            </ul>
+
+        </div>
+    </div>
+    <!--end color switcher-->
+
+</div><!--End wrapper-->
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
+<!-- Bootstrap core JavaScript-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- simplebar js -->
+<script src="assets/plugins/simplebar/js/simplebar.js"></script>
+<!-- sidebar-menu js -->
+<script src="assets/js/sidebar-menu.js"></script>
+<!-- loader scripts -->
+<script src="assets/js/jquery.loading-indicator.js"></script>
+<!-- Custom scripts -->
+<script src="assets/js/app-script.js"></script>
+<!-- Chart js -->
+
+<script src="assets/plugins/Chart.js/Chart.min.js"></script>
+
+<!-- Index js -->
+<script src="assets/js/index.js"></script>
+
+
+</body>
+</html>

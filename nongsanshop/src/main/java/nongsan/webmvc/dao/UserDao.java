@@ -1,24 +1,32 @@
 package nongsan.webmvc.dao;
-
-import java.util.List;
-
 import nongsan.webmvc.model.User;
-
+import java.util.List;
 public interface UserDao {
+
+
+
 
     void insert(User user);
 
-    void edit(User user);
+        void edit(User user);
 
-    void delete(int id);
+        void delete(int id);
 
-    User get(String name);
+        User get(String name);
 
-    User get(int id);
+        User get(int id);
 
-    List<User> getAll();
+        List<User> getAll();
 
-    boolean checkLogin1(String username, String password, int roleid, int status);
+        List<User> getUserList();
 
-    boolean checkLogin(String username, String password, int roleid, int status);
-}
+        List<User> getAdminList();
+
+        // Kiem tra dang nhap role client
+        public boolean checkLogin(String Username, String Password, int Roleid, int Status);
+
+        // Kiem tra dang nhap role admin
+        public boolean checkLogin1(String Username, String Password, int Roleid, int Status);
+
+    }
+

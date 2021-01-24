@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+@WebServlet(name="ClientLogin", urlPatterns = "/view/client/login")
 public class LoginController extends HttpServlet {
     private UserDaoImpl userDAO = new UserDaoImpl();
     private static final long serialVersionUID = 1L;
@@ -30,20 +31,20 @@ public class LoginController extends HttpServlet {
         int roleid = Integer.parseInt(request.getParameter("roleid"));
         int status = Integer.parseInt(request.getParameter("status"));
         try {
-            if (userDAO.checkLogin(username, password, roleid, status) == true) {
+            if (userDAO.checkLogin(username, password, roleid, status)) {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
                 response.sendRedirect(request.getContextPath() + "/");
                 System.out.println(username);
-            } else if (userDAO.checkLogin1(username, password, roleid, status) == true) {
+            } else if (userDAO.checkLogin1(username, password, roleid, status)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
-                response.sendRedirect(request.getContextPath() + "/view/admin/admin.jsp");
+                response.sendRedirect(request.getContextPath() + "/admin/homepage");
                 System.out.println(username);
             } else {
                 request.setAttribute("errorMsg", "Tài khoản đăng nhập hoặc mật khẩu sai !!!");
-                RequestDispatcher rd = request.getRequestDispatcher("/view/client/login.jsp");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/client/login.jsp");
                 rd.forward(request, response);
             }
         } catch (Exception e) {

@@ -21,5 +21,7 @@ public interface UserService {
     boolean checkLogin(String Username, String Password, int Roleid, int Status);
 
     boolean checkLogin1(String Username, String Password, int Roleid, int Status);
+    List<User> getUserList();
+    List<User> getAdminList();
 }
 
