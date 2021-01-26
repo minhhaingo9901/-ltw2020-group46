@@ -145,7 +145,7 @@
               <div class="card-body">
                 <div class="card-title">Thêm sản phẩm</div>
                 <hr>
-                <form method="post" action="${pageContext.request.contextPath}/admin/product/add" enctype="multipart/form-data">
+                <form method="post" action="${pageContext.request.contextPath}/admin/product/add" enctype="multipart/form-data" accept-charset="UTF-8">
                 
                
                   <div class="form-group">
@@ -208,11 +208,14 @@
                     <textarea class="form-control" rows="4" id="input-17" name="product-content"></textarea>
                   </div>
                 </div>
-                
-                 <div class="form-group">
-                    <label for="input-1">Ảnh sản phẩm</label>
-                    <input type="file" class="form-control" id="input-1"  name="product-image" accept="image/*" onchange="loadFile(event)" />
-                  </div>
+
+                    <div class="form-group">
+                        <label for="input-20">HÌNH ẢNH</label>
+                        <div class="custom-file">
+                            <p id="imgInfo">You have no image!</p>
+                            <br /> <input type="file" id="imgInp" name="file" required><br />
+                        </div>
+                    </div>
                <div class="form-footer">
                     <button class="btn btn-danger"><i class="fa fa-times"></i><a href="${pageContext.request.contextPath}/admin/product/list">Hủy</a></button>
                     <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Thêm</button>
@@ -292,6 +295,31 @@
 <script src="${url}/plugins/Chart.js/Chart.min.js"></script>
 <script src="${url}/js/index.js"></script>
 <script src="${url}/plugins/summernote/dist/summernote-bs4.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#blah').hide();
+        $("#imgInfo").show();
+
+    });
+</script>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+                $('#blah').show();
+                $("#imgInfo").hide();
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function() {
+        readURL(this);
+    });
+</script>
 </body>
 
 </html>
