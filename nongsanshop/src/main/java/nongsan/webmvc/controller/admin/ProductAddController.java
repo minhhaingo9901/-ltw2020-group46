@@ -48,7 +48,9 @@ public class ProductAddController extends HttpServlet {
         product.setDescription(product_desc);
         product.setContent(product_content);
         product.setDiscount(product_discount);
-        product.setImage_link(uploadFile(request));
+
+        String filename=uploadImage(request,response);
+        product.setImage_link(filename);
         product.setCreated(product_day);
         productService.insert(product);
         response.sendRedirect(request.getContextPath() + "/admin/product/list");
@@ -61,57 +63,54 @@ public class ProductAddController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/addproduct.jsp");
         dispatcher.forward(request, response);
     }
-    private String uploadFile(HttpServletRequest request) throws IOException, ServletException {
-        String fileName = "";
+
+    public String uploadImage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.setCharacterEncoding("UTF-8");
+        Part filePart = request.getPart("file");
+        String fileName="";
+        for (Part part : request.getParts()) {
+            fileName = extractFileName(part);
+        }
+
+        OutputStream outStream = null;
+        InputStream filecontent = null;
+        final PrintWriter writer = response.getWriter();
+
         try {
-            Part filePart = request.getPart("product-image");
+            outStream = new FileOutputStream(new File(request.getRealPath("/view/client/assets/images/products/img-test")+ File.separator
+                    + fileName));
 
-            //fileName: picture-001.jpg
-            fileName = (String) getFileName(filePart);
+            filecontent = filePart.getInputStream();
 
-            //applicationPath: C:\Users\Lonely\Documents\NetBeansProjects\Shop_Bonfire\build\web
-            String applicationPath = request.getServletContext().getRealPath("");
+            int read = 0;
+            final byte[] bytes = new byte[1024];
 
-            //File.separator: \
-            String basePath = applicationPath + File.separator + UPLOAD_DIR + File.separator;
-
-            InputStream inputStream = null;
-            OutputStream outputStream = null;
-            try {
-                File outputFilePath = new File(basePath + fileName);
-                inputStream = filePart.getInputStream();
-                outputStream = new FileOutputStream(outputFilePath);
-                int read = 0;
-                final byte[] bytes = new byte[1024];
-                while ((read = inputStream.read(bytes)) != -1) {
-                    outputStream.write(bytes, 0, read);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                fileName = "";
-            } finally {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-                if (outputStream != null) {
-                    outputStream.close();
-                }
+            while ((read = filecontent.read(bytes)) != -1) {
+                outStream.write(bytes, 0, read);
             }
-        } catch (Exception e) {
-            fileName = "";
+            writer.println("New file " + fileName + " created at " + filePart);
+        } catch (FileNotFoundException fne) {
+            fne.printStackTrace();
+            writer.println("You either did not specify a file to upload or are "
+                    + "trying to upload a file to a protected or nonexistent "
+                    + "location.");
+            writer.println("<br/> ERROR: " + fne.getMessage());
+
         }
         return fileName;
     }
 
-    private String getFileName(Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-        System.out.println("*****partHeader :" + partHeader);
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+
+
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
             }
         }
-        return null;
-
+        return "";
     }
+
 }
