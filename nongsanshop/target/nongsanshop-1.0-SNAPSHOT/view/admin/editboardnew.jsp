@@ -1,7 +1,9 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <c:url value = "/view/admin/assets" var="url"/>
 <c:url value = "/view/admin/ckeditor" var="urlx"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

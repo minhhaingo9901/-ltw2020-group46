@@ -1,4 +1,5 @@
-<%@ page import="nongsan.webmvc.model.User" %><%--
+<%@ page import="nongsan.webmvc.model.User" %>
+<%@ page import="nongsan.webmvc.dao.impl.UserDaoImpl" %><%--
   Created by IntelliJ IDEA.
   User: Kino
   Date: 1/20/2021
@@ -12,9 +13,9 @@
     response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
     response.setHeader("Pragma" , "no-cache");
     response.setHeader("Expires" , "0");
-
+    UserDaoImpl userDao =new UserDaoImpl();
     if (session.getAttribute("username") != null){
-        User user = new User();
+        User user =new User();
         request.setAttribute("name",user);
         request.setAttribute("phone",user);
     }
@@ -68,7 +69,7 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="aa-checkout-single-bill">
-                                                                    <input type="text" placeholder="Họ Tên*" required="required" name="transaction_name" value="">
+                                                                    <input type="text" placeholder="Họ Tên*" required="required" name="transaction_name" value="" autofocus>
                                                                 </div>
                                                             </div>
 
@@ -77,7 +78,7 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="aa-checkout-single-bill">
-                                                                    <input type="email" placeholder="Email*" required="required" name="transaction_email" value="" autofocus>
+                                                                    <input type="email" placeholder="Email*" required="required" name="transaction_email" value="" >
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -173,7 +174,7 @@
                                     <img src="${pageContext.request.contextPath}/view/client/assets/img/zalopay.png" border="0" alt="thanh toán bằng zalopay">
                                     <input type="submit" value="Đặt hàng" class="aa-browse-btn">
                                 </div>
-                                    <c:if test="${sessionScope.username != null && sessionScope.order == null}">
+                                    <c:if test="${sessionScope.username == null && sessionScope.order == null}">
                                         <br>
                                         <p style="color: red">Bạn đã đặt hàng thành công!</p>
                                     </c:if>

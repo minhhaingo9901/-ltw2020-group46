@@ -11,11 +11,13 @@ import java.io.IOException;
 @WebServlet(name="RegistrationController", urlPatterns = "/view/client/register")
 public class RegistrationController extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    RegisterDaoImpl registerDao = new RegisterDaoImpl();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/view/client/register.jsp");
         dispatcher.forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,18 +34,24 @@ public class RegistrationController extends HttpServlet {
         String created = request.getParameter("created");
 
 
-        User user = new User(roleid,email, name, phone, username, password,status, created);
+        User user = new User(roleid, email, name, phone, username, password, status, created);
 
         RegisterDaoImpl register = new RegisterDaoImpl(connectDB.getConnect());
-        if (register.RegisterUser(user))
-        {
-            request.setAttribute("Message", "Bạn đã tạo tài khoàn thành công. Mời bạn đăng nhập!!.");
-            RequestDispatcher rd = request.getRequestDispatcher("/view/client/register.jsp");
-            rd.forward(request, response);
-        } else {
-            request.setAttribute("errMessage", "Tạo tài khoản thất bại. Hãy thử lại !!!");
-            RequestDispatcher rd = request.getRequestDispatcher("/view/client/register.jsp");
-            rd.forward(request, response);
+        try {
+            if (registerDao.checkRegister(email, phone, username)) {
+                // nếu thông tin trùng
+                request.setAttribute("errMessage", "Email này đã được đăng ký. Hãy thử lại !!!");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/client/register.jsp");
+                rd.forward(request, response);
+            } else {
+                // nếu thông tin không trùng
+                register.RegisterUser(user);
+                request.setAttribute("Message", "Tạo tài khoản thành công. Mời bạn đăng nhập!");
+                RequestDispatcher rd = request.getRequestDispatcher("/view/client/register.jsp");
+                rd.forward(request, response);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

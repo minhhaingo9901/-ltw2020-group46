@@ -1,6 +1,8 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
+<c:url value = "/view/admin/ckeditor" var="urlx"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +24,7 @@
     <link href="${url}/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="${url}/css/sidebar-menu.css" rel="stylesheet" />
     <link href="${url}/css/app-style.css" rel="stylesheet" />
+    <script type="text/javascript" src="${urlx}/ckeditor.js"></script>
 
 
 </head>
@@ -208,7 +211,7 @@
                 <div class="form-group">
                   <label for="input-2" class="col-form-label">Nội dung</label>
                   <div>
-                    <textarea class="form-control" rows="4" id="input-17" name="product-content">${product.content}</textarea>
+                    <textarea rows="20" cols="20" id="editor" name="product-content">${product.content}</textarea>
                   </div>
                 </div>
                 
@@ -267,6 +270,9 @@
         </div>
     </div>
 </div>
+<script>
+    CKEDITOR.replace('editor');
+</script>
 <script src="${url}/js/jquery.min.js"></script>
 <script src="${url}/js/popper.min.js"></script>
 <script src="${url}/js/bootstrap.min.js"></script>

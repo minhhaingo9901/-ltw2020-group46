@@ -13,7 +13,7 @@ CREATE TABLE user (
 	roleid INT NOT NULL,
     email nvarchar ( 50 ) UNIQUE NOT NULL,
 	name nvarchar ( 50 ) NOT NULL,
-	phone nvarchar ( 20 ) NULL,
+	phone nvarchar ( 20 ) UNIQUE NOT NULL,
 	username nvarchar ( 50 ) UNIQUE NOT NULL,
 	password nvarchar ( 50 ) NOT NULL,
 	status int null,
@@ -68,16 +68,6 @@ create table boardnew
     created date not null
 );
 ALTER TABLE boardnew AUTO_INCREMENT 1;
-CREATE TABLE COMMENT (
-                         id INT NOT NULL PRIMARY KEY auto_increment,
-                         boardnew_id INT NOT NULL,
-                         name nvarchar ( 50 ) NOT NULL,
-                         email nvarchar ( 50 ) NOT NULL,
-                         content nvarchar ( 4000 ) NOT NULL,
-                         created date NOT NULL
-);
-ALTER TABLE boardnew AUTO_INCREMENT 1;
-ALTER TABLE COMMENT ADD CONSTRAINT fk_comment_boardnew FOREIGN KEY (boardnew_id) REFERENCES boardnew (id) ON DELETE CASCADE;
 
 CREATE TABLE transactions (
                          id int NOT NULL PRIMARY KEY auto_increment,

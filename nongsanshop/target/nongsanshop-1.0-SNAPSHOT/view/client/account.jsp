@@ -1,4 +1,7 @@
-<%--
+<%@ page import="nongsan.webmvc.dao.impl.UserDaoImpl" %>
+<%@ page import="nongsan.webmvc.model.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Kino
   Date: 1/20/2021
@@ -21,7 +24,7 @@
             <div class="aa-catg-head-banner-content">
                 <h2>Thông tin tài  khoản</h2>
                 <ol class="breadcrumb">
-                    <li><a href="${pageContext.request.contextPath}">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}z/">Trang chủ</a></li>
                     <li><a href="${pageContext.request.contextPath}/view/client/account">Tài khoản</a></li>
                 </ol>
             </div>
@@ -44,20 +47,18 @@
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <th scope="col" type="hiden">Mã Tài Khoản</th>
+                                                <th scope="col" type="hiden">Email</th>
                                                 <th scope="col">Họ Tên</th>
-                                                <th scope="col">Email</th>
                                                 <th scope="col">Phone</th>
                                                 <th scope="col">Tên Đăng Nhập</th>
                                                 <th scope="col">Hành động</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${accountuser}" var="user">
+                                            <c:forEach items="${userinfor}" var="user">
                                                 <tr>
-                                                    <td scope="row">${user.id}</td>
-                                                    <td>${user.id}</td>
-                                                    <td>${user.email}</td>
+                                                    <td scope="row">${user.email}</td>
+                                                    <td>${user.name}</td>
                                                     <td>${user.phone}</td>
                                                     <td>${user.username}</td>
 

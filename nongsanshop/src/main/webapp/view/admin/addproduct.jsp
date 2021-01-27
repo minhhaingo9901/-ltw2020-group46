@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
+<c:url value = "/view/admin/ckeditor" var="urlx"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +24,7 @@
     <link href="${url}/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="${url}/css/sidebar-menu.css" rel="stylesheet" />
     <link href="${url}/css/app-style.css" rel="stylesheet" />
+    <script type="text/javascript" src="${urlx}/ckeditor.js"></script>
 
 
 </head>
@@ -138,121 +140,121 @@
     <div class="clearfix"></div>
 
     <div class="content-wrapper">
-      <div class="container-fluid">
-        <div class="row mt-3">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title">Thêm sản phẩm</div>
-                <hr>
-                <form method="post" action="${pageContext.request.contextPath}/admin/product/add" enctype="multipart/form-data" accept-charset="UTF-8">
-                
-               
-                  <div class="form-group">
-                    <label for="input-1">Tên sản phẩm</label>
-                    <input type="text" class="form-control" id="input-1" placeholder="Tên sản phẩm" name="product-name">
-                  </div>
-                  
-        
-                  <div class="form-group">
-	                  <label for="input-2">Danh mục</label>
-	                  <div>
-	                    <select class="form-control valid" id="input-6" name="product-cate" aria-invalid="false">
-	                    <c:forEach items="${catelist}" var="cate">
-	                        <option value="${cate.id }">${cate.name }</option>
-	                    </c:forEach>
-	                    </select>
-	                  </div>
-	                </div>
-	                 <div class="form-group">
-                    <label for="input-1">Ngày</label> 
-                    <input type="date" class="form-control" id="the-date" placeholder="Ngày đăng" name="product-day">
-                  </div>
-	                <div class="form-group">
-                    <label for="input-1">Giá</label>
-                    <input type="text" class="form-control" id="input-1" placeholder="Giá" name="product-price">
-                  </div>
-                    <div class="form-group">
-                        <label for="input-1">Số Lượng</label>
-                        <input type="text" class="form-control" id="input-1" placeholder="Số Lượng" name="product-qty">
-                    </div>
+        <div class="container-fluid">
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">Thêm sản phẩm</div>
+                            <hr>
+                            <form method="post" action="${pageContext.request.contextPath}/admin/product/add" enctype="multipart/form-data" accept-charset="UTF-8">
 
-                    <div class="form-group">
-	                  <label for="input-2">Trạng thái</label>
-	                  <div>
-	                    <select class="form-control valid" id="input-6" name="product-status" required aria-invalid="false">
-	                        <option value="1">Còn hàng</option>
-	                        <option value="0">Hết hàng</option>
-	                    </select>
-	                  </div>
-	                </div>
-	                 <div class="form-group">
-		                <label for="input-2">Giảm giá</label>
-		                <div class="input-group">
-		                <input type="text" class="form-control" placeholder="Giảm ... %" name="product-discount">
-		                <div class="input-group-append">
-		                <button class="btn btn-light" type="button">%</button>
-		                </div>
-		                </div>
-	              </div>
-                 <div class="form-group">
-                  <label for="input-2" class="col-form-label">Mô tả</label>
-                  <div>
-                    <textarea class="form-control" rows="4" id="input-17" name="product-desc"></textarea>
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label for="input-2" class="col-form-label">Nội dung</label>
-                  <div>
-                    <textarea class="form-control" rows="4" id="input-17" name="product-content"></textarea>
-                  </div>
-                </div>
 
-                    <div class="form-group">
-                        <label for="input-20">HÌNH ẢNH</label>
-                        <div class="custom-file">
-                            <p id="imgInfo">You have no image!</p>
-                            <br /> <input type="file" id="imgInp" name="file" required><br />
+                                <div class="form-group">
+                                    <label for="input-1">Tên sản phẩm</label>
+                                    <input type="text" class="form-control" id="input-1" placeholder="Tên sản phẩm" name="product-name">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="input-2">Danh mục</label>
+                                    <div>
+                                        <select class="form-control valid" id="input-6" name="product-cate" aria-invalid="false">
+                                            <c:forEach items="${catelist}" var="cate">
+                                                <option value="${cate.id }">${cate.name }</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-1">Ngày</label>
+                                    <input type="date" class="form-control" id="the-date" placeholder="Ngày đăng" name="product-day">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-1">Giá</label>
+                                    <input type="text" class="form-control" id="input-1" placeholder="Giá" name="product-price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-1">Số Lượng</label>
+                                    <input type="text" class="form-control" id="input-1" placeholder="Số Lượng" name="product-qty">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="input-2">Trạng thái</label>
+                                    <div>
+                                        <select class="form-control valid" id="input-6" name="product-status" required aria-invalid="false">
+                                            <option value="1">Còn hàng</option>
+                                            <option value="0">Hết hàng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-2">Giảm giá</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Giảm ... %" name="product-discount">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-light" type="button">%</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-2" class="col-form-label">Mô tả</label>
+                                    <div>
+                                        <textarea class="form-control" rows="4" id="input-17" name="product-desc"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="input-2" class="col-form-label">Nội dung</label>
+                                    <div>
+                                        <textarea rows="20" cols="20" id="editor" name="product-content"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="input-20">HÌNH ẢNH</label>
+                                    <div class="custom-file">
+                                        <p id="imgInfo">You have no image!</p>
+                                        <br /> <input type="file" id="imgInp" name="file" required><br />
+                                    </div>
+                                </div>
+                                <div class="form-footer">
+                                    <button class="btn btn-danger"><i class="fa fa-times"></i><a href="${pageContext.request.contextPath}/admin/product/list">Hủy</a></button>
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Thêm</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-               <div class="form-footer">
-                    <button class="btn btn-danger"><i class="fa fa-times"></i><a href="${pageContext.request.contextPath}/admin/product/list">Hủy</a></button>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Thêm</button>
                 </div>
-                </form>
-              </div>
             </div>
-          </div>
+            <div class="overlay toggle-menu"></div>
         </div>
-        <div class="overlay toggle-menu"></div>
-      </div>
     </div>
-<script>
-		var date = new Date();
-		
-		var day = date.getDate();
-		var month = date.getMonth() + 1;
-		var year = date.getFullYear();
-		
-		if (month < 10) month = "0" + month;
-		if (day < 10) day = "0" + day;
-		
-		var today = year + "-" + month + "-" + day;
-		
-		
-		document.getElementById('the-date').value = today;
-</script>
-<script>
-    var loadFile = function (event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('output');
-            output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
-    };// code display image upload
-</script>
+    <script>
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        var today = year + "-" + month + "-" + day;
+
+
+        document.getElementById('the-date').value = today;
+    </script>
+    <script>
+        var loadFile = function (event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('output');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };// code display image upload
+    </script>
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <div class="right-sidebar">
         <div class="switcher-icon">
@@ -300,7 +302,6 @@
     $(document).ready(function() {
         $('#blah').hide();
         $("#imgInfo").show();
-
     });
 </script>
 <script type="text/javascript">
@@ -315,10 +316,12 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-
     $("#imgInp").change(function() {
         readURL(this);
     });
+</script>
+<script>
+    CKEDITOR.replace('editor');
 </script>
 </body>
 

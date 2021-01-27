@@ -1,16 +1,8 @@
+<%@ page import="nongsan.webmvc.dao.impl.UserDaoImpl" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value = "/view/admin/assets" var="url"/>
-<%
-  response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
-  response.setHeader("Pragma" , "no-cache");
-  response.setHeader("Expires" , "0");
-  
-  
-  if (session.getAttribute("username") == null){
-	  response.sendRedirect(request.getContextPath() + "/view/client/login");
-  }
-  %>
+
 
 
 <!DOCTYPE html>

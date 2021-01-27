@@ -1,7 +1,6 @@
 package nongsan.webmvc.controller;
 
 import nongsan.webmvc.dao.impl.UserDaoImpl;
-import nongsan.webmvc.model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,8 +12,9 @@ import java.io.IOException;
 
 @WebServlet(name="ForgotPasswordController", urlPatterns = "/view/client/forgot-password")
 public class ForgotPasswordController extends HttpServlet {
-    private UserDaoImpl userDAO = new UserDaoImpl();
+
     private static final long serialVersionUID = 1L;
+    private UserDaoImpl userDao = new UserDaoImpl();
     public ForgotPasswordController() {
         super();
     }
@@ -24,14 +24,12 @@ public class ForgotPasswordController extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
-        User user = new User();
         try {
-            if (userDAO.passwordRecovery(email)) {
+            if (userDao.passwordRecovery(email)) {
                 request.setAttribute("Message", "Mật khẩu đã được gửi, vui lòng kiểm tra email và đăng nhập lại!.");
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/client/forgot-password.jsp");
                 rd.forward(request, response);

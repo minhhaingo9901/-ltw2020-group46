@@ -28,5 +28,8 @@ public interface UserDao {
         // Kiem tra dang nhap role admin
         public boolean checkLogin1(String Username, String Password, int Roleid, int Status);
 
+
+
+
     }
 

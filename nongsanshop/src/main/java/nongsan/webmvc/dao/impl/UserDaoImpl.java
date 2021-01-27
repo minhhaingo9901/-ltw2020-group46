@@ -54,10 +54,35 @@ public class UserDaoImpl extends connectDB implements UserDao {
     }
 
     @Override
-    public User get(String name) {
-        // TODO Auto-generated method stub
-        return null;
+    public User get(String username) {
+        User user = new User();
+        String sql = "select * from user where username =' "+ username + "'";
+        Connection conn = connectDB.getConnect();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                user.setId(rs.getInt("id"));
+                user.setRoleid(rs.getInt("roleid"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPhone(rs.getString("phone"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setStatus(rs.getInt("status"));
+                user.setCreated(rs.getString("created"));
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+
     }
+
 
     @Override
     public User get(int id) {
@@ -89,6 +114,7 @@ public class UserDaoImpl extends connectDB implements UserDao {
 
         return user;
     }
+
 
     @Override
     public void edit(User user) {
@@ -248,7 +274,7 @@ public class UserDaoImpl extends connectDB implements UserDao {
         return false;
     }
 
-     //Send Mail:
+    //Send Mail:
     public static boolean sendMail(String to, String subject, String text) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -264,7 +290,7 @@ public class UserDaoImpl extends connectDB implements UserDao {
         try {
             Message message = new MimeMessage(session);
             message.setHeader("Content-Type", "text/plain; charset=UTF-8");
-            message.setFrom(new InternetAddress("minhhai99.top@gmail.com","Nong san 46"));
+            message.setFrom(new InternetAddress("minhhai99.top@gmail.com","webnongsan@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
             message.setText(text);
@@ -284,15 +310,7 @@ public class UserDaoImpl extends connectDB implements UserDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setRoleid(rs.getInt("roleid"));
-                user.setName(rs.getString("name"));
-                user.setEmail(rs.getString("email"));
-                user.setPhone(rs.getString("phone"));
-                user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                user.setStatus(rs.getInt("status"));
-                user.setCreated(rs.getString("created"));
                 sendMail(email,"Your password is: ",user.getPassword());
                 return true;
             }
@@ -301,8 +319,24 @@ public class UserDaoImpl extends connectDB implements UserDao {
         }
         return false;
     }
+//    public boolean checkRoleid(String username) {
+//        Connection conn = connectDB.getConnect();
+//        String sql = "SELECT * FROM user WHERE username ='" + username + "'AND roleid = " + 1 + "'";
+//        try {
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                System.out.print("Ok");
+//                return true;
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
-    }
+
+}
 
 
 

@@ -34,12 +34,14 @@
                         <div class="col-md-8 col-md-push-2">
                             <div class="aa-myaccount-forgotPass">
                                 <h4>Đặt lại mật khẩu</h4>
-                                <form action="${pageContext.request.contextPath}/view/client/forgot-password" name="formRegister" class="aa-login-form">
+                                <form action="${pageContext.request.contextPath}/view/client/forgot-password" name="formRegister" class="aa-login-form" method="post">
                                     <label for="email">Email<span>*</span></label>
                                     <input id="email" type="text" placeholder="useremail@gmail.com" name="email" required autofocus
                                            oninvalid="this.setCustomValidity('Vui lòng nhập Email')">
                                     <p style="color:red; display: block;"><%=(request.getAttribute("Message") == null) ? ""
                                             : request.getAttribute("Message")%></p>
+                                    <p style="color:red; display: block;"><%=(request.getAttribute("errMessage") == null) ? ""
+                                            : request.getAttribute("errMessage")%></p>
                                     <button type="submit" class="aa-browse-btn">Tiếp theo</button>
                                     <div class="title-span"><a style="color: #337ab7;" href="${pageContext.request.contextPath}/view/client/login">Quay lại</a></div>
                                 </form>
